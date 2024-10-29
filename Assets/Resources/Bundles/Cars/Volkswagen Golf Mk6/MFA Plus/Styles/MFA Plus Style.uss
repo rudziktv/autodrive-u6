@@ -1,0 +1,152 @@
+#content {
+    background-color: rgb(0, 0, 0);
+}
+
+#root {
+    background-color: rgb(0, 0, 0);
+}
+
+Label {
+    color: rgb(255, 255, 255);
+    -unity-font-definition: resource('Bundles/Cars/Volkswagen Golf Mk6/MFA Plus/Fonts/futura medium bt');
+    padding-top: 0;
+    padding-right: 0;
+    padding-bottom: 0;
+    padding-left: 0;
+    margin-top: -4px;
+    margin-right: 0;
+    margin-bottom: 0;
+    margin-left: 0;
+    font-size: 32px;
+    -unity-font-style: normal;
+}
+
+#bottom-sect {
+    flex-direction: row;
+    justify-content: space-between;
+    padding-top: 4px;
+    padding-right: 4px;
+    padding-bottom: 4px;
+    padding-left: 4px;
+}
+
+#temp-sect {
+    padding-top: 4px;
+    padding-right: 4px;
+    padding-bottom: 4px;
+    padding-left: 4px;
+    align-items: center;
+    justify-content: center;
+}
+
+.bottom-label {
+    font-size: 18px;
+    margin-top: 0;
+    margin-right: 0;
+    margin-bottom: 0;
+    margin-left: 0;
+    padding-top: 0;
+    padding-right: 0;
+    padding-bottom: 0;
+    padding-left: 0;
+}
+
+#top-sect {
+    flex-direction: row;
+    justify-content: space-between;
+    padding-top: 8px;
+    padding-right: 8px;
+    padding-bottom: 8px;
+    padding-left: 8px;
+}
+
+.values {
+    margin-top: 3px;
+    margin-right: 0;
+    margin-left: 0;
+    padding-top: 0;
+    padding-right: 0;
+    padding-bottom: 0;
+    padding-left: 0;
+    -unity-font-style: normal;
+    font-size: 32px;
+    -unity-font-definition: resource('Bundles/Cars/Volkswagen Golf Mk6/MFA Plus/Fonts/futur');
+    letter-spacing: 4px;
+}
+
+.header-shown > * {
+    visibility: visible;
+    display: none;
+}
+
+.header-shown > #header {
+    display: flex;
+}
+
+.header {
+    display: none;
+}
+
+.spacer {
+    background-color: rgb(255, 255, 255);
+    height: 4px;
+    flex-grow: 0;
+}
+
+.temp-hidden #temp-spacer {
+    display: none;
+}
+
+.temp-hidden #temp-sect {
+    display: none;
+}
+
+.bottom-hidden #bottom-spacer {
+    display: none;
+}
+
+.bottom-hidden #bottom-sect {
+    display: none;
+}
+
+#temp-container {
+    flex-direction: row;
+}
+
+#temp-units {
+    position: absolute;
+    right: -4px;
+    translate: 100% 0;
+    font-size: 18px;
+    margin-top: 0;
+}
+
+#temp-value {
+    width: 46px;
+    -unity-text-align: upper-right;
+}
+
+.snowflake-shown #snowflake-icon {
+    display: flex;
+}
+
+#snowflake-icon {
+    display: none;
+}
+
+.selected-item {
+    border-top-width: 4px;
+    border-bottom-width: 4px;
+    border-left-color: rgb(255, 255, 255);
+    border-right-color: rgb(255, 255, 255);
+    border-top-color: rgb(255, 255, 255);
+    border-bottom-color: rgb(255, 255, 255);
+    background-color: rgb(0, 0, 0);
+}
+
+Scroller {
+    display: none;
+    opacity: 1;
+    visibility: hidden;
+    position: absolute;
+}

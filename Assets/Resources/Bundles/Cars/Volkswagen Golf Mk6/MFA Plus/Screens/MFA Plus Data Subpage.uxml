@@ -1,0 +1,12 @@
+<engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/Resources/Bundles/Cars/Volkswagen%20Golf%20Mk6/MFA%20Plus/Styles/MFA%20Plus%20Data%20Style.uss?fileID=7433441132597879392&amp;guid=6f6378e2a3fba8c36b16e2b570dda605&amp;type=3#MFA Plus Data Style" />
+    <Style src="project://database/Assets/Resources/Bundles/Cars/Volkswagen%20Golf%20Mk6/MFA%20Plus/Styles/MFA%20Plus%20Style.uss?fileID=7433441132597879392&amp;guid=503b8d72dbf77c896aa116a31ba2cc5c&amp;type=3#MFA Plus Style" />
+    <engine:VisualElement name="content" style="flex-grow: 1;">
+        <engine:Label text="{dataset}" name="dataset" />
+        <engine:Label text="{variable_name}" name="name" style="margin-bottom: -16px; -unity-text-align: upper-center;" />
+        <engine:VisualElement name="values-sect">
+            <engine:VisualElement name="icon" class="icon" style="flex-grow: 1; position: absolute; left: 16px;" />
+            <engine:Label text="Ø" name="avg" style="margin-right: 12px;" />
+        </engine:VisualElement>
+    </engine:VisualElement>
+</engine:UXML>

@@ -1,0 +1,134 @@
+{
+    "name": "Input Actions",
+    "maps": [
+        {
+            "name": "Development",
+            "id": "bea4b291-7728-449b-bec5-758c936fa876",
+            "actions": [
+                {
+                    "name": "Computer Up",
+                    "type": "Button",
+                    "id": "3cf143a0-19ce-4384-b159-3e34d78a3558",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Computer Down",
+                    "type": "Button",
+                    "id": "ea65dcfb-ca44-49a6-bf74-72729fb5550d",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Computer Back",
+                    "type": "Button",
+                    "id": "fb0f7fbe-50f7-44bf-ba5e-c30516cac52f",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Computer Ok",
+                    "type": "Button",
+                    "id": "9a55cfd9-dd7d-4b69-a502-f748f6c16d28",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Computer Prev Page",
+                    "type": "Button",
+                    "id": "d7e5c4e8-7aca-4dd0-aa20-286da3ec042e",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Computer Next Page",
+                    "type": "Button",
+                    "id": "b048965e-3c76-475e-b2f2-5ab810269eb9",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "424a2c49-d031-4889-b625-685efccfcd7a",
+                    "path": "<Keyboard>/upArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Computer Up",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "34676683-1e08-4e9a-89a1-bab77d479f93",
+                    "path": "<Keyboard>/downArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Computer Down",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "5dc2da78-b534-45e1-b46c-fff14b672d5f",
+                    "path": "<Keyboard>/leftArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Computer Back",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "4808c8dd-5d54-4c9b-8a58-042e9763db7a",
+                    "path": "<Keyboard>/rightArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Computer Ok",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "e8a77ad3-20e7-41a8-9ac7-3029f46d9e81",
+                    "path": "<Keyboard>/leftArrow",
+                    "interactions": "Hold",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Computer Prev Page",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "3f5f3288-0c72-459d-b21b-e82ddae535a6",
+                    "path": "<Keyboard>/rightArrow",
+                    "interactions": "Hold",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Computer Next Page",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}

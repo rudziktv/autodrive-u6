@@ -1,0 +1,32 @@
+<engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/Resources/Bundles/Cars/Volkswagen%20Golf%20Mk6/MFA%20Plus/Styles/MFA%20Plus%20Style.uss?fileID=7433441132597879392&amp;guid=503b8d72dbf77c896aa116a31ba2cc5c&amp;type=3#MFA Plus Style" />
+    <engine:VisualElement name="root" style="flex-grow: 1;">
+        <engine:VisualElement name="top-sect" class="header-shown">
+            <engine:Label text="NW" name="compas" class="values" style="-unity-text-align: upper-left; width: 60px;" />
+            <engine:Label text="11:12" name="clock" class="values" style="-unity-text-align: upper-center; width: 100px;" />
+            <engine:Label text="1" name="gear" class="values" style="-unity-text-align: upper-right; width: 60px;" />
+            <engine:Label text="{header}" name="header" class="header" style="-unity-text-align: upper-center; flex-grow: 1;" />
+        </engine:VisualElement>
+        <engine:VisualElement name="top-spacer" class="spacer" />
+        <engine:VisualElement name="main" style="flex-grow: 1;" />
+        <engine:VisualElement name="temp-spacer" class="spacer" />
+        <engine:VisualElement name="temp-sect">
+            <engine:VisualElement name="snowflake-icon" style="flex-grow: 1; width: 36px; height: 36px; position: absolute; left: 4px; align-self: center; background-image: resource(&apos;Bundles/Cars/Volkswagen Golf Mk6/MFA Plus/Icons/mfa_snowflake&apos;);" />
+            <engine:VisualElement name="temp-container">
+                <engine:Label text="5.0" name="temp-value" class="values" />
+                <engine:Label text="°C" name="temp-units" style="-unity-text-align: upper-center;" />
+            </engine:VisualElement>
+        </engine:VisualElement>
+        <engine:VisualElement name="bottom-spacer" class="spacer" />
+        <engine:VisualElement name="bottom-sect">
+            <engine:VisualElement name="odometer-sect">
+                <engine:Label text="km" name="km-label" class="bottom-label" />
+                <engine:Label text="999999" name="odometer-value" class="bottom-value values" />
+            </engine:VisualElement>
+            <engine:VisualElement name="trip-sect">
+                <engine:Label text="trip" name="trip-label" class="bottom-label" style="-unity-text-align: upper-right;" />
+                <engine:Label text="9999.9" name="trip-value" class="bottom-value values" />
+            </engine:VisualElement>
+        </engine:VisualElement>
+    </engine:VisualElement>
+</engine:UXML>
