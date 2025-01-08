@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ff96612700f47878eccbfce7d0ef391, type: 3}
+  m_Name: Alloy Pedal Covers
+  m_EditorClassIdentifier: 
+  <EquipmentName>k__BackingField: 
+  <EquipmentPrice>k__BackingField: 0
+  <RequiredEquipment>k__BackingField: []
+  <NotCompatibleEquipment>k__BackingField: []
+  <RequiredPackages>k__BackingField: []
+  <HideIfPackagesNotSelected>k__BackingField: 0
+  <EquipmentCoding>k__BackingField: []
+  <EnabledObjectsNames>k__BackingField:
+  - brake_pedal_manual_alloy_cover
+  - clutch_pedal_alloy_cover
+  - accelerator_pedal_alloy_cover
+  <DisabledObjectsNames>k__BackingField:
+  - brake_pedal_manual
+  - clutch_pedal

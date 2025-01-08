@@ -1,0 +1,8 @@
+<engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <engine:VisualElement style="flex-grow: 0; align-items: flex-start;">
+        <engine:Button text="Play/Pause" name="play-pause" />
+        <engine:Button text="Next" name="next" />
+        <engine:Button text="Previous" name="prev" />
+        <engine:VisualElement name="thumbnail" style="flex-grow: 1; width: 96px; height: 96px;" />
+    </engine:VisualElement>
+</engine:UXML>

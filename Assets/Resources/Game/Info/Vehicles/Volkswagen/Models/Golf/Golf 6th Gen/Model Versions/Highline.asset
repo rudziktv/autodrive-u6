@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c22b2cfce8f24b0d8bf3d3349fe8c9ff, type: 3}
+  m_Name: Highline
+  m_EditorClassIdentifier: 
+  <VersionName>k__BackingField: Highline
+  <StandardEquipment>k__BackingField:
+  - {fileID: 11400000, guid: 7d979d9606f2aebd8bb56518fa893adb, type: 2}
+  <AdditionalEquipment>k__BackingField:
+  - {fileID: 11400000, guid: 216b70bde5a5391e3b4c591baf458bb2, type: 2}
+  <AvailableEquipment>k__BackingField: []
+  <AvailableDrivetrains>k__BackingField: []

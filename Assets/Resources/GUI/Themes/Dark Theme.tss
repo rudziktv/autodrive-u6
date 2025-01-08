@@ -1,0 +1,20 @@
+@import url("Common Theme.tss");
+
+@import url("Dark Theme Styles/Dark Button Style.uss");
+@import url("Dark Theme Styles/Dark Theme Colors.uss");
+
+
+
+
+/*@import url("Theme Values.uss");*/
+
+
+VisualElement {}
+
+.background, #background {
+    background-color: var(--background);
+}
+
+Label {
+    color: var(--foreground);
+}

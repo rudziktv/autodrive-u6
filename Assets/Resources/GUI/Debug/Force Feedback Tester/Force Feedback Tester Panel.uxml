@@ -1,0 +1,29 @@
+<engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/Resources/GUI/Debug/Force%20Feedback%20Tester/FFBTesterStyle.uss?fileID=7433441132597879392&amp;guid=5e5f93b9d0528c341a4e4cc3253e266e&amp;type=3#FFBTesterStyle" />
+    <engine:VisualElement data-source-type="Game.GUI.Debug.ForceFeedbackTester.FFBTesterModel, Assembly-CSharp" style="flex-grow: 1;">
+        <engine:VisualElement name="ffb-devices-list" class="panel" style="flex-grow: 1; position: absolute; top: 0; left: 0;">
+            <engine:Label text="Select active FFB device:" />
+            <engine:DropdownField name="ffb-dropdown" choices="None,FFB Wheel" />
+        </engine:VisualElement>
+        <engine:VisualElement name="ffb-actions" style="position: absolute; right: 0; top: 0;">
+            <engine:Button text="Simple Test" name="simple-test" />
+            <engine:Button text="Advanced Test" name="advanced-test" />
+        </engine:VisualElement>
+        <engine:VisualElement name="ffb-device-info" class="panel" style="flex-grow: 1; position: absolute; bottom: 0; left: 0;">
+            <engine:Label text="{selected_device_name}" name="device-name" />
+            <engine:Label text="{selected_device_id}" name="device-id" />
+        </engine:VisualElement>
+        <engine:VisualElement name="ffb-effect-settings" class="panel" style="flex-grow: 1; position: absolute; right: 0; bottom: 0; width: 450px;">
+            <engine:EnumField label="Type" value="HapticSpring" type="Game.UnityFFB.Enums.EffectType, Assembly-CSharp" name="type">
+                <Bindings>
+                    <engine:DataBinding property="value" data-source-path="_Type_k__BackingField" binding-mode="ToSource" />
+                </Bindings>
+            </engine:EnumField>
+            <engine:VisualElement name="effect-detail-settings" style="flex-grow: 1;" />
+            <engine:VisualElement style="flex-grow: 1; flex-direction: row;">
+                <engine:Button text="Update Effect" name="update-effect" style="flex-grow: 1; flex-basis: 100px;" />
+                <engine:Button text="Stop Effect" name="stop-effect" style="flex-grow: 1; flex-basis: 100px;" />
+            </engine:VisualElement>
+        </engine:VisualElement>
+    </engine:VisualElement>
+</engine:UXML>

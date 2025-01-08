@@ -1,0 +1,53 @@
+#brand-icon {
+    width: 48px;
+    height: 48px;
+    -unity-background-scale-mode: scale-to-fit;
+    -unity-background-image-tint-color: var(--foreground);
+    margin-right: var(--gap);
+}
+
+#brand-header {
+    flex-direction: row;
+    align-items: center;
+    padding: var(--padding);
+}
+
+#line {
+    height: 2px;
+}
+
+.brand-line {
+    width: 48px;
+    margin-right: var(--gap);
+}
+
+.brand-line-trailing {
+    margin-left: var(--gap);
+}
+
+#brand-name {
+    font-size: var(--header-m-font-size);
+    -unity-font-style: bold;
+}
+
+#brand-models {
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    padding: var(--padding);
+}
+
+#brand-car-model {
+    align-items: center;
+    background-color: sienna;
+}
+
+#brand-car-model #preview-image {
+    width: 250px;
+    height: 125px;
+    -unity-background-scale-mode: scale-and-crop;
+}
+
+/*#brand-car-model > #car-model-name {*/
+/*    font-size: var(--header-s-font-size);*/
+/*}*/

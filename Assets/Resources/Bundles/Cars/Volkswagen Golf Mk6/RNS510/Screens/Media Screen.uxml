@@ -1,0 +1,34 @@
+<engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/Resources/Bundles/Cars/Volkswagen%20Golf%20Mk6/RNS510/Styles/RNS510%20Media%20Style.uss?fileID=7433441132597879392&amp;guid=a8024910c8b2edd5f9c93c0890d2d7af&amp;type=3#RNS510 Media Style" />
+    <engine:VisualElement name="screen-content" style="flex-grow: 1;">
+        <engine:VisualElement name="sources-section">
+            <engine:Button text="CD/DVD" name="cd-dvd-btn" />
+            <engine:Button text="SD Card" name="sd-card-btn" />
+            <engine:Button text="HDD" name="hdd-btn" />
+            <engine:Button text="AUX" name="aux-btn" />
+        </engine:VisualElement>
+        <engine:VisualElement name="media-metadata" style="flex-grow: 1;">
+            <engine:Label text="Album" name="media-album" />
+            <engine:VisualElement class="gradient-separator" />
+            <engine:Label text="Title" name="media-title" />
+            <engine:VisualElement class="gradient-separator" />
+            <engine:Label text="Artist/File" name="media-artist-file" />
+            <engine:VisualElement name="media-progress">
+                <engine:Label text="0:24" name="media-progress-time" />
+                <engine:ProgressBar value="22" name="media-progress-bar" />
+                <engine:Label text="-3:18" name="media-remaining-time" />
+            </engine:VisualElement>
+        </engine:VisualElement>
+        <engine:VisualElement name="media-controls" class="button-group">
+            <engine:Button name="prev-btn" icon-image="project://database/Assets/Resources/Bundles/Cars/Volkswagen%20Golf%20Mk6/RNS510/Assets/Icons/RNS510%20Prev%20Icon.png?fileID=2800000&amp;guid=d6de3f5c715ed65d68d407031c0b37ff&amp;type=3#RNS510 Prev Icon" class="first" />
+            <engine:Button name="play-pause-btn" icon-image="project://database/Assets/Resources/Bundles/Cars/Volkswagen%20Golf%20Mk6/RNS510/Assets/Icons/RNS510%20Play%20Icon.png?fileID=2800000&amp;guid=94ce4e3aa5e4cf2f6bafd2a8eb7c1f14&amp;type=3#RNS510 Play Icon" />
+            <engine:Button name="next-btn" icon-image="project://database/Assets/Resources/Bundles/Cars/Volkswagen%20Golf%20Mk6/RNS510/Assets/Icons/RNS510%20Next%20Icon.png?fileID=2800000&amp;guid=006d41aa09f75baf0b384bcd67b8c4fa&amp;type=3#RNS510 Next Icon" class="last" />
+        </engine:VisualElement>
+        <engine:VisualElement name="extra-section" class="bottom-button-group no-shrink">
+            <engine:Button text="Video" name="video-btn" class="first" />
+            <engine:Button text="Repeat" name="repeat-btn" style="flex-grow: 0.7;" />
+            <engine:Button text="Extras" name="extras-btn" style="flex-grow: 0.7;" />
+            <engine:Button text="Selection" name="selection-btn" class="last" />
+        </engine:VisualElement>
+    </engine:VisualElement>
+</engine:UXML>

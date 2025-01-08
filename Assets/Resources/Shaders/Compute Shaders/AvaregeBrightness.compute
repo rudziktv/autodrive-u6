@@ -1,0 +1,28 @@
+// Each #kernel tells which function to compile; you can have many kernels
+#pragma kernel CSMain
+#pragma target 5.0
+
+Texture2D<float4> source_texture;
+SamplerState my_sampler;
+
+uint texture_size;
+
+RWStructuredBuffer<float> result;
+
+[numthreads(16,16,1)]
+void CSMain (uint3 id : SV_DispatchThreadID)
+{
+    uint x = id.x;
+    uint y = id.y;
+
+    if (x >= texture_size || y >= texture_size)
+        return;
+
+    // float4 color = source_texture.Sample(my_sampler, float2(x, y) / float2(texture_size, texture_size));
+    float4 color = source_texture.Load(int3(x, y, 0));
+    
+    float brightness = dot(color.rgb, float3(0.2126, 0.7152, 0.0722));
+
+    // result[0] += brightness;
+    result[x + y * texture_size] = brightness;
+}

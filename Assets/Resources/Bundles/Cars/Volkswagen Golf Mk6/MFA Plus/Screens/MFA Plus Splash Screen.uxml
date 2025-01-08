@@ -1,0 +1,7 @@
+<engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/Resources/Bundles/Cars/Volkswagen%20Golf%20Mk6/MFA%20Plus/Styles/MFA%20Plus%20Style.uss?fileID=7433441132597879392&amp;guid=503b8d72dbf77c896aa116a31ba2cc5c&amp;type=3#MFA Plus Style" />
+    <engine:VisualElement name="content" style="flex-grow: 1; background-color: rgb(0, 0, 0); align-items: center;">
+        <engine:Label text="Volkswagen&#10;Information&#10;System" style="-unity-text-align: upper-center; font-size: 40px; position: absolute; top: 48px; margin-top: 0;" />
+        <engine:Label text="Depress&#10;clutch to start!" style="position: absolute; bottom: 28px; font-size: 24px; -unity-text-align: upper-center;" />
+    </engine:VisualElement>
+</engine:UXML>

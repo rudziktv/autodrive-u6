@@ -1,0 +1,15 @@
+.header-xl {
+    font-size: var(--header-xl-font-size);
+}
+
+.header-l {
+    font-size: var(--header-l-font-size);
+}
+
+.header-m {
+    font-size: var(--header-m-font-size);
+}
+
+.header-s {
+    font-size: var(--header-s-font-size);
+}

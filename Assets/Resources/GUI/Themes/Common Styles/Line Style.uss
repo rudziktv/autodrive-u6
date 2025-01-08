@@ -1,0 +1,7 @@
+VisualElement {}
+
+.line, #line {
+    flex-grow: 1;
+    height: var(--border-width);
+    background-color: var(--foreground);
+}

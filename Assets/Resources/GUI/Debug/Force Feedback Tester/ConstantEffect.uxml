@@ -1,0 +1,8 @@
+<engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <engine:UnsignedIntegerField label="Length" value="5000" />
+    <engine:SliderInt label="Level" value="0" high-value="32767" fill="false" show-input-field="true" inverted="false" low-value="-32768" />
+    <engine:SliderInt label="Attack Length" value="0" high-value="65535" fill="false" show-input-field="true" inverted="false" />
+    <engine:SliderInt label="Attack Level" value="0" high-value="65535" fill="false" show-input-field="true" inverted="false" />
+    <engine:SliderInt label="Fade Length" value="0" high-value="65535" fill="false" show-input-field="true" inverted="false" />
+    <engine:SliderInt label="Fade Level" value="0" high-value="65535" fill="false" show-input-field="true" inverted="false" />
+</engine:UXML>

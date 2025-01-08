@@ -1,0 +1,22 @@
+<engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/Resources/GUI/Configurator/Styles/Configurator%20Style.uss?fileID=7433441132597879392&amp;guid=f93325adc93e2da8596f24d6e99bd715&amp;type=3#Configurator Style" />
+    <engine:VisualElement name="background" style="flex-grow: 1;">
+        <engine:Label text="Select Vehicle" class="header-l" />
+        <engine:TextField label="Search" placeholder-text="Type brand, model etc..." style="color: rgb(255, 255, 255);" />
+        <engine:VisualElement name="brand-section">
+            <engine:VisualElement name="brand-header">
+                <engine:VisualElement name="line" class="brand-line" style="flex-grow: 0;" />
+                <engine:VisualElement name="brand-icon" style="background-image: resource(&apos;GUI/Assets/Images/Brands/volkswagen_logo&apos;);" />
+                <engine:Label text="Volkswagen" name="brand-name" />
+                <engine:VisualElement name="line" class="brand-line-trailing" style="flex-grow: 1;" />
+            </engine:VisualElement>
+            <engine:VisualElement name="brand-models">
+                <engine:VisualElement name="brand-car-model">
+                    <engine:VisualElement name="preview-image" style="background-image: resource(&apos;GUI/Assets/Images/Cars/golf-mk6-gti-front&apos;);" />
+                    <engine:Label text="Golf" name="car-model-name" class="header-s" />
+                    <engine:Button text="Configure" />
+                </engine:VisualElement>
+            </engine:VisualElement>
+        </engine:VisualElement>
+    </engine:VisualElement>
+</engine:UXML>

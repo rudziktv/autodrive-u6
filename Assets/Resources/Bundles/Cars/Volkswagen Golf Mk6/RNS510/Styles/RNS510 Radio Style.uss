@@ -1,0 +1,63 @@
+#radio-stations {
+    flex-wrap: wrap;
+    padding: 12px;
+}
+
+#radio-stations > * {
+    flex-basis: 200;
+    flex-grow: 1;
+    margin: var(--gap);
+    padding: 16px 6px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    -unity-text-align: middle-left;
+    
+    flex-direction: row;
+}
+
+#radio-metadata {
+    background-color: var(--elevation-0);
+    border-color: var(--border-color);
+    border-width: var(--border-width);
+    
+    border-top-left-radius: var(--border-radius);
+    border-top-right-radius: var(--border-radius);
+    
+    padding: var(--padding-large);
+    
+    justify-content: space-between;
+    color: var(--on-dark);
+}
+
+#radio-metadata > * {
+    flex-shrink: 0;
+}
+
+#radio-metadata #separator {
+    margin: 0 82px;
+}
+
+#extra-section > * {
+    padding: 0 20px;
+    flex-basis: 0;
+}
+
+#band-btn, #tune-btn {
+    flex-grow: 0;
+    flex-basis: auto;
+}
+
+#radio-controls {
+    margin: 8px 0;
+    height: 72px;
+}
+
+#radio-controls > Button {
+    width: 80px;
+    padding: 16px;
+}
+
+#radio-station-info {
+    font-size: 56px;
+}

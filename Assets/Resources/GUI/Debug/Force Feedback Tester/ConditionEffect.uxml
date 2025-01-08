@@ -1,0 +1,40 @@
+<engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/Resources/GUI/Debug/Force%20Feedback%20Tester/FFBTesterStyle.uss?fileID=7433441132597879392&amp;guid=5e5f93b9d0528c341a4e4cc3253e266e&amp;type=3#FFBTesterStyle" />
+    <engine:VisualElement data-source-type="Game.GUI.Debug.ForceFeedbackTester.FFBConditionEffectModel, Assembly-CSharp" style="flex-grow: 1;">
+        <engine:UnsignedIntegerField label="Length" value="5000" name="length">
+            <Bindings>
+                <engine:DataBinding property="value" data-source-path="_Length_k__BackingField" binding-mode="ToSource" />
+            </Bindings>
+        </engine:UnsignedIntegerField>
+        <engine:SliderInt label="Right Sat" value="5000" high-value="10000" name="right_sat" show-input-field="true">
+            <Bindings>
+                <engine:DataBinding property="value" data-source-path="_RightSat_k__BackingField" binding-mode="ToSource" />
+            </Bindings>
+        </engine:SliderInt>
+        <engine:SliderInt label="Left Sat" value="5000" high-value="10000" name="left_sat" show-input-field="true">
+            <Bindings>
+                <engine:DataBinding property="value" data-source-path="_LeftSat_k__BackingField" binding-mode="ToSource" />
+            </Bindings>
+        </engine:SliderInt>
+        <engine:SliderInt label="Right Coeff" value="5000" high-value="10000" name="right_coeff" show-input-field="true" low-value="-10000">
+            <Bindings>
+                <engine:DataBinding property="value" data-source-path="_RightCoeff_k__BackingField" binding-mode="ToSource" />
+            </Bindings>
+        </engine:SliderInt>
+        <engine:SliderInt label="Left Coeff" value="5000" high-value="10000" name="left_coeff" show-input-field="true" low-value="-10000">
+            <Bindings>
+                <engine:DataBinding property="value" data-source-path="_LeftCoeff_k__BackingField" binding-mode="ToSource" />
+            </Bindings>
+        </engine:SliderInt>
+        <engine:SliderInt label="Deadband" value="0" high-value="10000" name="deadband" show-input-field="true">
+            <Bindings>
+                <engine:DataBinding property="value" data-source-path="_Deadband_k__BackingField" binding-mode="ToSource" />
+            </Bindings>
+        </engine:SliderInt>
+        <engine:SliderInt label="Center" value="0" high-value="10000" name="center" show-input-field="true" fill="false" low-value="-10000">
+            <Bindings>
+                <engine:DataBinding property="value" data-source-path="_Center_k__BackingField" binding-mode="ToSource" />
+            </Bindings>
+        </engine:SliderInt>
+    </engine:VisualElement>
+</engine:UXML>
