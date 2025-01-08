@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -12,7 +13,7 @@ namespace UI
         private readonly UIController<T> _controller;
         public VisualElement View { get; }
 
-        private List<Coroutine> _coroutines = new();
+        protected List<Coroutine> Coroutines = new();
         public bool Created { get; private set; }
         
         public UIModel(UIController<T> ctr, VisualElement view, string name)
@@ -24,11 +25,14 @@ namespace UI
 
         protected UIController<T> GetController() => _controller;
 
-        protected void StartCoroutine(IEnumerator coroutine)
+        protected Coroutine StartCoroutine(IEnumerator enumerator)
         {
-            _coroutines.Add(Context.StartCoroutine(coroutine));
+            Coroutines = Coroutines.Where(c => c != null).ToList();
+            Coroutines.Add(Context.StartCoroutine(enumerator));
+            return Coroutines[^1];
         }
 
+        // ReSharper disable Unity.PerformanceAnalysis
         public virtual void OnViewBindOrCreate()
         {
             if (!Created)
@@ -44,7 +48,8 @@ namespace UI
 
         public virtual void OnViewUnbind()
         {
-            foreach (var coroutine in _coroutines)
+            Coroutines = Coroutines.Where(c => c != null).ToList();
+            foreach (var coroutine in Coroutines)
             {
                 Context.StopCoroutine(coroutine);
             }
@@ -52,11 +57,15 @@ namespace UI
         
         public virtual void OnUpdate() { }
 
-        public virtual void OnDestroy() { }
+        public virtual void OnDestroy()
+        {
+            OnViewUnbind();
+            View.Clear();
+            // Context.Destroy();
+        }
 
         ~UIModel()
         {
-            OnViewUnbind();
             OnDestroy();
         }
     }

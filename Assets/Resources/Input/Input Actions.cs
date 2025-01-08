@@ -80,6 +80,132 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ToggleHeadlights"",
+                    ""type"": ""Button"",
+                    ""id"": ""b67b231c-90ca-4542-975d-111987cc4ff7"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ToggleIgnition"",
+                    ""type"": ""Button"",
+                    ""id"": ""9caed4af-25c5-4625-a8d0-0f5dc995b0c2"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Toggle Camera Lock"",
+                    ""type"": ""Button"",
+                    ""id"": ""61e7bb0e-e0dc-4dcb-a3e2-226968ab88d5"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Camera X"",
+                    ""type"": ""Value"",
+                    ""id"": ""a2459c61-7dd4-4215-84b0-9e32b28d900c"",
+                    ""expectedControlType"": ""Axis"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Camera Y"",
+                    ""type"": ""Value"",
+                    ""id"": ""2b17e473-ab4c-47c7-9a25-ac201c0d0870"",
+                    ""expectedControlType"": ""Axis"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Camera"",
+                    ""type"": ""Value"",
+                    ""id"": ""32025fb6-3435-497a-8a33-86bf936cbd99"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Camera Zoom In"",
+                    ""type"": ""Button"",
+                    ""id"": ""c2d1cba2-dfa0-427c-b9d8-60b7171b3bb0"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Camera Zoom Out"",
+                    ""type"": ""Button"",
+                    ""id"": ""50d521e6-186a-4796-a129-b0b48a350451"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Camera Zoom Reset"",
+                    ""type"": ""Button"",
+                    ""id"": ""b087964c-3946-4b44-84c4-d79c97ba1049"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Camera Zoom Toggle"",
+                    ""type"": ""Button"",
+                    ""id"": ""08d9dfc2-8436-4bb3-8bf5-578875bb3054"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Force Brake Lights"",
+                    ""type"": ""Button"",
+                    ""id"": ""03636c61-6f61-494b-815e-0f60f04a3424"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Person Movement"",
+                    ""type"": ""Value"",
+                    ""id"": ""560acae8-9db0-46ae-8cb4-41e24821571b"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Toggle Folding Mirrors"",
+                    ""type"": ""Button"",
+                    ""id"": ""ef1d9d06-39ff-4293-a981-06736f0615de"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Interact"",
+                    ""type"": ""Button"",
+                    ""id"": ""18e09f6e-5ba6-4f00-b6c7-eba6106b606f"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -148,6 +274,215 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                     ""action"": ""Computer Next Page"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e5e0b269-b410-4c69-9f47-cf808d63ef50"",
+                    ""path"": ""<Keyboard>/l"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ToggleHeadlights"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""856d4348-f42b-40b3-9e1d-679db6eda7d4"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ToggleIgnition"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e3828445-1bc1-4bdd-8262-0d46355fc4a4"",
+                    ""path"": ""<Mouse>/middleButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Toggle Camera Lock"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""bd96a199-15f5-4c58-9ebc-30face867a2e"",
+                    ""path"": ""<Mouse>/delta/x"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Camera X"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""6ab9d078-c69b-46bc-bde5-86237733b0fc"",
+                    ""path"": ""<Mouse>/delta/y"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Camera Y"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d6b845eb-7039-4937-9372-831ffe13e722"",
+                    ""path"": ""<Mouse>/delta"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Camera"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""7a2892e1-4e33-45a4-8359-089bac7b413f"",
+                    ""path"": ""<Keyboard>/equals"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Camera Zoom In"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3df0ab5f-d7f8-40c8-b1c8-c73e970a1c66"",
+                    ""path"": ""<Keyboard>/minus"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Camera Zoom Out"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e6c45c5a-b51e-4121-a7c6-a41f8890821e"",
+                    ""path"": ""<Keyboard>/0"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Camera Zoom Reset"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""07308dee-9606-4ba8-9ab7-27615bebd50c"",
+                    ""path"": ""<Keyboard>/x"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Camera Zoom Toggle"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d13d4c16-69c7-468e-bf6f-d8a7f2b28804"",
+                    ""path"": ""<Keyboard>/b"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Force Brake Lights"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""2D Vector"",
+                    ""id"": ""88a71c3f-4b3d-4e65-b050-f32449a9b748"",
+                    ""path"": ""2DVector"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Person Movement"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""up"",
+                    ""id"": ""638942f1-b323-4885-a304-936e90e3e783"",
+                    ""path"": ""<Keyboard>/w"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Person Movement"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""4e33068a-cdf5-4681-9f46-4ceb7e988e5e"",
+                    ""path"": ""<Keyboard>/s"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Person Movement"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""320b59cb-ed71-45ad-9ef2-6dc93fb0393d"",
+                    ""path"": ""<Keyboard>/a"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Person Movement"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""ada9d7e1-1874-483e-971d-850da536470b"",
+                    ""path"": ""<Keyboard>/d"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Person Movement"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""2a4e11ba-3acd-4227-8d2b-bb84a6614652"",
+                    ""path"": ""<Keyboard>/z"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Toggle Folding Mirrors"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3654bfb1-6290-4e41-88e3-a386e733bc90"",
+                    ""path"": ""<Keyboard>/f"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Interact"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d58b06ce-a131-4f98-aaa8-389caecb3bf4"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Interact"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -162,6 +497,20 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
         m_Development_ComputerOk = m_Development.FindAction("Computer Ok", throwIfNotFound: true);
         m_Development_ComputerPrevPage = m_Development.FindAction("Computer Prev Page", throwIfNotFound: true);
         m_Development_ComputerNextPage = m_Development.FindAction("Computer Next Page", throwIfNotFound: true);
+        m_Development_ToggleHeadlights = m_Development.FindAction("ToggleHeadlights", throwIfNotFound: true);
+        m_Development_ToggleIgnition = m_Development.FindAction("ToggleIgnition", throwIfNotFound: true);
+        m_Development_ToggleCameraLock = m_Development.FindAction("Toggle Camera Lock", throwIfNotFound: true);
+        m_Development_CameraX = m_Development.FindAction("Camera X", throwIfNotFound: true);
+        m_Development_CameraY = m_Development.FindAction("Camera Y", throwIfNotFound: true);
+        m_Development_Camera = m_Development.FindAction("Camera", throwIfNotFound: true);
+        m_Development_CameraZoomIn = m_Development.FindAction("Camera Zoom In", throwIfNotFound: true);
+        m_Development_CameraZoomOut = m_Development.FindAction("Camera Zoom Out", throwIfNotFound: true);
+        m_Development_CameraZoomReset = m_Development.FindAction("Camera Zoom Reset", throwIfNotFound: true);
+        m_Development_CameraZoomToggle = m_Development.FindAction("Camera Zoom Toggle", throwIfNotFound: true);
+        m_Development_ForceBrakeLights = m_Development.FindAction("Force Brake Lights", throwIfNotFound: true);
+        m_Development_PersonMovement = m_Development.FindAction("Person Movement", throwIfNotFound: true);
+        m_Development_ToggleFoldingMirrors = m_Development.FindAction("Toggle Folding Mirrors", throwIfNotFound: true);
+        m_Development_Interact = m_Development.FindAction("Interact", throwIfNotFound: true);
     }
 
     ~@InputActions()
@@ -234,6 +583,20 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
     private readonly InputAction m_Development_ComputerOk;
     private readonly InputAction m_Development_ComputerPrevPage;
     private readonly InputAction m_Development_ComputerNextPage;
+    private readonly InputAction m_Development_ToggleHeadlights;
+    private readonly InputAction m_Development_ToggleIgnition;
+    private readonly InputAction m_Development_ToggleCameraLock;
+    private readonly InputAction m_Development_CameraX;
+    private readonly InputAction m_Development_CameraY;
+    private readonly InputAction m_Development_Camera;
+    private readonly InputAction m_Development_CameraZoomIn;
+    private readonly InputAction m_Development_CameraZoomOut;
+    private readonly InputAction m_Development_CameraZoomReset;
+    private readonly InputAction m_Development_CameraZoomToggle;
+    private readonly InputAction m_Development_ForceBrakeLights;
+    private readonly InputAction m_Development_PersonMovement;
+    private readonly InputAction m_Development_ToggleFoldingMirrors;
+    private readonly InputAction m_Development_Interact;
     public struct DevelopmentActions
     {
         private @InputActions m_Wrapper;
@@ -244,6 +607,20 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
         public InputAction @ComputerOk => m_Wrapper.m_Development_ComputerOk;
         public InputAction @ComputerPrevPage => m_Wrapper.m_Development_ComputerPrevPage;
         public InputAction @ComputerNextPage => m_Wrapper.m_Development_ComputerNextPage;
+        public InputAction @ToggleHeadlights => m_Wrapper.m_Development_ToggleHeadlights;
+        public InputAction @ToggleIgnition => m_Wrapper.m_Development_ToggleIgnition;
+        public InputAction @ToggleCameraLock => m_Wrapper.m_Development_ToggleCameraLock;
+        public InputAction @CameraX => m_Wrapper.m_Development_CameraX;
+        public InputAction @CameraY => m_Wrapper.m_Development_CameraY;
+        public InputAction @Camera => m_Wrapper.m_Development_Camera;
+        public InputAction @CameraZoomIn => m_Wrapper.m_Development_CameraZoomIn;
+        public InputAction @CameraZoomOut => m_Wrapper.m_Development_CameraZoomOut;
+        public InputAction @CameraZoomReset => m_Wrapper.m_Development_CameraZoomReset;
+        public InputAction @CameraZoomToggle => m_Wrapper.m_Development_CameraZoomToggle;
+        public InputAction @ForceBrakeLights => m_Wrapper.m_Development_ForceBrakeLights;
+        public InputAction @PersonMovement => m_Wrapper.m_Development_PersonMovement;
+        public InputAction @ToggleFoldingMirrors => m_Wrapper.m_Development_ToggleFoldingMirrors;
+        public InputAction @Interact => m_Wrapper.m_Development_Interact;
         public InputActionMap Get() { return m_Wrapper.m_Development; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -271,6 +648,48 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
             @ComputerNextPage.started += instance.OnComputerNextPage;
             @ComputerNextPage.performed += instance.OnComputerNextPage;
             @ComputerNextPage.canceled += instance.OnComputerNextPage;
+            @ToggleHeadlights.started += instance.OnToggleHeadlights;
+            @ToggleHeadlights.performed += instance.OnToggleHeadlights;
+            @ToggleHeadlights.canceled += instance.OnToggleHeadlights;
+            @ToggleIgnition.started += instance.OnToggleIgnition;
+            @ToggleIgnition.performed += instance.OnToggleIgnition;
+            @ToggleIgnition.canceled += instance.OnToggleIgnition;
+            @ToggleCameraLock.started += instance.OnToggleCameraLock;
+            @ToggleCameraLock.performed += instance.OnToggleCameraLock;
+            @ToggleCameraLock.canceled += instance.OnToggleCameraLock;
+            @CameraX.started += instance.OnCameraX;
+            @CameraX.performed += instance.OnCameraX;
+            @CameraX.canceled += instance.OnCameraX;
+            @CameraY.started += instance.OnCameraY;
+            @CameraY.performed += instance.OnCameraY;
+            @CameraY.canceled += instance.OnCameraY;
+            @Camera.started += instance.OnCamera;
+            @Camera.performed += instance.OnCamera;
+            @Camera.canceled += instance.OnCamera;
+            @CameraZoomIn.started += instance.OnCameraZoomIn;
+            @CameraZoomIn.performed += instance.OnCameraZoomIn;
+            @CameraZoomIn.canceled += instance.OnCameraZoomIn;
+            @CameraZoomOut.started += instance.OnCameraZoomOut;
+            @CameraZoomOut.performed += instance.OnCameraZoomOut;
+            @CameraZoomOut.canceled += instance.OnCameraZoomOut;
+            @CameraZoomReset.started += instance.OnCameraZoomReset;
+            @CameraZoomReset.performed += instance.OnCameraZoomReset;
+            @CameraZoomReset.canceled += instance.OnCameraZoomReset;
+            @CameraZoomToggle.started += instance.OnCameraZoomToggle;
+            @CameraZoomToggle.performed += instance.OnCameraZoomToggle;
+            @CameraZoomToggle.canceled += instance.OnCameraZoomToggle;
+            @ForceBrakeLights.started += instance.OnForceBrakeLights;
+            @ForceBrakeLights.performed += instance.OnForceBrakeLights;
+            @ForceBrakeLights.canceled += instance.OnForceBrakeLights;
+            @PersonMovement.started += instance.OnPersonMovement;
+            @PersonMovement.performed += instance.OnPersonMovement;
+            @PersonMovement.canceled += instance.OnPersonMovement;
+            @ToggleFoldingMirrors.started += instance.OnToggleFoldingMirrors;
+            @ToggleFoldingMirrors.performed += instance.OnToggleFoldingMirrors;
+            @ToggleFoldingMirrors.canceled += instance.OnToggleFoldingMirrors;
+            @Interact.started += instance.OnInteract;
+            @Interact.performed += instance.OnInteract;
+            @Interact.canceled += instance.OnInteract;
         }
 
         private void UnregisterCallbacks(IDevelopmentActions instance)
@@ -293,6 +712,48 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
             @ComputerNextPage.started -= instance.OnComputerNextPage;
             @ComputerNextPage.performed -= instance.OnComputerNextPage;
             @ComputerNextPage.canceled -= instance.OnComputerNextPage;
+            @ToggleHeadlights.started -= instance.OnToggleHeadlights;
+            @ToggleHeadlights.performed -= instance.OnToggleHeadlights;
+            @ToggleHeadlights.canceled -= instance.OnToggleHeadlights;
+            @ToggleIgnition.started -= instance.OnToggleIgnition;
+            @ToggleIgnition.performed -= instance.OnToggleIgnition;
+            @ToggleIgnition.canceled -= instance.OnToggleIgnition;
+            @ToggleCameraLock.started -= instance.OnToggleCameraLock;
+            @ToggleCameraLock.performed -= instance.OnToggleCameraLock;
+            @ToggleCameraLock.canceled -= instance.OnToggleCameraLock;
+            @CameraX.started -= instance.OnCameraX;
+            @CameraX.performed -= instance.OnCameraX;
+            @CameraX.canceled -= instance.OnCameraX;
+            @CameraY.started -= instance.OnCameraY;
+            @CameraY.performed -= instance.OnCameraY;
+            @CameraY.canceled -= instance.OnCameraY;
+            @Camera.started -= instance.OnCamera;
+            @Camera.performed -= instance.OnCamera;
+            @Camera.canceled -= instance.OnCamera;
+            @CameraZoomIn.started -= instance.OnCameraZoomIn;
+            @CameraZoomIn.performed -= instance.OnCameraZoomIn;
+            @CameraZoomIn.canceled -= instance.OnCameraZoomIn;
+            @CameraZoomOut.started -= instance.OnCameraZoomOut;
+            @CameraZoomOut.performed -= instance.OnCameraZoomOut;
+            @CameraZoomOut.canceled -= instance.OnCameraZoomOut;
+            @CameraZoomReset.started -= instance.OnCameraZoomReset;
+            @CameraZoomReset.performed -= instance.OnCameraZoomReset;
+            @CameraZoomReset.canceled -= instance.OnCameraZoomReset;
+            @CameraZoomToggle.started -= instance.OnCameraZoomToggle;
+            @CameraZoomToggle.performed -= instance.OnCameraZoomToggle;
+            @CameraZoomToggle.canceled -= instance.OnCameraZoomToggle;
+            @ForceBrakeLights.started -= instance.OnForceBrakeLights;
+            @ForceBrakeLights.performed -= instance.OnForceBrakeLights;
+            @ForceBrakeLights.canceled -= instance.OnForceBrakeLights;
+            @PersonMovement.started -= instance.OnPersonMovement;
+            @PersonMovement.performed -= instance.OnPersonMovement;
+            @PersonMovement.canceled -= instance.OnPersonMovement;
+            @ToggleFoldingMirrors.started -= instance.OnToggleFoldingMirrors;
+            @ToggleFoldingMirrors.performed -= instance.OnToggleFoldingMirrors;
+            @ToggleFoldingMirrors.canceled -= instance.OnToggleFoldingMirrors;
+            @Interact.started -= instance.OnInteract;
+            @Interact.performed -= instance.OnInteract;
+            @Interact.canceled -= instance.OnInteract;
         }
 
         public void RemoveCallbacks(IDevelopmentActions instance)
@@ -318,5 +779,19 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
         void OnComputerOk(InputAction.CallbackContext context);
         void OnComputerPrevPage(InputAction.CallbackContext context);
         void OnComputerNextPage(InputAction.CallbackContext context);
+        void OnToggleHeadlights(InputAction.CallbackContext context);
+        void OnToggleIgnition(InputAction.CallbackContext context);
+        void OnToggleCameraLock(InputAction.CallbackContext context);
+        void OnCameraX(InputAction.CallbackContext context);
+        void OnCameraY(InputAction.CallbackContext context);
+        void OnCamera(InputAction.CallbackContext context);
+        void OnCameraZoomIn(InputAction.CallbackContext context);
+        void OnCameraZoomOut(InputAction.CallbackContext context);
+        void OnCameraZoomReset(InputAction.CallbackContext context);
+        void OnCameraZoomToggle(InputAction.CallbackContext context);
+        void OnForceBrakeLights(InputAction.CallbackContext context);
+        void OnPersonMovement(InputAction.CallbackContext context);
+        void OnToggleFoldingMirrors(InputAction.CallbackContext context);
+        void OnInteract(InputAction.CallbackContext context);
     }
 }

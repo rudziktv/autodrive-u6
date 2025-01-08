@@ -1,0 +1,14 @@
+#unity-text-input {
+    border-color: var(--border);
+    border-radius: var(--border-radius);
+    border-width: var(--border-width);
+    background-color: transparent;
+}
+
+/*TextField {*/
+/*    color: black;*/
+/*}*/
+
+/*#unity-text-input > TextElement {*/
+/*    color: var(--foreground);*/
+/*}*/

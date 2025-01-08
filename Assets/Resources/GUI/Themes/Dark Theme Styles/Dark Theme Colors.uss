@@ -1,0 +1,9 @@
+* {
+    --border: #666;
+    --background: #191919;
+    --tertiary: #666;
+    --foreground: #fff;
+    --foreground-tinted: #919191;
+    
+    --primary: #586BA4;
+}

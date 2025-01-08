@@ -1,0 +1,12 @@
+* {
+    --border-radius: 12px;
+    --border-width: 1px;
+    --padding: 12px;
+    --margin: 12px;
+    --gap: 12px;
+    
+    --header-xl-font-size: 36px;
+    --header-l-font-size: 32px;
+    --header-m-font-size: 28px;
+    --header-s-font-size: 24px;
+}

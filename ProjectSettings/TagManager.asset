@@ -3,7 +3,9 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 3
-  tags: []
+  tags:
+  - DashboardIllumination
+  - Equipment
   layers:
   - Default
   - TransparentFX
@@ -13,11 +15,11 @@ TagManager:
   - UI
   - Light Shaper
   - Interactions
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Ignore Mirror Reflection
+  - Ignore Probe Reflection
+  - Lights
+  - Dusk Sensor
+  - Player
   - 
   - 
   - 

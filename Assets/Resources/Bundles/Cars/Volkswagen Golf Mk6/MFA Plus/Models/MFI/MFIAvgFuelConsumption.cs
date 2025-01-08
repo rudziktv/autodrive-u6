@@ -17,7 +17,10 @@ namespace Resources.Bundles.Cars.Volkswagen_Golf_Mk6.MFA_Plus.Models.MFI
             var name = View.Q<Label>("name");
             name.text = "Consumption";
 
-            _fuelCons = new Label("--.-");
+            _fuelCons = new Label("--.-")
+            {
+                name = "FuelCons",
+            };
             _fuelCons.AddToClassList("values");
 
             var units = new Label("l/100km")
@@ -34,6 +37,12 @@ namespace Resources.Bundles.Cars.Volkswagen_Golf_Mk6.MFA_Plus.Models.MFI
         {
             base.OnUpdate();
             _fuelCons.text = Dataset.AvgFuelConsumption;
+        }
+
+        public override void OnDestroy()
+        {
+            base.OnDestroy();
+            _fuelCons = null;
         }
     }
 }

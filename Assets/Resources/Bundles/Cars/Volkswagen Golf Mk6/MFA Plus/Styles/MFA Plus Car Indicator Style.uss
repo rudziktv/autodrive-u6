@@ -1,0 +1,67 @@
+#car-status-base {
+    background-image: resource('Bundles/Cars/Volkswagen Golf Mk6/MFA Plus/Icons/Car Status/Base');
+    -unity-background-scale-mode: scale-to-fit;
+    flex-grow: 1;
+    min-height: 150px;
+}
+
+#car-status-base > * {
+    position: absolute;
+    -unity-background-scale-mode: scale-to-fit;
+    width: 100%;
+    height: 100%;
+}
+
+#door-FL {
+    background-image: resource('Bundles/Cars/Volkswagen Golf Mk6/MFA Plus/Icons/Car Status/Door FL Closed');
+}
+
+#door-FR {
+    background-image: resource('Bundles/Cars/Volkswagen Golf Mk6/MFA Plus/Icons/Car Status/Door FR Closed');
+}
+
+#door-RL {
+    background-image: resource('Bundles/Cars/Volkswagen Golf Mk6/MFA Plus/Icons/Car Status/Door RL Closed');
+}
+
+#door-RR {
+    background-image: resource('Bundles/Cars/Volkswagen Golf Mk6/MFA Plus/Icons/Car Status/Door RR Closed');
+}
+
+#trunk {
+    background-image: resource('Bundles/Cars/Volkswagen Golf Mk6/MFA Plus/Icons/Car Status/Trunk Closed');
+}
+
+.open-FL #door-FL {
+    background-image: resource('Bundles/Cars/Volkswagen Golf Mk6/MFA Plus/Icons/Car Status/Door FL Opened');
+}
+
+.open-FR #door-FR {
+    background-image: resource('Bundles/Cars/Volkswagen Golf Mk6/MFA Plus/Icons/Car Status/Door FR Opened');
+}
+
+.open-RL #door-RL {
+    background-image: resource('Bundles/Cars/Volkswagen Golf Mk6/MFA Plus/Icons/Car Status/Door RL Opened');
+}
+
+.open-RR #door-RR {
+    background-image: resource('Bundles/Cars/Volkswagen Golf Mk6/MFA Plus/Icons/Car Status/Door RR Opened');
+}
+
+#left-B-pillar {
+    background-image: resource('Bundles/Cars/Volkswagen Golf Mk6/MFA Plus/Icons/Car Status/Left B-Pillar');
+    opacity: 0;
+}
+
+#right-B-pillar {
+    background-image: resource('Bundles/Cars/Volkswagen Golf Mk6/MFA Plus/Icons/Car Status/Right B-Pillar');
+    opacity: 0;
+}
+
+.open-FL.open-RL #left-B-pillar {
+    opacity: 100%;
+}
+
+.open-FR.open-RR #right-B-pillar {
+    opacity: 100%;
+}

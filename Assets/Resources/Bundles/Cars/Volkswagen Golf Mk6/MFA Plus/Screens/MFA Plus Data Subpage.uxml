@@ -6,7 +6,7 @@
         <engine:Label text="{variable_name}" name="name" style="margin-bottom: -16px; -unity-text-align: upper-center;" />
         <engine:VisualElement name="values-sect">
             <engine:VisualElement name="icon" class="icon" style="flex-grow: 1; position: absolute; left: 16px;" />
-            <engine:Label text="Ø" name="avg" style="margin-right: 12px;" />
+            <engine:Label text="ø" name="avg" style="margin-right: 12px;" />
         </engine:VisualElement>
     </engine:VisualElement>
 </engine:UXML>

@@ -1,3 +1,4 @@
+using Entities.Vehicle;
 using UnityEngine;
 using UnityEngine.UIElements;
 using Resources.Bundles.Cars.Volkswagen_Golf_Mk6.MFA_Plus.Models;
@@ -6,16 +7,16 @@ namespace Resources.Bundles.Cars.Volkswagen_Golf_Mk6.MFA_Plus
 {
     public class MFAPlus : MonoBehaviour
     {
-        [SerializeField]
-        private UIDocument document;
-        [SerializeField]
-        private MFAPlusAssets assets;
+        [SerializeField] private UIDocument document;
+        [SerializeField] private VehicleController vehicleController;
+        [SerializeField] private MFAPlusAssets assets;
 
         private MFAPlusController _controller;
 
         public MFAPlusAssets Assets => assets;
         public InputActions Actions { get; private set; }
         public MFAPlusComputer Computer { get; private set; }
+        public VehicleController Vehicle => vehicleController;
 
         private void Awake()
         {
@@ -36,7 +37,8 @@ namespace Resources.Bundles.Cars.Volkswagen_Golf_Mk6.MFA_Plus
         {
             Computer = new();
             _controller = new(this, document.rootVisualElement);
-            _controller.NavigateTo(new MFAPlusSettingsPageModel(_controller, assets.MainScreen.Instantiate()));
+            // _controller.NavigateTo(new MFAPlusSettingsPageModel(_controller, assets.MainScreen.Instantiate()));
+            _controller.NavigateTo(new MFAPlusModel(_controller, assets.MainScreen.Instantiate(), "SplashScreen"));
         }
 
         private void Update()

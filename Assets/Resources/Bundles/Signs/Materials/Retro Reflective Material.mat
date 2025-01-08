@@ -87,8 +87,11 @@ Material:
     - _ExcludeFromTUAndAA: 0
     - _MaterialID: 1
     - _MaterialTypeMask: 2
+    - _Mult: 20
     - _OpaqueCullMode: 2
     - _PerPixelSorting: 0
+    - _Power: 1
+    - _Power2: 4
     - _RayTracing: 0
     - _ReceivesSSR: 1
     - _ReceivesSSRTransparent: 0
@@ -124,5 +127,8 @@ Material:
     m_Colors:
     - _DoubleSidedConstants: {r: 1, g: 1, b: -1, a: 0}
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
+    - _LightPos: {r: 3.3907, g: 0.6819, b: 2.0409417, a: 0}
+    - _Vector3: {r: -0.39, g: -4.71, b: -8.42, a: 0}
+    - _ViewDir: {r: -0.03, g: -2.75, b: 1, a: 0}
   m_BuildTextureStacks: []
   m_AllowLocking: 1

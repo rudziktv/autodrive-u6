@@ -4,13 +4,13 @@ using UnityEngine.UIElements;
 
 namespace UI
 {
-    public abstract class UIController<T> where T : MonoBehaviour
+    public class UIController<T> where T : MonoBehaviour
     {
         public VisualElement Root { get; private set; }
         public T Context { get; private set; }
-        private UIModel<T> _currentModel;
+        protected UIModel<T> CurrentModel;
 
-        protected virtual void OnInitialize(T context, VisualElement root, UIModel<T> model)
+        public virtual void Initialize(T context, VisualElement root, UIModel<T> model)
         {
             Context = context;
             Root = root;
@@ -27,22 +27,53 @@ namespace UI
 
         public virtual void OnUpdate()
         {
-            _currentModel?.OnUpdate();
+            CurrentModel?.OnUpdate();
         }
 
-        public virtual void NavigateTo(UIModel<T> newModel)
+        /// <summary>
+        /// Navigates to new model and its View.
+        /// </summary>
+        /// <param name="newModel"></param>
+        /// <returns>Previous model.</returns>
+        public virtual UIModel<T> NavigateTo(UIModel<T> newModel)
         {
-            _currentModel?.OnViewUnbind();
+            var oldModel = CurrentModel;
+            CurrentModel?.OnViewUnbind();
+            AssignViewModel(newModel);
+            return oldModel;
+        }
+        
+        /// <summary>
+        /// Navigates to new model and their View. The old model is destroyed and unbind.
+        /// </summary>
+        /// <param name="newModel"></param>
+        public virtual void NavigateToAndDestroy(UIModel<T> newModel)
+        {
+            CurrentModel?.OnViewUnbind();
+            CurrentModel?.OnDestroy();
+            CurrentModel = null;
             AssignViewModel(newModel);
         }
 
         protected virtual void AssignViewModel(UIModel<T> model)
         {
-            _currentModel = model;
+            CurrentModel = model;
+            AssignView(model.View);
+            CurrentModel.OnViewBindOrCreate();
+        }
+
+        protected virtual void AssignView(VisualElement view)
+        {
             Root.Clear();
-            model.View.style.flexGrow = 1;
-            Root.Add(model.View);
-            _currentModel.OnViewBindOrCreate();
+            view.style.flexGrow = 1;
+            Root.Add(view);
+        }
+
+        public virtual void Dispose()
+        {
+            CurrentModel?.OnDestroy();
+            CurrentModel = null;
+            Root.Clear();
         }
     }
 }

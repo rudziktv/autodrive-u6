@@ -1,5 +1,6 @@
 using System.Collections;
 using Resources.Bundles.Cars.Volkswagen_Golf_Mk6.MFA_Plus.Models.MFI;
+using UI;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UIElements;
@@ -9,11 +10,8 @@ namespace Resources.Bundles.Cars.Volkswagen_Golf_Mk6.MFA_Plus.Models
     public class MFAPlusDataPageModel : MFAPlusModel
     {
         private VisualElement _main;
-        
-        private VisualElement _topSect;
-        private Label _header;
 
-        private MFAPlusController _mfi;
+        private UIController<MFAPlus> _mfi;
 
         private MFAPlusModel[] _carouselMfi;
         private int _index = 0;
@@ -27,20 +25,15 @@ namespace Resources.Bundles.Cars.Volkswagen_Golf_Mk6.MFA_Plus.Models
             base.OnViewCreated();
 
             _main = View.Q<VisualElement>("main");
-            _mfi = new(Context, _main);
+            _mfi = new();
+            _mfi.Initialize(Context, _main, new MFAPlusModel(_mfi, new VisualElement(), "MFIDefault"));
+            
             GenerateCarouselMFI();
-            // _mfi.NavigateTo(new MFIAvgFuelConsumption(_mfi, Context.Assets.DataSubpage.Instantiate()));
             ChangeCarouselMFI();
-
-
-            _topSect = View.Q<VisualElement>("top-sect");
-            _header = View.Q<Label>("header");
+            
             _temp = View.Q<Label>("temp-value");
-
-            // assign MFI header on top of screen
-            _header.text = "MFI";
-            _topSect.AddToClassList("header-shown");
-            StartCoroutine(ShowHeader());
+            
+            ShowHeader();
         }
 
         protected override void OnViewBind()
@@ -95,7 +88,7 @@ namespace Resources.Bundles.Cars.Volkswagen_Golf_Mk6.MFA_Plus.Models
 
         private void GenerateCarouselMFI()
         {
-            var subpage = Context.Assets.DataSubpage;
+            var subpage = Assets.DataSubpage;
             _carouselMfi = new MFAPlusModel[]
             {
                 new MFIAvgFuelConsumption(_mfi, subpage.Instantiate()),
@@ -110,10 +103,21 @@ namespace Resources.Bundles.Cars.Volkswagen_Golf_Mk6.MFA_Plus.Models
             };
         }
 
-        private IEnumerator ShowHeader()
+        public override void ShowHeader()
         {
-            yield return new WaitForSeconds(5);
-            _topSect.RemoveFromClassList("header-shown");
+            base.ShowHeader();
+            ShowHeader("MFI");
+        }
+
+        public override void OnDestroy()
+        {
+            base.OnDestroy();
+            _mfi.Dispose();
+
+            foreach (var model in _carouselMfi)
+            {
+                model.OnDestroy();
+            }
         }
     }
 }
