@@ -1,6 +1,6 @@
 <engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <Style src="project://database/Assets/Resources/GUI/Circular%20Menu/Styles/Circular%20Menu%20Style.uss?fileID=7433441132597879392&amp;guid=04ae5b60a1c3dc8b59f5d1b6c637e918&amp;type=3#Circular Menu Style" />
-    <engine:VisualElement name="item-container" style="align-items: center; justify-content: center;">
+    <engine:VisualElement name="item-container" data-source-type="GUI.Game.CircularMenu.Item.CircularMenuItemModel, Assembly-CSharp" style="align-items: center; justify-content: center;">
         <engine:Label text="Label" name="item-name">
             <Bindings>
                 <engine:DataBinding property="text" data-source-path="_ItemName_k__BackingField" binding-mode="ToTarget" />
