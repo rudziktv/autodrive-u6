@@ -1,0 +1,12 @@
+<engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/Resources/Bundles/Cars/Volkswagen%20Golf%20Mk6/MFA%20Plus/Styles/MFA%20Plus%20Car%20Indicator%20Style.uss?fileID=7433441132597879392&amp;guid=08736176024943a1b60aa6a6dd992463&amp;type=3#MFA Plus Car Indicator Style" />
+    <engine:VisualElement name="car-status-base">
+        <engine:VisualElement name="door-FL" />
+        <engine:VisualElement name="door-FR" />
+        <engine:VisualElement name="door-RL" />
+        <engine:VisualElement name="door-RR" />
+        <engine:VisualElement name="trunk" />
+        <engine:VisualElement name="left-B-pillar" style="flex-grow: 1;" />
+        <engine:VisualElement name="right-B-pillar" style="flex-grow: 1;" />
+    </engine:VisualElement>
+</engine:UXML>

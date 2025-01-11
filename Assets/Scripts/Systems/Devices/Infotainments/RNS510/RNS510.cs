@@ -54,9 +54,9 @@ namespace Systems.Devices.Infotainments.RNS510
                 Assets.GetRadioScreenByLoad().Instantiate()));
         }
         
-        public void OnButtonClicked(RNS510Button button)
+        public void OnButtonClicked(int button)
         {
-            _rnsController.RNS510ButtonClicked(button);
+            _rnsController.RNS510ButtonClicked((RNS510Button)button);
         }
 
         private void OnDestroy()

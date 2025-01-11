@@ -1,5 +1,8 @@
+using System;
+
 namespace Systems.Devices.Infotainments.RNS510.Enums
 {
+    [Serializable]
     public enum RNS510Button
     {
         Radio,

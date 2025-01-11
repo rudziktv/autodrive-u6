@@ -7,6 +7,7 @@ namespace Core.Entities.Vehicle.Configs
     public class ComponentsReferences
     {
         [SerializeField] private GameObject vehicleRoot;
+        [field: SerializeField] public Animator Animator { get; private set; }
         
         public GameObject VehicleRoot => vehicleRoot;
     }

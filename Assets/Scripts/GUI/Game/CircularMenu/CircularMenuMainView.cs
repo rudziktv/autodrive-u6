@@ -25,19 +25,19 @@ namespace GUI.Game.CircularMenu
             _itemsContainer = View.Q<VisualElement>("menu-items");
 
             int i = 0;
-            foreach (var option in MenuOptions.Options)
-            {
-                var rot = 45 * i;
-                var itemView = MenuOptions.ItemPrefab.Instantiate();
-                var model = new CircularMenuItemModel(itemView, option, rot);
-                _items.Add(model);
-                // itemView.style.rotate.value.angle = rot;
-                _itemsContainer.Add(itemView);
-                // itemView.Bind(model);
-                itemView.dataSource = model;
-                i++;
-                if (i >= 8) break;
-            }
+            // foreach (var option in MenuOptions.Options)
+            // {
+            //     var rot = 45 * i;
+            //     var itemView = MenuOptions.ItemPrefab.Instantiate();
+            //     var model = new CircularMenuItemModel(itemView, option, rot);
+            //     _items.Add(model);
+            //     // itemView.style.rotate.value.angle = rot;
+            //     _itemsContainer.Add(itemView);
+            //     // itemView.Bind(model);
+            //     itemView.dataSource = model;
+            //     i++;
+            //     if (i >= 8) break;
+            // }
             
         }
     }

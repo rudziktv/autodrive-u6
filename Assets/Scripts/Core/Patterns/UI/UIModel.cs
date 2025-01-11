@@ -60,7 +60,7 @@ namespace Core.Patterns.UI
         public virtual void OnDestroy()
         {
             OnViewUnbind();
-            View.Clear();
+            // View?.Clear();
             // Context.Destroy();
         }
 

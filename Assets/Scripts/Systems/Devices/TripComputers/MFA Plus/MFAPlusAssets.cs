@@ -1,4 +1,5 @@
 using System;
+using Core.Components.Sounds;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -10,6 +11,8 @@ namespace Systems.Devices.TripComputers.MFA_Plus
         [SerializeField] private VisualTreeAsset mainScreen;
         [SerializeField] private VisualTreeAsset dataSubpage;
         [SerializeField] private VisualTreeAsset splashScreen;
+        
+        [field: SerializeField] public FMODCustomEmitter WarningEmitter { get; private set; }
         // [field: SerializeField] public VisualTreeAsset Type { get; set; }
 
         [SerializeField] private StyleSheet settingsStyle;
@@ -22,8 +25,8 @@ namespace Systems.Devices.TripComputers.MFA_Plus
 
         public VisualTreeAsset GetCarStatusComponentByLoad()
         {
-            return UnityEngine.Resources.Load<VisualTreeAsset>(
-                "Bundles/Cars/Volkswagen Golf Mk6/MFA Plus/Components/MFA Plus Car Indicator");
+            return Resources.Load<VisualTreeAsset>(
+                "Devices/Trip Computers/MFA Plus/Components/MFA Plus Car Indicator");
         }
     }
 }

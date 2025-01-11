@@ -13,7 +13,6 @@ namespace Systems.AppStorage
         {
             var json = JsonConvert.SerializeObject(data, Formatting.Indented);
             var directory = Path.GetDirectoryName(path);
-            Debug.Log(json);
 
             try
             {
@@ -21,8 +20,7 @@ namespace Systems.AppStorage
                     return false;
                 if (!Directory.Exists(directory))
                     Directory.CreateDirectory(directory);
-            
-                Debug.Log("Saving json to :" + path);
+                
                 File.WriteAllText(path, json);
                 return true;
             }

@@ -24,20 +24,58 @@ namespace Systems.Devices.Infotainments.RNS510.ViewModels
         public override void OnViewBindOrCreate()
         {
             base.OnViewBindOrCreate();
-            StartCoroutine(FmodDelay());
-            var test = View.Q<Button>("test-btn");
-            test.clicked += TestButton;
+
+            UpdateStationList();
         }
 
-        private void TestButton()
+        private void UpdateStationList()
         {
-            Debug.Log("TestButtonOn RNS510");
+            var stationsView = View.Q<VisualElement>("radio-stations");
+            stationsView.Clear();
+            var onlineStations = RadioStationsManager.userStations;
+
+            for (int i = 0; i < 6; i++)
+            {
+                Button btn;
+                
+                if (i >= onlineStations.Length)
+                {
+                    btn = new Button
+                    {
+                        text = $"{i + 1}. Empty"
+                    };
+                    btn.SetEnabled(false);
+                    stationsView.Add(btn);
+                    continue;
+                }
+
+                var station = onlineStations[i];
+                btn = new Button
+                {
+                    text = 1 + i + ". " + station.name
+                };
+                btn.clicked += () =>
+                {
+                    ConnectWithOnlineStation(station.url);
+                };
+                stationsView.Add(btn);
+            }
         }
 
         private IEnumerator FmodDelay()
         {
             yield return new WaitForSeconds(5f);
             TryFMOD();
+        }
+
+        private void ConnectWithOnlineStation(string url)
+        {
+            _radioEventInstance = RuntimeManager.CreateInstance(Assets.EventReference);
+            RadioSystem.Instance.TryToConnect(_radioEventInstance, url, ((state, buffered) =>
+            {
+                var statusLabel = View.Q<Label>("radio-station-status");
+                statusLabel.text = state.ToString();
+            }));
         }
 
         private void TryFMOD()
@@ -53,8 +91,6 @@ namespace Systems.Devices.Infotainments.RNS510.ViewModels
         public override void OnViewUnbind()
         {
             base.OnViewUnbind();
-            var test = View.Q<Button>("test-btn");
-            test.clicked -= TestButton;
         }
     }
 }

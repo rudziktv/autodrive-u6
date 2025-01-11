@@ -1,3 +1,4 @@
+using Core.Components.Sounds;
 using Core.Entities.Vehicle.Enums;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -6,6 +7,9 @@ namespace Core.Entities.Vehicle.Interactions
 {
     public class KeyIgnitionInteractable : MonoBehaviour
     {
+        [SerializeField] private FMODCustomEmitter keyfobOffEmitter;
+        [SerializeField] private FMODCustomEmitter keyfobIgnitionEmitter;
+        
         public delegate void KeyIgnitionEventHandler(KeyPositionState newState, KeyPositionState oldState);
         public KeyPositionState CurrentKeyPositionState { get; private set; } = KeyPositionState.Off;
         
@@ -36,6 +40,11 @@ namespace Core.Entities.Vehicle.Interactions
         private void Handle(KeyPositionState oldState)
         {
             OnStateChanged?.Invoke(CurrentKeyPositionState, oldState);
+            
+            if (CurrentKeyPositionState == KeyPositionState.Ignition)
+                keyfobIgnitionEmitter.Play();
+            else if (CurrentKeyPositionState is KeyPositionState.Off)
+                keyfobOffEmitter.Play();
         }
 
         public void HoldKeyStarter()

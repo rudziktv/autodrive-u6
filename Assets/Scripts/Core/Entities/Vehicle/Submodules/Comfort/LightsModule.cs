@@ -34,7 +34,7 @@ namespace Core.Entities.Vehicle.Submodules.Comfort
         {
             base.Initialize();
             ComfortConfig.DashboardConfig.DashboardIllumination.FindIlluminationItemsByTag(Components.VehicleRoot);
-            Interactions.LightSwitch.OnStateChanged += OnLightSwitchStateChanged;
+            Interactions.LightSwitch.StateChanged += OnLightSwitchStateChanged;
             OnLightSwitchStateChanged(Interactions.LightSwitch.CurrentLightSwitchState);
             
             // initialize internal modules

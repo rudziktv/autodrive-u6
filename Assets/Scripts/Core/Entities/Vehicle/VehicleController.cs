@@ -2,16 +2,17 @@ using Core.Entities.Vehicle.Managers;
 using Core.Entities.Vehicle.Modules;
 using Core.Helpers;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Core.Entities.Vehicle
 {
     public class VehicleController : MonoBehaviour
     {
         [SerializeField] private string vehicleTag;
-        [SerializeField] private VehicleConfigManager vehicleConfigManager;
+        [FormerlySerializedAs("vehicleConfigManager")] [SerializeField] private VehicleConfigManager vehicleConfigs;
         
         public string VehicleTag => vehicleTag;
-        public VehicleConfigManager VehicleConfigManager => vehicleConfigManager;
+        public VehicleConfigManager VehicleConfigs => vehicleConfigs;
         
         public ModuleManager ModuleManager { get; private set; }
         public ElectricityManager ElectricityManager { get; private set; }

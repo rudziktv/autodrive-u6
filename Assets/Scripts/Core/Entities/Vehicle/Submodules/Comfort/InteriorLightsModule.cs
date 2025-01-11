@@ -14,7 +14,7 @@ namespace Core.Entities.Vehicle.Submodules.Comfort
         public override void Initialize()
         {
             base.Initialize();
-            Interactions.LightSwitch.OnStateChanged += OnLightSwitchStateChanged;
+            Interactions.LightSwitch.StateChanged += OnLightSwitchStateChanged;
             OnLightSwitchStateChanged(Interactions.LightSwitch.CurrentLightSwitchState);
         }
 

@@ -51,6 +51,12 @@ Button:active {
     -unity-background-image-tint-color: var(--elevation-1);
 }
 
+Button:disabled,
+Button:active:disabled {
+    -unity-background-image-tint-color: white;
+    opacity: 0.5;
+}
+
 Button > .unity-button__image {
     /*-unity-background-image-tint-color: var(--elevation-0);*/
     --unity-image-tint-color: var(--foreground-icon);

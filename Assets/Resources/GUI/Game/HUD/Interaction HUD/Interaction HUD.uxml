@@ -1,0 +1,12 @@
+<engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/Resources/GUI/Game/HUD/Interaction%20HUD/Interaction%20HUD%20Style.uss?fileID=7433441132597879392&amp;guid=aa432f7b0982c7a33b480efe1e25eb29&amp;type=3#Interaction HUD Style" />
+    <engine:VisualElement data-source-type="Systems.Interactions.InteractableDetails, Assembly-CSharp" style="width: 100%; height: 100%;">
+        <engine:VisualElement style="flex-grow: 1; justify-content: center; align-items: center;">
+            <engine:Label name="interaction-name" style="position: absolute; font-size: 18px;">
+                <Bindings>
+                    <engine:DataBinding property="text" data-source-path="_Name_k__BackingField" binding-mode="ToTarget" />
+                </Bindings>
+            </engine:Label>
+        </engine:VisualElement>
+    </engine:VisualElement>
+</engine:UXML>

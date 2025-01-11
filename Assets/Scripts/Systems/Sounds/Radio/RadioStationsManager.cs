@@ -18,7 +18,6 @@ namespace Systems.Sounds.Radio
 
         public static void Initialize()
         {
-            Debug.Log("Initializing radio stations...");
             userStations = Storage.LoadData(RadioStationsPath, DefaultStations);
             Storage.SaveData(RadioStationsPath, userStations);
         }

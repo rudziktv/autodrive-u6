@@ -1,26 +1,27 @@
+using System;
 using GUI.Game.CircularMenu;
+using GUI.Game.HUD.InteractionHUD;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 namespace Systems.Managers
 {
     public class GUIManager : MonoBehaviour
     {
-        [SerializeField] private CircularMenuOptions circularMenuOptions;
-        
-        private CircularMenuController _circularMenu;
-        public CircularMenuOptions CircularMenuOptions => circularMenuOptions;
+        public static GUIManager Instance { get; private set; }
 
-        private void Start()
-        {
-            InitializeCircularMenu();
-        }
+        private UIDocument _ui;
+        private VisualElement Root => _ui.rootVisualElement;
 
-        private void InitializeCircularMenu()
+        public InteractionHUDController InteractionHUD { get; private set; }
+
+        private void Awake()
         {
-            var view = CircularMenuOptions.UIDocument.rootVisualElement;
-            _circularMenu = new CircularMenuController();
-            var model = new CircularMenuMainView(_circularMenu, view);
-            _circularMenu.Initialize(this, view, model);
+            _ui = GetComponent<UIDocument>();
+            InteractionHUD = new InteractionHUDController();
+            InteractionHUD.Initialize(Root);
+            
+            Instance = this;
         }
     }
 }

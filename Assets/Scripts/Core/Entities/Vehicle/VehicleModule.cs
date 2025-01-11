@@ -7,7 +7,7 @@ namespace Core.Entities.Vehicle
     public class VehicleModule
     {
         protected readonly VehicleController Controller;
-        protected VehicleConfigManager VehicleConfigs => Controller.VehicleConfigManager;
+        protected VehicleConfigManager VehicleConfigs => Controller.VehicleConfigs;
         protected ElectricityManager ElectricityManager => Controller.ElectricityManager;
         protected InteractionsConfig Interactions => VehicleConfigs.InteractionsConfig;
         protected ComponentsReferences Components => VehicleConfigs.ComponentsReferences;
