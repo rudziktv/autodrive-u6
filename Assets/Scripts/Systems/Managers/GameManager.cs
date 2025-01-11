@@ -1,4 +1,5 @@
 using System;
+using Systems.Sounds.Radio;
 using UnityEngine;
 
 namespace Systems.Managers
@@ -13,6 +14,12 @@ namespace Systems.Managers
         private void Awake()
         {
             Instance = this;
+            InitializeData();
+        }
+
+        private void InitializeData()
+        {
+            RadioStationsManager.Initialize();
         }
 
         private void Start()
