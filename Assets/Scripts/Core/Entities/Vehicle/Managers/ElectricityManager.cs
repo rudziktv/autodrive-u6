@@ -7,7 +7,7 @@ namespace Core.Entities.Vehicle.Managers
     {
         public ElectricityState CurrentElectricityState { get; private set; } = ElectricityState.Off;
         
-        public event ElectricityStateChangedArgs OnElectricityStateChanged;
+        public event ElectricityStateChangedArgs ElectricityStateChanged;
         public delegate void ElectricityStateChangedArgs(ElectricityState newState);
         
         public Battery Battery { get; }
@@ -51,7 +51,7 @@ namespace Core.Entities.Vehicle.Managers
         public void ChangeElectricityState(ElectricityState newState)
         {
             CurrentElectricityState = newState;
-            OnElectricityStateChanged?.Invoke(CurrentElectricityState);
+            ElectricityStateChanged?.Invoke(CurrentElectricityState);
         }
 
         public void Update()

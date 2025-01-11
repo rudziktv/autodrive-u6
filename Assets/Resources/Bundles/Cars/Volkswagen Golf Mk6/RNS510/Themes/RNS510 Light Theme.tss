@@ -1,5 +1,0 @@
-@import url("RNS510 Theme.tss");
-
-* {
-    --gradient: resource("Bundles/Cars/Volkswagen Golf Mk6/RNS510/Assets/Gradients/light_gradient");
-}

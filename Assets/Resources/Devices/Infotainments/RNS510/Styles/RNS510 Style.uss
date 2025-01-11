@@ -1,0 +1,142 @@
+* {
+    --gradient: resource("Devices/Infotainments/RNS510/Assets/Gradients/light_gradient.png");
+    --progress-gradient: resource("Devices/Infotainments/RNS510/Assets/Gradients/media_progress_bar");
+    --progress-background-gradient: resource("Devices/Infotainments/RNS510/Assets/Gradients/progress_bg");
+    
+    --border-color: #e1e1e1;
+    --border-width: 2px;
+    --border-width-button-group: 1px;
+    --border-radius: 8px;
+    --border-radius-button-group: 14px;
+    --padding: 4px;
+    --padding-large: 8px;
+    --gap: 4px;
+    
+    --background: #282f32;
+    --elevation-0: #121718;
+    --elevation-1: #3c5359;
+    
+    --font-size: 28px;
+    
+    --foreground: #1b242d;
+    --foreground-icon: #1f2c2c;
+    
+    --on-dark: #f1f1f1;
+
+    -unity-font-definition: resource('Devices/Trip Computers/MFA Plus/Fonts/Futura Book font');
+}
+
+#screen-content {
+    background-color: var(--background);
+    padding: 12px 16px;
+}
+
+Label {
+    font-size: var(--font-size);
+}
+
+Button {
+    background-image: var(--gradient);
+    color: var(--foreground);
+    
+    padding: 4px;
+    border-color: var(--border-color);
+    border-width: var(--border-width);
+    border-radius: var(--border-radius);
+    font-size: var(--font-size);
+    -unity-text-align: middle-center;
+}
+
+Button:active {
+    -unity-background-image-tint-color: var(--elevation-1);
+}
+
+Button > .unity-button__image {
+    /*-unity-background-image-tint-color: var(--elevation-0);*/
+    --unity-image-tint-color: var(--foreground-icon);
+}
+
+.button-group > * {
+    border-radius: 0;
+    border-width: var(--border-width) var(--border-width-button-group);
+}
+
+.button-group > .first {
+    border-bottom-left-radius: var(--border-radius);
+    border-top-left-radius: var(--border-radius);
+    border-left-width: var(--border-width);
+}
+
+.button-group > .last {
+    border-bottom-right-radius: var(--border-radius);
+    border-top-right-radius: var(--border-radius);
+    border-right-width: var(--border-width);
+}
+
+.bottom-button-group > * {
+    border-radius: 0;
+    flex-grow: 1;
+    border-width: var(--border-width) var(--border-width-button-group);
+}
+
+.bottom-button-group > .first {
+    border-bottom-left-radius: var(--border-radius-button-group);
+    border-left-width: var(--border-width);
+}
+
+.bottom-button-group > .last {
+    border-bottom-right-radius: var(--border-radius-button-group);
+    border-right-width: var(--border-width);
+}
+
+#unity-progress-bar {
+    overflow: hidden;
+}
+
+#unity-progress-bar,
+.unity-progress-bar__progress {
+    height: 16px;
+    border-radius: 4px;
+}
+
+.unity-progress-bar__background {
+    background-image: var(--progress-background-gradient);
+}
+
+.unity-progress-bar__progress {
+    /*background-color: white;*/
+    background-image: var(--progress-gradient);
+}
+
+.gradient-separator {
+    height: var(--border-width);
+    background-image: resource("Devices/Infotainments/RNS510/Assets/Gradients/RNS510 Horizontal Separator");
+}
+
+.horizontal {
+    flex-direction: row;
+}
+
+.vertical {
+    flex-direction: column;
+}
+
+.space-between {
+    justify-content: space-between;
+}
+
+.text-align-center {
+    -unity-text-align: middle-center;
+}
+
+.text-align-right {
+    -unity-text-align: middle-right;
+}
+
+.align-3-items-mid-center > * {
+    flex-basis: 200;
+}
+
+.no-shrink {
+    flex-shrink: 0;
+}

@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.InteropServices;
-using GUI.Debug.ForceFeedbackTester;
+using GUI.Diagnostics.ForceFeedbackTester;
 using Plugins.UnityFFB;
 using UnityEngine;
 using UnityEngine.UIElements;

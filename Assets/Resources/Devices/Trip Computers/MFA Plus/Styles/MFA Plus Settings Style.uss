@@ -1,0 +1,18 @@
+#selected-item-icon {
+    visibility: hidden;
+    position: absolute;
+    right: 0;
+    background-image: resource('Devices/Trip Computers/MFA Plus/Icons/mfa_arrow-left-s-fill');
+    width: 36px;
+    height: 36px;
+}
+
+.selected-item #selected-item-icon {
+    visibility: visible;
+}
+
+#settings-list {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    flex-grow: 1;
+}

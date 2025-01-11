@@ -27,6 +27,8 @@ namespace Systems.Sounds.Music
 
         public void TryToConnect(EventInstance eventInstance, string radioUrl, StreamLoadingCallback streamLoadingCallback = null)
         {
+            StopRadioStream();
+            
             _eventInstance = eventInstance;
             var result = FmodSystem.createStream(radioUrl, MODE.CREATESTREAM | MODE.NONBLOCKING, out _radioStream);
 
@@ -66,6 +68,18 @@ namespace Systems.Sounds.Music
             }
             
             _eventInstance.start();
+        }
+
+        public void StopRadioStream()
+        {
+            if (_eventInstance.isValid())
+            {
+                _eventInstance.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
+                // _eventInstance.release();
+            }
+
+            _group.stop();
+            _radioStream.release();
         }
         
         private void OnDestroy()

@@ -87,7 +87,7 @@ namespace Core.Entities.Vehicle.Subentities.LicensePlate
 
         private PanelSettings GetPanelSettings()
         {
-            var set = UnityEngine.Resources.Load<PanelSettings>("GUI/License Plate/License Plate Settings");
+            var set = UnityEngine.Resources.Load<PanelSettings>("GUI/Game/Generative/License Plate/License Plate Settings");
             set.targetTexture = _licenseRenderTexture;
             return set;
         }

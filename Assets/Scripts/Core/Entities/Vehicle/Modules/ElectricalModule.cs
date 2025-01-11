@@ -12,7 +12,7 @@ namespace Core.Entities.Vehicle.Modules
 
         public ElectricalModule(VehicleController ctr) : base(ctr)
         {
-            ElectricityManager.OnElectricityStateChanged += OnElectricityStateChanged;
+            ElectricityManager.ElectricityStateChanged += OnElectricityStateChanged;
         }
 
         public virtual void OnElectricityStateChanged(ElectricityState newState)

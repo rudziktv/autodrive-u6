@@ -26,7 +26,7 @@ namespace Systems.Devices.TripComputers.MFA_Plus
             var model = new MFAPlusModel(this, new VisualElement(), "Default");
             Initialize(context, root, model);
             
-            context.Vehicle.ElectricityManager.OnElectricityStateChanged += OnElectricityStateChanged;
+            context.Vehicle.ElectricityManager.ElectricityStateChanged += OnElectricityStateChanged;
         }
 
         public override void Initialize(MFAPlus context, VisualElement root, UIModel<MFAPlus> model)
@@ -157,7 +157,7 @@ namespace Systems.Devices.TripComputers.MFA_Plus
         public override void Dispose()
         {
             base.Dispose();
-            Context.Vehicle.ElectricityManager.OnElectricityStateChanged -= OnElectricityStateChanged;
+            Context.Vehicle.ElectricityManager.ElectricityStateChanged -= OnElectricityStateChanged;
         }
     }
 }

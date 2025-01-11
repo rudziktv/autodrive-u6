@@ -6,6 +6,7 @@ using FMODUnity;
 using Systems.Sounds.Music;
 using UnityEngine;
 using UnityEngine.UIElements;
+using Debug = UnityEngine.Debug;
 
 namespace Systems.Devices.Infotainments.RNS510.ViewModels
 {
@@ -24,6 +25,13 @@ namespace Systems.Devices.Infotainments.RNS510.ViewModels
         {
             base.OnViewBindOrCreate();
             StartCoroutine(FmodDelay());
+            var test = View.Q<Button>("test-btn");
+            test.clicked += TestButton;
+        }
+
+        private void TestButton()
+        {
+            Debug.Log("TestButtonOn RNS510");
         }
 
         private IEnumerator FmodDelay()
@@ -40,6 +48,13 @@ namespace Systems.Devices.Infotainments.RNS510.ViewModels
                 var statusLabel = View.Q<Label>("radio-station-status");
                 statusLabel.text = state.ToString();
             }));
+        }
+
+        public override void OnViewUnbind()
+        {
+            base.OnViewUnbind();
+            var test = View.Q<Button>("test-btn");
+            test.clicked -= TestButton;
         }
     }
 }

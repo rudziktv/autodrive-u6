@@ -5,7 +5,7 @@ using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-namespace GUI.Debug.ForceFeedbackTester
+namespace GUI.Diagnostics.ForceFeedbackTester
 {
     [Serializable]
     public class FFBConditionEffectModel : INotifyPropertyChanged

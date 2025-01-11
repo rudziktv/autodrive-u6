@@ -14,14 +14,14 @@ namespace Systems.Devices.Infotainments.RNS510
         
         public VisualTreeAsset GetMediaScreenByLoad()
         {
-            return UnityEngine.Resources.Load<VisualTreeAsset>(
-                "Bundles/Cars/Volkswagen Golf Mk6/RNS510/Screens/Media Screen");
+            return Resources.Load<VisualTreeAsset>(
+                "Devices/Infotainments/RNS510/Screens/Media Screen");
         }
 
         public VisualTreeAsset GetRadioScreenByLoad()
         {
-            return UnityEngine.Resources.Load<VisualTreeAsset>(
-                "Bundles/Cars/Volkswagen Golf Mk6/RNS510/Screens/Radio Screen");
+            return Resources.Load<VisualTreeAsset>(
+                "Devices/Infotainments/RNS510/Screens/Radio Screen");
         }
     }
 }
