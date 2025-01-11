@@ -5,6 +5,7 @@ using UnityEditor;
 using System;
 using System.IO;
 using System.Reflection;
+using TutorialInfo.Scripts;
 
 [CustomEditor(typeof(Readme))]
 [InitializeOnLoad]
@@ -231,6 +232,6 @@ public class ReadmeEditor : Editor
 
         EditorGUIUtility.AddCursorRect(position, MouseCursor.Link);
 
-        return GUI.Button(position, label, LinkStyle);
+        return UnityEngine.GUI.Button(position, label, LinkStyle);
     }
 }

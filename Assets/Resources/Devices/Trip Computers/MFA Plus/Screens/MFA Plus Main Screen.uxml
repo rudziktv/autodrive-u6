@@ -1,0 +1,35 @@
+<engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <engine:Template name="MFA Plus Car Indicator" src="project://database/Assets/Scripts/Systems/Devices/TripComputers/MFA%20Plus/Components/MFA%20Plus%20Car%20Indicator.uxml?fileID=9197481963319205126&amp;guid=21c8ca1dd3cd8bb92b8765760c9c71c0&amp;type=3#MFA Plus Car Indicator" />
+    <Style src="project://database/Assets/Resources/Devices/Trip%20Computers/MFA%20Plus/Styles/MFA%20Plus%20Style.uss?fileID=7433441132597879392&amp;guid=503b8d72dbf77c896aa116a31ba2cc5c&amp;type=3#MFA Plus Style" />
+    <engine:VisualElement name="root" style="flex-grow: 1;">
+        <engine:VisualElement name="top-sect">
+            <engine:Label text="NW" name="compas" class="values" style="-unity-text-align: upper-left; width: 60px;" />
+            <engine:Label text="22:17" name="clock" class="values" style="-unity-text-align: upper-center; width: 100px;" />
+            <engine:Label text="1" name="gear" class="values" style="-unity-text-align: upper-right; width: 60px;" />
+            <engine:Label text="MFI" name="header" class="header" style="-unity-text-align: upper-center; flex-grow: 1;" />
+        </engine:VisualElement>
+        <engine:VisualElement name="top-spacer" class="spacer" />
+        <engine:VisualElement name="main" style="flex-grow: 1;">
+            <engine:Instance template="MFA Plus Car Indicator" style="flex-grow: 1; padding-top: 8px; padding-right: 8px; padding-bottom: 8px; padding-left: 8px;" />
+        </engine:VisualElement>
+        <engine:VisualElement name="temp-spacer" class="spacer" />
+        <engine:VisualElement name="temp-sect">
+            <engine:VisualElement name="snowflake-icon" style="flex-grow: 1; width: 32px; height: 32px; position: absolute; left: 12px; align-self: center; -unity-background-scale-mode: scale-to-fit; align-items: center; justify-content: center;" />
+            <engine:VisualElement name="temp-container">
+                <engine:Label text="5.0" name="temp-value" class="values" />
+                <engine:Label text="°C" name="temp-units" style="-unity-text-align: upper-center;" />
+            </engine:VisualElement>
+        </engine:VisualElement>
+        <engine:VisualElement name="bottom-spacer" class="spacer" />
+        <engine:VisualElement name="bottom-sect">
+            <engine:VisualElement name="odometer-sect">
+                <engine:Label text="km" name="km-label" class="bottom-label" />
+                <engine:Label text="999999" name="odometer-value" class="bottom-value values" />
+            </engine:VisualElement>
+            <engine:VisualElement name="trip-sect">
+                <engine:Label text="trip" name="trip-label" class="bottom-label" style="-unity-text-align: upper-right;" />
+                <engine:Label text="9999.9" name="trip-value" class="bottom-value values" />
+            </engine:VisualElement>
+        </engine:VisualElement>
+    </engine:VisualElement>
+</engine:UXML>
