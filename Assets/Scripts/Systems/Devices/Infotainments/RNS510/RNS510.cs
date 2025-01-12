@@ -18,6 +18,12 @@ namespace Systems.Devices.Infotainments.RNS510
 
         private RNS510Controller _rnsController;
 
+        private void Awake()
+        {
+            rnsUi.rootVisualElement.Clear();
+            rnsUi.rootVisualElement.style.flexGrow = 1;
+        }
+
         private void Start()
         {
 
@@ -50,8 +56,8 @@ namespace Systems.Devices.Infotainments.RNS510
 
             
             _rnsController = new RNS510Controller(this, rnsUi.rootVisualElement);
-            _rnsController.NavigateTo(new RNS510RadioViewModel(_rnsController,
-                Assets.GetRadioScreenByLoad().Instantiate()));
+            _rnsController.NavigateToAndDestroy(new RNS510ViewModel(_rnsController,
+                Assets.GetBlankScreenByLoad().Instantiate(), "Empty"));
         }
         
         public void OnButtonClicked(int button)
@@ -62,6 +68,13 @@ namespace Systems.Devices.Infotainments.RNS510
         private void OnDestroy()
         {
             _rnsController.Dispose();
+            // rnsUi.panelSettings.targetTexture.Release();
+        }
+
+        private void OnApplicationQuit()
+        {
+            _rnsController.Dispose();
+            rnsUi.panelSettings.targetTexture.Release();
         }
     }
 }

@@ -7,13 +7,15 @@ namespace Systems.Sounds.Radio
     {
         public string name;
         public string url;
+        public string details;
 
         public RadioStation() { }
 
-        public RadioStation(string name, string url)
+        public RadioStation(string name, string url, string details = "")
         {
             this.name = name;
             this.url = url;
+            this.details = details;
         }
     }
 }

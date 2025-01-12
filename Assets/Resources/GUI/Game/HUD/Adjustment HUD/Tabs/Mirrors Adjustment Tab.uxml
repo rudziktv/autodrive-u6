@@ -1,0 +1,15 @@
+<engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/Resources/GUI/Game/HUD/Adjustment%20HUD/Adjustment%20Style.uss?fileID=7433441132597879392&amp;guid=06c29862617b7285bb4ca2995e8ae065&amp;type=3#Adjustment Style" />
+    <engine:VisualElement name="mirrors-adjustment-tab" style="flex-grow: 1;">
+        <engine:VisualElement name="mirror-selection-sect" class="row">
+            <engine:Button icon-image="project://database/Assets/Resources/GUI/Assets/Icons/x96/Left%20Mirror.png?fileID=2800000&amp;guid=42a837c3a901c0050a41397504f7cfbc&amp;type=3#Left Mirror" />
+            <engine:Button icon-image="project://database/Assets/Resources/GUI/Assets/Icons/x96/Middle%20Mirror.png?fileID=2800000&amp;guid=11af65439767181ef88b00bf5657521e&amp;type=3#Middle Mirror" name="middle-mirror" />
+            <engine:Button icon-image="project://database/Assets/Resources/GUI/Assets/Icons/x96/Right%20Mirror.png?fileID=2800000&amp;guid=1beee7b648ba6cb58808d3490bbe31cb&amp;type=3#Right Mirror" />
+        </engine:VisualElement>
+        <engine:VisualElement name="mirror-control">
+            <engine:Slider value="50" high-value="100" name="mirror-horizontal-control" style="display: none;" />
+            <engine:Slider value="50" high-value="100" direction="Vertical" name="mirror-vertical-control" inverted="true" style="flex-grow: 1; visibility: visible; display: none;" />
+            <engine:VisualElement name="mirror-control-drag" style="flex-grow: 1;" />
+        </engine:VisualElement>
+    </engine:VisualElement>
+</engine:UXML>

@@ -1,0 +1,53 @@
+#adjust-tab-panel {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+#mirror-adjustment-tab {
+    min-width: 350px;
+}
+
+#mirror-selection-sect {
+    height: 64px;
+    align-self: center;
+}
+
+#mirror-selection-sect > Button {
+    padding: 0;
+}
+
+#middle-mirror Image {
+    -unity-background-scale-mode: scale-and-crop;
+    height: 72px;
+}
+
+#mirror-control {
+    align-self: center;
+    width: 250px;
+    height: 250px;
+    
+}
+
+#mirror-control > * {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+}
+
+#mirror-control-drag {
+    position: absolute;
+    --drag-size: 20px;
+    background-color: red;
+    width: var(--drag-size);
+    height: var(--drag-size);
+    border-radius: var(--drag-size);
+    translate: -50% -50%;
+    
+    top: 125px;
+    left: 125px;
+}
+
+#mirror-control > #mirror-horizontal-control {
+}

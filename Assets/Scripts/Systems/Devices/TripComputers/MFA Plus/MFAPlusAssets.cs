@@ -23,10 +23,17 @@ namespace Systems.Devices.TripComputers.MFA_Plus
         
         public StyleSheet SettingsStyle => settingsStyle;
 
-        public VisualTreeAsset GetCarStatusComponentByLoad()
-        {
-            return Resources.Load<VisualTreeAsset>(
+        public VisualTreeAsset GetDataSubpageByLoad() =>
+            Resources.Load<VisualTreeAsset>("Devices/Trip Computers/MFA Plus/Screens/MFA Plus Data Subpage");
+
+        public VisualTreeAsset GetSplashScreenByLoad() =>
+            Resources.Load<VisualTreeAsset>("Devices/Trip Computers/MFA Plus/Screens/MFA Plus Splash Screen");
+        
+        public VisualTreeAsset GetMainScreenByLoad() =>
+            Resources.Load<VisualTreeAsset>("Devices/Trip Computers/MFA Plus/Screens/MFA Plus Main Screen");
+
+        public VisualTreeAsset GetCarStatusComponentByLoad() =>
+            Resources.Load<VisualTreeAsset>(
                 "Devices/Trip Computers/MFA Plus/Components/MFA Plus Car Indicator");
-        }
     }
 }

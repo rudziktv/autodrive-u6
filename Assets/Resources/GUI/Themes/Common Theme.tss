@@ -1,5 +1,6 @@
 @import url("unity-theme://default");
 
+@import url("TailwindUSS.uss");
 @import url("Theme Values.uss");
 @import url("Common Styles/Headers Style.uss");
 @import url("Common Styles/Buttons Style.uss");
@@ -12,4 +13,10 @@
 
 
 
+
+
 VisualElement {}
+
+#unity-tab__header {
+    background-color: var(--background);
+}

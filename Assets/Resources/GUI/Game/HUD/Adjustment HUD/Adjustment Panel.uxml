@@ -1,0 +1,15 @@
+<engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <engine:Template name="View Adjustment Tab" src="project://database/Assets/Resources/GUI/Game/HUD/Adjustment%20HUD/Tabs/View%20Adjustment%20Tab.uxml?fileID=9197481963319205126&amp;guid=00bdb2db244d67b4fa6d43c4e405dab8&amp;type=3#View Adjustment Tab" />
+    <engine:Template name="Mirrors Adjustment Tab" src="project://database/Assets/Resources/GUI/Game/HUD/Adjustment%20HUD/Tabs/Mirrors%20Adjustment%20Tab.uxml?fileID=9197481963319205126&amp;guid=b2d1e0e1660db777cbe53f60c1fdc503&amp;type=3#Mirrors Adjustment Tab" />
+    <Style src="project://database/Assets/Resources/GUI/Game/HUD/Adjustment%20HUD/Adjustment%20Style.uss?fileID=7433441132597879392&amp;guid=06c29862617b7285bb4ca2995e8ae065&amp;type=3#Adjustment Style" />
+    <engine:VisualElement name="adjust-tab-panel" style="flex-grow: 1;">
+        <engine:TabView>
+            <engine:Tab label="View">
+                <engine:Instance template="View Adjustment Tab" />
+            </engine:Tab>
+            <engine:Tab label="Mirrors">
+                <engine:Instance template="Mirrors Adjustment Tab" />
+            </engine:Tab>
+        </engine:TabView>
+    </engine:VisualElement>
+</engine:UXML>

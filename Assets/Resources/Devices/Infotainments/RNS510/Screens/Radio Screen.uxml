@@ -3,7 +3,7 @@
     <engine:VisualElement name="screen-content" style="flex-grow: 1;">
         <engine:VisualElement name="radio-metadata" style="flex-grow: 1;">
             <engine:VisualElement name="radio-metadata-info" class="horizontal space-between align-3-items-mid-center">
-                <engine:Label text="Online: 1" name="radio-station-indicator" />
+                <engine:Label text="Online: {index}" name="radio-station-indicator" />
                 <engine:Label text="21:37" name="radio-clock" class="text-align-center" />
                 <engine:Label text="Connected" name="radio-station-status" class="text-align-right" />
             </engine:VisualElement>
@@ -11,12 +11,12 @@
                 <engine:VisualElement name="separator" class="gradient-separator" />
                 <engine:VisualElement name="radio-controls" class="horizontal space-between">
                     <engine:Button name="radio-prev-btn" icon-image="project://database/Assets/Resources/Bundles/Cars/Volkswagen%20Golf%20Mk6/RNS510/Assets/Icons/RNS510%20Flipped%20Play%20Icon.png?fileID=2800000&amp;guid=3688d912adf03bef18fdc708a0174618&amp;type=3#RNS510 Flipped Play Icon" />
-                    <engine:Label text="ESKA" name="radio-station-info" class="text-align-center" />
+                    <engine:Label text="{station_name}" name="radio-station-info" class="text-align-center" />
                     <engine:Button name="radio-next-btn" icon-image="project://database/Assets/Resources/Bundles/Cars/Volkswagen%20Golf%20Mk6/RNS510/Assets/Icons/RNS510%20Play%20Icon.png?fileID=2800000&amp;guid=94ce4e3aa5e4cf2f6bafd2a8eb7c1f14&amp;type=3#RNS510 Play Icon" />
                 </engine:VisualElement>
                 <engine:VisualElement name="separator" class="gradient-separator" />
             </engine:VisualElement>
-            <engine:Label name="radio-station-details" text="ESKA" class="text-align-center" />
+            <engine:Label name="radio-station-details" text="{station_details}" class="text-align-center" />
         </engine:VisualElement>
         <engine:VisualElement name="radio-stations" class="horizontal">
             <engine:Button text="1. ESKA" name="test-btn" />

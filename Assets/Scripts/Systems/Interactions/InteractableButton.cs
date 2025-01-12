@@ -27,7 +27,7 @@ namespace Systems.Interactions
 
             emitter?.Play();
             if (!string.IsNullOrEmpty(animStateName) && !string.IsNullOrEmpty(layerName))
-                animator.Play(animStateName, animator.GetLayerIndex(layerName), 0f);
+                animator?.Play(animStateName, animator.GetLayerIndex(layerName), 0f);
         }
     }
 }

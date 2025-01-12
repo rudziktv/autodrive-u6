@@ -1,4 +1,6 @@
+using System;
 using System.Collections;
+using System.Collections.Generic;
 using Core.Patterns.UI;
 using FMOD;
 using FMOD.Studio;
@@ -15,15 +17,25 @@ namespace Systems.Devices.Infotainments.RNS510.ViewModels
         private EventInstance _radioEventInstance;
 
         private readonly string _radioUrl = "https://ic1.smcdn.pl/2330-1.mp3";
+
+        private Label _radioStationIndicator;
+        private Label _radioStationInfo;
+        private Label _radioStationDetails;
         // private readonly string _radioEventPath = "event:/Radio Test";
         
         public RNS510RadioViewModel(UIController<RNS510> ctr, VisualElement view) : base(ctr, view, "Radio") { }
 
         private bool _fmodStarted;
+
+        private Action _clearStationList;
         
         public override void OnViewBindOrCreate()
         {
             base.OnViewBindOrCreate();
+
+            _radioStationIndicator = View.Q<Label>("radio-station-indicator");
+            _radioStationInfo = View.Q<Label>("radio-station-info");
+            _radioStationDetails = View.Q<Label>("radio-station-details");
 
             UpdateStationList();
         }
@@ -33,6 +45,8 @@ namespace Systems.Devices.Infotainments.RNS510.ViewModels
             var stationsView = View.Q<VisualElement>("radio-stations");
             stationsView.Clear();
             var onlineStations = RadioStationsManager.userStations;
+
+            var actions = new List<Action>();
 
             for (int i = 0; i < 6; i++)
             {
@@ -54,43 +68,55 @@ namespace Systems.Devices.Infotainments.RNS510.ViewModels
                 {
                     text = 1 + i + ". " + station.name
                 };
-                btn.clicked += () =>
-                {
-                    ConnectWithOnlineStation(station.url);
-                };
+
+                var i1 = i + 1;
+                btn.clicked += Click;
                 stationsView.Add(btn);
+                actions.Add(() =>
+                {
+                    btn.clicked -= Click;
+                });
+
+
+                void Click()
+                {
+                    _radioStationIndicator.text = $"Online: {i1}";
+                    ConnectWithOnlineStation(station);
+                }
             }
+
+            _clearStationList = () =>
+            {
+                foreach (var a in actions)
+                {
+                    a?.Invoke();
+                }
+            };
         }
 
-        private IEnumerator FmodDelay()
-        {
-            yield return new WaitForSeconds(5f);
-            TryFMOD();
-        }
-
-        private void ConnectWithOnlineStation(string url)
+        private void ConnectWithOnlineStation(RadioStation station)
         {
             _radioEventInstance = RuntimeManager.CreateInstance(Assets.EventReference);
-            RadioSystem.Instance.TryToConnect(_radioEventInstance, url, ((state, buffered) =>
+            RuntimeManager.AttachInstanceToGameObject(_radioEventInstance, Assets.SpeakerTransform, 
+                Context.GetComponentInParent<Rigidbody>());
+            RadioSystem.Instance.PlayRadio(_radioEventInstance, station.url, ((state, buffered) =>
             {
                 var statusLabel = View.Q<Label>("radio-station-status");
                 statusLabel.text = state.ToString();
             }));
-        }
-
-        private void TryFMOD()
-        {
-            _radioEventInstance = RuntimeManager.CreateInstance(Assets.EventReference);
-            RadioSystem.Instance.TryToConnect(_radioEventInstance, _radioUrl, ((state, buffered) =>
-            {
-                var statusLabel = View.Q<Label>("radio-station-status");
-                statusLabel.text = state.ToString();
-            }));
+            _radioStationInfo.text = station.name;
+            _radioStationDetails.text = station.details;
         }
 
         public override void OnViewUnbind()
         {
             base.OnViewUnbind();
+        }
+
+        public override void OnDestroy()
+        {
+            base.OnDestroy();
+            _clearStationList?.Invoke();
         }
     }
 }

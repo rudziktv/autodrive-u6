@@ -10,8 +10,9 @@ namespace Systems.Sounds.Radio
         public readonly static string RadioStationsPath = Path.Combine(Storage.AppDataPath, "user", "radio_stations.json");
         public readonly static RadioStation[] DefaultStations =
         {
-            new("ESKA", "https://waw.ic.smcdn.pl/2330-1.mp3"),
-            new("Radio ZET", "https://playerservices.streamtheworld.com/api/livestream-redirect/RADIO_ZET.mp3")
+            new("ESKA", "https://waw.ic.smcdn.pl/2330-1.mp3", "Hity Na Czasie"),
+            new("Radio ZET", "https://playerservices.streamtheworld.com/api/livestream-redirect/RADIO_ZET.mp3"),
+            new("VOX FM", "https://waw.ic.smcdn.pl/3990-1.mp3", "W rytmie hitów")
         };
 
         public static RadioStation[] userStations;

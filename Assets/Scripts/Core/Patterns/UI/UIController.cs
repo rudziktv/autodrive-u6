@@ -1,3 +1,6 @@
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -6,6 +9,7 @@ namespace Core.Patterns.UI
     public class UIController<T> where T : MonoBehaviour
     {
         public VisualElement Root { get; private set; }
+        protected List<Coroutine> Coroutines = new();
         public T Context { get; private set; }
         protected UIModel<T> CurrentModel;
 
@@ -70,9 +74,35 @@ namespace Core.Patterns.UI
 
         public virtual void Dispose()
         {
+            Root.Clear();
             CurrentModel?.OnDestroy();
             CurrentModel = null;
-            Root.Clear();
+            StopAllCoroutines();
+        }
+        
+        protected Coroutine StartCoroutine(IEnumerator enumerator)
+        {
+            Coroutines = Coroutines.Where(c => c != null).ToList();
+            Coroutines.Add(Context.StartCoroutine(enumerator));
+            return Coroutines[^1];
+        }
+
+        protected void StopCoroutine(Coroutine coroutine)
+        {
+            if (coroutine == null)
+                return;
+            Coroutines = Coroutines.Where(c => c != null).ToList();
+            if (Coroutines.Contains(coroutine))
+                Coroutines.Remove(coroutine);
+        }
+
+        protected void StopAllCoroutines()
+        {
+            Coroutines = Coroutines.Where(c => c != null).ToList();
+            foreach (var coroutine in Coroutines)
+            {
+                Context.StopCoroutine(coroutine);
+            }
         }
     }
 }

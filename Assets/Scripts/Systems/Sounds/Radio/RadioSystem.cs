@@ -1,98 +1,159 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using System.Runtime.InteropServices;
+using System.Threading;
+using System.Threading.Tasks;
 using FMOD;
 using FMOD.Studio;
 using FMODUnity;
 using Systems.AppStorage;
 using UnityEngine;
 using Debug = UnityEngine.Debug;
+using Thread = System.Threading.Thread;
 
 namespace Systems.Sounds.Radio
 {
     public class RadioSystem : MonoBehaviour
     {
+        private const int BUFFERING_CHECK_TICK = 250;
+        private const int BUFFERING_TIMEOUT = 15000;
+        
         public static RadioSystem Instance { get; private set; }
         
         private FMOD.System FmodSystem => RuntimeManager.CoreSystem;
-        private FMOD.Sound _radioStream;
-        private FMOD.Channel _channel;
-        private FMOD.ChannelGroup _group;
+        private Sound _radioStream;
         private EventInstance _eventInstance;
+        private CancellationTokenSource _tokenSource;
         
-        public delegate void StreamLoadingCallback(OPENSTATE openState, uint percentBuffered);
+        public delegate void StreamBufferingCallback(OPENSTATE openState, uint percentBuffered);
 
         private void Start()
         {
             Instance = this;
+            _tokenSource = new CancellationTokenSource();
         }
 
-        public void TryToConnect(EventInstance eventInstance, string radioUrl, StreamLoadingCallback streamLoadingCallback = null)
+        public async void PlayRadio(EventInstance eventInstance, string radioUrl,
+            StreamBufferingCallback bufferingCallback = null)
         {
+            _tokenSource?.Cancel();
+            _tokenSource?.Dispose();
+            _tokenSource = new CancellationTokenSource();
             StopRadioStream();
             
+            var token = _tokenSource.Token;
             _eventInstance = eventInstance;
+            
+            try
+            {
+                await PlayRadio(radioUrl, token, bufferingCallback);
+            }
+            catch (Exception e)
+            {
+                Debug.Log(e.Message);
+            }
+        }
+
+        private async Task PlayRadio(string radioUrl, CancellationToken token, StreamBufferingCallback bufferingCallback = null)
+        {
+            try
+            {
+                if (!await CreateAndLoadRadioStream(radioUrl, token, bufferingCallback))
+                    return;
+                
+                if (_radioStream.handle == IntPtr.Zero)
+                {
+                    Debug.LogError("Radio stream handle is invalid.");
+                    return;
+                }
+
+                _eventInstance.setCallback(EventCallback);
+                _eventInstance.start();
+            }
+            catch (Exception e)
+            {
+                Debug.LogException(e);
+            }
+        }
+
+        private async Task<bool> CreateAndLoadRadioStream(string radioUrl, CancellationToken token, StreamBufferingCallback bufferingCallback = null)
+        {
             var result = FmodSystem.createStream(radioUrl, MODE.CREATESTREAM | MODE.NONBLOCKING, out _radioStream);
 
             if (result != RESULT.OK)
             {
-                Debug.Log($"FMOD Error: {result}");
-                return;
+                Debug.LogError($"FMOD Error: {result}");
+                return false;
             }
-            
-            eventInstance.getChannelGroup(out _group);
 
-            StartCoroutine(LoadRadioStream(streamLoadingCallback));
+            try
+            {
+                await BufferRadioStream(token, bufferingCallback);
+                return true;
+            }
+            catch (Exception e)
+            {
+                Debug.LogException(e);
+                return false;
+            }
         }
 
-        // ReSharper disable Unity.PerformanceAnalysis
-        private IEnumerator LoadRadioStream(StreamLoadingCallback streamLoadingCallback = null)
+        private async Task BufferRadioStream(CancellationToken token, StreamBufferingCallback bufferingCallback = null)
         {
-            OPENSTATE openState;
-            uint percentBuffered;
-            bool starving;
-            bool diskBusy;
-
+            OPENSTATE state;
+            var timer = 0;
+            
             do
             {
-                _radioStream.getOpenState(out openState, out percentBuffered, out starving, out diskBusy);
-                Debug.Log($"Loading: {percentBuffered}% - State: {openState}");
-                streamLoadingCallback?.Invoke(openState, percentBuffered);
-                yield return null;
-            } while (openState != OPENSTATE.READY);
+                if (token.IsCancellationRequested)
+                    return;
 
-            var result = FmodSystem.playSound(_radioStream, _group, false, out _channel);
-            
-            if (result != RESULT.OK)
-            {
-                Debug.Log($"FMOD Error: {result}");
-                yield break;
-            }
-            
-            _eventInstance.start();
+                _radioStream.getOpenState(out state, out var percentBuffered, out var _, out var __);
+                bufferingCallback?.Invoke(state, percentBuffered);
+                try
+                {
+                    await Task.Delay(BUFFERING_CHECK_TICK, token);
+                }
+                catch (TaskCanceledException e)
+                {
+                    return;
+                }
+                timer += BUFFERING_CHECK_TICK;
+
+                if (timer > BUFFERING_TIMEOUT)
+                    Debug.LogWarning($"Could not buffer radio stream within timeout period - {BUFFERING_TIMEOUT}ms.");
+                    // throw new Exception($"Could not buffer radio stream within timeout period - {BUFFERING_TIMEOUT}ms.");
+                
+            } while (state != OPENSTATE.READY);
         }
+
+        [AOT.MonoPInvokeCallback(typeof(EVENT_CALLBACK))]
+        private RESULT EventCallback(EVENT_CALLBACK_TYPE type, IntPtr instance, IntPtr parameterPtr)
+        {
+            if (type != EVENT_CALLBACK_TYPE.CREATE_PROGRAMMER_SOUND) return RESULT.OK;
+            var soundInfo = Marshal.PtrToStructure<PROGRAMMER_SOUND_PROPERTIES>(parameterPtr);
+            soundInfo.sound = _radioStream.handle;
+            Marshal.StructureToPtr(soundInfo, parameterPtr, false);
+            return RESULT.OK;
+        }
+        
 
         public void StopRadioStream()
         {
             if (_eventInstance.isValid())
-            {
                 _eventInstance.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
-                // _eventInstance.release();
-            }
-
-            _group.stop();
-            _radioStream.release();
         }
         
         private void OnDestroy()
         {
-            if (_eventInstance.isValid())
-            {
-                _eventInstance.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
-                _eventInstance.release();
-            }
-            _group.stop();
-            _radioStream.release();
+            _tokenSource?.Cancel();
+            _tokenSource?.Dispose();
+            
+            if (!_eventInstance.isValid()) return;
+            _eventInstance.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
+            _eventInstance.release();
         }
     }
 }
