@@ -1,6 +1,8 @@
+using System.Collections;
 using Core.Entities.Vehicle.Configs;
 using Core.Entities.Vehicle.Configs.Interactions;
 using Core.Entities.Vehicle.Managers;
+using UnityEngine;
 
 namespace Core.Entities.Vehicle
 {
@@ -11,6 +13,16 @@ namespace Core.Entities.Vehicle
         protected ElectricityManager ElectricityManager => Controller.ElectricityManager;
         protected InteractionsConfig Interactions => VehicleConfigs.InteractionsConfig;
         protected ComponentsReferences Components => VehicleConfigs.ComponentsReferences;
+        protected SoundsConfig Sounds => VehicleConfigs.SoundsConfig;
+        
+        protected Coroutine StartCoroutine(IEnumerator enumerator) =>
+            Controller.StartCoroutine(enumerator);
+
+        protected void StopCoroutine(Coroutine coroutine)
+        {
+            if (coroutine == null) return;
+            Controller.StopCoroutine(coroutine);
+        }
 
         protected VehicleModule(VehicleController controller)
         {

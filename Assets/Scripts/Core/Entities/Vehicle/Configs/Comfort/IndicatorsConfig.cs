@@ -9,8 +9,6 @@ namespace Core.Entities.Vehicle.Configs.Comfort
     {
         [SerializeField] private IndicatorController batteryIndicator;
         [SerializeField] private IndicatorController checkEngineIndicator;
-        [SerializeField] private IndicatorController blinkerLeftIndicator;
-        [SerializeField] private IndicatorController blinkerRightIndicator;
         [SerializeField] private IndicatorController ecuIndicator;
         [SerializeField] private IndicatorController hotCoolantIndicator;
         [SerializeField] private IndicatorController lowFuelIndicator;
@@ -27,12 +25,13 @@ namespace Core.Entities.Vehicle.Configs.Comfort
         [SerializeField] private IndicatorController automaticLightsIndicator;
         [SerializeField] private IndicatorController positionLightsIndicator;
         
+        [field: SerializeField] public IndicatorController LeftBlinkerIndicator { get; private set; }
+        [field: SerializeField] public IndicatorController RightBlinkerIndicator { get; private set; }
+        
         // [SerializeField] private IlluminatedIndicatorController
         
         public IndicatorController BatteryIndicator => batteryIndicator;
         public IndicatorController CheckEngineIndicator => checkEngineIndicator;
-        public IndicatorController BlinkerLeftIndicator => blinkerLeftIndicator;
-        public IndicatorController BlinkerRightIndicator => blinkerRightIndicator;
         public IndicatorController EcuIndicator => ecuIndicator;
         public IndicatorController HotCoolantIndicator => hotCoolantIndicator;
         public IndicatorController LowFuelIndicator => lowFuelIndicator;

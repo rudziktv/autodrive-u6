@@ -945,6 +945,55 @@ Transform:
   - {fileID: 2124852067}
   m_Father: {fileID: 852807995}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &98191775
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 98191776}
+  - component: {fileID: 98191777}
+  m_Layer: 0
+  m_Name: Left Blinker Indicator
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &98191776
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 98191775}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8130482303008960063}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &98191777
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 98191775}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6bf552d0662496e8964f780534bf5b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  indicatorLevels:
+  - meshRenderer: {fileID: 7385614151005527003}
+    emissionIntensity: 10
+    emissionColor: {r: 0, g: 1, b: 0, a: 1}
+    materialIndex: 0
 --- !u!1 &126273066
 GameObject:
   m_ObjectHideFlags: 0
@@ -1431,6 +1480,58 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 167788302}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &172968525
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 172968526}
+  - component: {fileID: 172968527}
+  m_Layer: 0
+  m_Name: Blinker Stick Cancel
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &172968526
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 172968525}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.41764855, y: 0.66233957, z: 0.52419215}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 198941776}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &172968527
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 172968525}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86e57c04ba4747ccb44f5297c5fd065e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bankName: Volkswagen Golf Mk6.bank
+  eventReference:
+    Guid:
+      Data1: 2076318365
+      Data2: 1225317773
+      Data3: 325664147
+      Data4: 586869832
+    Path: event:/Vehicle/Interior/Blinker Stick Off
 --- !u!1 &198941775
 GameObject:
   m_ObjectHideFlags: 0
@@ -1462,6 +1563,7 @@ Transform:
   m_Children:
   - {fileID: 1887504189}
   - {fileID: 1715417501}
+  - {fileID: 172968526}
   - {fileID: 1414671046}
   - {fileID: 513741393}
   - {fileID: 493710169}
@@ -3642,6 +3744,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 513741393}
+  - component: {fileID: 513741394}
   m_Layer: 0
   m_Name: Blinker Off
   m_TagString: Untagged
@@ -3664,6 +3767,26 @@ Transform:
   m_Children: []
   m_Father: {fileID: 198941776}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &513741394
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 513741392}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86e57c04ba4747ccb44f5297c5fd065e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bankName: Volkswagen Golf Mk6.bank
+  eventReference:
+    Guid:
+      Data1: 238257161
+      Data2: 1272006762
+      Data3: -1226573683
+      Data4: 1046439502
+    Path: event:/Vehicle/Interior/Blinker Off
 --- !u!1 &515072773
 GameObject:
   m_ObjectHideFlags: 0
@@ -10543,6 +10666,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1414671046}
+  - component: {fileID: 1414671047}
   m_Layer: 0
   m_Name: Blinker On
   m_TagString: Untagged
@@ -10565,6 +10689,26 @@ Transform:
   m_Children: []
   m_Father: {fileID: 198941776}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1414671047
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1414671045}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86e57c04ba4747ccb44f5297c5fd065e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bankName: Volkswagen Golf Mk6.bank
+  eventReference:
+    Guid:
+      Data1: 2027816201
+      Data2: 1290726972
+      Data3: 188308125
+      Data4: -1429349269
+    Path: event:/Vehicle/Interior/Blinker On
 --- !u!1 &1416486678
 GameObject:
   m_ObjectHideFlags: 0
@@ -12068,6 +12212,59 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1647661554}
   m_Mesh: {fileID: 6367903626460662393, guid: 87e05218b6febd134b00d23a905d0c0d, type: 3}
+--- !u!1 &1661512669
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1661512670}
+  - component: {fileID: 1661512671}
+  m_Layer: 0
+  m_Name: Blinker Stick
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1661512670
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1661512669}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3759808872985981700}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1661512671
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1661512669}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a66be2075b074592a13df363f1220f80, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <Details>k__BackingField:
+    <Name>k__BackingField: 
+    <Cursor>k__BackingField: {fileID: 0}
+  interact:
+    m_PersistentCalls:
+      m_Calls: []
+  comfortBlinkers: 1
+  stickEngageEmitter: {fileID: 1715417502}
+  stickCancelEmitter: {fileID: 172968527}
 --- !u!1 &1682140645
 GameObject:
   m_ObjectHideFlags: 0
@@ -12252,8 +12449,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1715417501}
+  - component: {fileID: 1715417502}
   m_Layer: 0
-  m_Name: Blinker Stick
+  m_Name: Blinker Stick Engage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12274,6 +12472,26 @@ Transform:
   m_Children: []
   m_Father: {fileID: 198941776}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1715417502
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1715417500}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86e57c04ba4747ccb44f5297c5fd065e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bankName: Volkswagen Golf Mk6.bank
+  eventReference:
+    Guid:
+      Data1: 1060518399
+      Data2: 1284507674
+      Data3: -30434627
+      Data4: -948257773
+    Path: event:/Vehicle/Interior/Blinker Stick On
 --- !u!1 &1722652703
 GameObject:
   m_ObjectHideFlags: 0
@@ -12978,6 +13196,55 @@ Light:
   m_LightUnit: 0
   m_LuxAtDistance: 1
   m_EnableSpotReflector: 1
+--- !u!1 &1780859336
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1780859337}
+  - component: {fileID: 1780859338}
+  m_Layer: 0
+  m_Name: Right Blinker Indicator
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1780859337
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1780859336}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8130482303008960063}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1780859338
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1780859336}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6bf552d0662496e8964f780534bf5b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  indicatorLevels:
+  - meshRenderer: {fileID: 4445895546078360504}
+    emissionIntensity: 10
+    emissionColor: {r: 0, g: 1, b: 0, a: 1}
+    materialIndex: 0
 --- !u!1 &1783892799
 GameObject:
   m_ObjectHideFlags: 0
@@ -27686,23 +27953,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!1 &2156392725847127890
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 8256908843942272041}
-  - component: {fileID: 5018919766158946364}
-  m_Layer: 0
-  m_Name: Blinker Left Indicator
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
 --- !u!23 &2156879685043777039
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -36155,6 +36405,7 @@ Transform:
   - {fileID: 4935235862530866836}
   - {fileID: 279737888254466244}
   - {fileID: 839765122}
+  - {fileID: 1661512670}
   m_Father: {fileID: 6469037577523226391}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &3764701044441973962
@@ -39584,7 +39835,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 4a3cc3b3df2dcde2d921c263b7973745, type: 2}
+  - {fileID: 2100000, guid: 4642039eb4bd023d59914b3ca39a89d2, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -43401,23 +43652,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &5018919766158946364
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2156392725847127890}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b6bf552d0662496e8964f780534bf5b2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  indicatorLevels:
-  - meshRenderer: {fileID: 7385614151005527003}
-    emissionIntensity: 10
-    emissionColor: {r: 0, g: 1, b: 0, a: 1}
-    materialIndex: 0
 --- !u!23 &5038739794482526379
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -48310,23 +48544,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!1 &5954821014317722578
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 7059254713288683266}
-  - component: {fileID: 6474288497707426326}
-  m_Layer: 0
-  m_Name: Blinker Right Indicator
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
 --- !u!1 &5961892901007310562
 GameObject:
   m_ObjectHideFlags: 0
@@ -52128,23 +52345,6 @@ Transform:
   - {fileID: 198941776}
   m_Father: {fileID: 1842623700839588958}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6474288497707426326
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5954821014317722578}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b6bf552d0662496e8964f780534bf5b2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  indicatorLevels:
-  - meshRenderer: {fileID: 4445895546078360504}
-    emissionIntensity: 10
-    emissionColor: {r: 0, g: 1, b: 0, a: 1}
-    materialIndex: 0
 --- !u!4 &6483278859126309472
 Transform:
   m_ObjectHideFlags: 0
@@ -55588,21 +55788,6 @@ Transform:
   - {fileID: 1809573315659723368}
   m_Father: {fileID: 4700538735177760506}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &7059254713288683266
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5954821014317722578}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 8130482303008960063}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &7063745025388178422
 Transform:
   m_ObjectHideFlags: 0
@@ -55934,8 +56119,6 @@ MonoBehaviour:
         indicatorsConfig:
           batteryIndicator: {fileID: 5518952484730216352}
           checkEngineIndicator: {fileID: 1479289739844148620}
-          blinkerLeftIndicator: {fileID: 5018919766158946364}
-          blinkerRightIndicator: {fileID: 6474288497707426326}
           ecuIndicator: {fileID: 5263042516534015708}
           hotCoolantIndicator: {fileID: 6036723174148284773}
           lowFuelIndicator: {fileID: 239029515771013681}
@@ -55950,6 +56133,11 @@ MonoBehaviour:
           steeringIndicator: {fileID: 6151636563414830154}
           automaticLightsIndicator: {fileID: 6642580456949795902}
           positionLightsIndicator: {fileID: 2991102157239382319}
+          <LeftBlinkerIndicator>k__BackingField: {fileID: 98191777}
+          <RightBlinkerIndicator>k__BackingField: {fileID: 1780859338}
+      <BlinkerConfig>k__BackingField:
+        <BlinkDuration>k__BackingField: 0.4
+        <BreakerDuration>k__BackingField: 0.4
     electricityConfig:
       batteryConfig:
         maxCapacity: 72
@@ -55962,6 +56150,10 @@ MonoBehaviour:
     interactionsConfig:
       lightSwitch: {fileID: 3926761268403946686}
       keyIgnition: {fileID: 9139028192836713477}
+      <BlinkerStick>k__BackingField: {fileID: 1661512671}
+    <SoundsConfig>k__BackingField:
+      <BlinkerOnEmitter>k__BackingField: {fileID: 1414671047}
+      <BlinkerOffEmitter>k__BackingField: {fileID: 513741394}
 --- !u!1 &7095249237895682137
 GameObject:
   m_ObjectHideFlags: 0
@@ -58420,7 +58612,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 4a3cc3b3df2dcde2d921c263b7973745, type: 2}
+  - {fileID: 2100000, guid: 4642039eb4bd023d59914b3ca39a89d2, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -62547,8 +62739,6 @@ Transform:
   m_Children:
   - {fileID: 6888045884345448693}
   - {fileID: 6575541406317858903}
-  - {fileID: 8256908843942272041}
-  - {fileID: 7059254713288683266}
   - {fileID: 333407132340558471}
   - {fileID: 2359235772762860256}
   - {fileID: 2475454040655847264}
@@ -62565,6 +62755,8 @@ Transform:
   - {fileID: 1002326383641686052}
   - {fileID: 1315291622496491455}
   - {fileID: 4530080228940273496}
+  - {fileID: 98191776}
+  - {fileID: 1780859337}
   m_Father: {fileID: 2225491606723680204}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8137890929794371319
@@ -63099,21 +63291,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!4 &8256908843942272041
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2156392725847127890}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 8130482303008960063}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &8261820609694093147
 Transform:
   m_ObjectHideFlags: 0

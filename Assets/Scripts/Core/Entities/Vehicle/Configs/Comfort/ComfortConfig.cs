@@ -8,6 +8,7 @@ namespace Core.Entities.Vehicle.Configs.Comfort
     {
         [SerializeField] private LightsConfig lightsConfig;
         [SerializeField] private DashboardConfig dashboardConfig;
+        [field: SerializeField] public BlinkerConfig BlinkerConfig { get; private set; }
         
         public LightsConfig LightsConfig => lightsConfig;
         public DashboardConfig DashboardConfig => dashboardConfig;

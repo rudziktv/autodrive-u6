@@ -5,11 +5,14 @@ namespace Core.Entities.Vehicle.Modules
     public class ComfortModule : ElectricalModule
     {
         public LightsModule Lights { get; private set; }
+        public BlinkerModule Blinker { get; private set; }
         public DashboardModule Dashboard { get; private set; }
+
 
         public ComfortModule(VehicleController controller) : base(controller)
         {
             Lights = new(controller);
+            Blinker = new(controller);
             Dashboard = new(controller);
         }
 
@@ -17,6 +20,7 @@ namespace Core.Entities.Vehicle.Modules
         {
             base.Initialize();
             Lights.Initialize();
+            Blinker.Initialize();
             Dashboard.Initialize();
         }
 
@@ -24,6 +28,7 @@ namespace Core.Entities.Vehicle.Modules
         {
             base.UpdateModule();
             Lights.UpdateModule();
+            Blinker.UpdateModule();
             Dashboard.UpdateModule();
         }
     }

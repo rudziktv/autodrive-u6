@@ -20,9 +20,12 @@ namespace Core.Entities.Vehicle
         public InputActions InputActions { get; private set; }
         public StateController CodingVariables { get; private set; } = new();
 
+        public VehicleInputActions VehicleInput { get; private set; }
+
 
         private void Awake()
         {
+            VehicleInput = new VehicleInputActions();
             InputActions = new ();
             
             ModuleManager = new(this);
@@ -34,11 +37,13 @@ namespace Core.Entities.Vehicle
         private void OnEnable()
         {
             InputActions.Enable();
+            VehicleInput.Enable();
         }
 
         private void OnDisable()
         {
             InputActions.Disable();
+            VehicleInput.Disable();
         }
 
         private void Start()

@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Armature_blinker_left_off_anim
+  m_Name: Right Blinker Stick Cancel Anim
   serializedVersion: 7
   m_Legacy: 0
   m_Compressed: 0
@@ -17,36 +17,36 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: {x: -0.6178257, y: 0.7565861, z: -0.10403828, w: 0.18720338}
-        inSlope: {x: 0.1155281, y: -0.06485224, z: -0.46286163, w: 0.37781236}
-        outSlope: {x: 0.1155281, y: -0.06485224, z: -0.46286163, w: 0.37781236}
+        value: {x: -0.54832196, y: 0.7038789, z: -0.29631224, w: 0.3407297}
+        inSlope: {x: -0.20766734, y: 0.18023728, z: 0.43121693, w: -0.3360915}
+        outSlope: {x: -0.20766734, y: 0.18023728, z: 0.43121693, w: -0.3360915}
         tangentMode: 0
         weightedMode: 0
         inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
         outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
       - serializedVersion: 3
         time: 0.40833336
-        value: {x: -0.5867616, y: 0.7355111, z: -0.20559633, w: 0.26919237}
-        inSlope: {x: 0.029350547, y: -0.022416135, z: -0.08019455, w: 0.06397611}
-        outSlope: {x: 0.029350547, y: -0.022416135, z: -0.08019455, w: 0.06397611}
+        value: {x: -0.58944887, y: 0.7375488, z: -0.19816168, w: 0.26325592}
+        inSlope: {x: -0.02743366, y: 0.020653028, z: 0.076837316, w: -0.061404765}
+        outSlope: {x: -0.02743366, y: 0.020653028, z: 0.076837316, w: -0.061404765}
         tangentMode: 0
         weightedMode: 0
         inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
         outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
       - serializedVersion: 3
         time: 0.8166667
-        value: {x: -0.58676434, y: 0.73551315, z: -0.20558877, w: 0.26918632}
-        inSlope: {x: -0.011959087, y: 0.009130248, z: 0.032672912, w: -0.026065731}
-        outSlope: {x: -0.011959087, y: 0.009130248, z: 0.032672912, w: -0.026065731}
+        value: {x: -0.5894285, y: 0.7375335, z: -0.19821873, w: 0.26330152}
+        inSlope: {x: 0.011458408, y: -0.008625993, z: -0.032096237, w: 0.025650883}
+        outSlope: {x: 0.011458408, y: -0.008625993, z: -0.032096237, w: 0.025650883}
         tangentMode: 0
         weightedMode: 0
         inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
         outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
       - serializedVersion: 3
-        time: 0.9416667
-        value: {x: -0.58796674, y: 0.7364286, z: -0.20228517, w: 0.26654977}
-        inSlope: {x: -0.008440026, y: 0.0064086975, z: 0.023310207, w: -0.018610973}
-        outSlope: {x: -0.008440026, y: 0.0064086975, z: 0.023310207, w: -0.018610973}
+        time: 0.9583334
+        value: {x: -0.5881683, y: 0.7365815, z: -0.20172763, w: 0.2661046}
+        inSlope: {x: 0.007510192, y: -0.0056934413, z: -0.020772835, w: 0.016586795}
+        outSlope: {x: 0.007510192, y: -0.0056934413, z: -0.020772835, w: 0.016586795}
         tangentMode: 0
         weightedMode: 0
         inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
@@ -74,7 +74,7 @@ AnimationClip:
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.9416667
+    m_StopTime: 0.9583334
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0

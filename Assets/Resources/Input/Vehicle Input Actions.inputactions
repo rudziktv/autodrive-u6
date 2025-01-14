@@ -416,16 +416,52 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Left Blinker",
+                    "type": "Button",
+                    "id": "350e29a9-35c3-4125-856c-2098d4f8dc09",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Right Blinker",
+                    "type": "Button",
+                    "id": "8f8a955a-4119-4af9-b02b-bb7777dee29a",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Left Comfort Blinker",
+                    "type": "Button",
+                    "id": "9173859a-5d7d-4004-b29c-b7a63aaf6525",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Right Comfort Blinker",
+                    "type": "Button",
+                    "id": "b57c1a88-2702-481c-b1c4-9f32384c26b7",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
                 {
                     "name": "",
                     "id": "5ec33688-8c6e-41f6-a18a-2618dabbb589",
-                    "path": "",
+                    "path": "<Keyboard>/e",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": ";Keyboard and Mouse",
                     "action": "Ignition",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -433,10 +469,10 @@
                 {
                     "name": "",
                     "id": "904a11a4-2251-4a02-9b70-f912388f67d6",
-                    "path": "",
-                    "interactions": "",
+                    "path": "<Keyboard>/e",
+                    "interactions": "Hold",
                     "processors": "",
-                    "groups": "",
+                    "groups": ";Keyboard and Mouse",
                     "action": "Starter",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -444,10 +480,10 @@
                 {
                     "name": "",
                     "id": "ff686887-add7-4412-a232-af89951b482d",
-                    "path": "",
+                    "path": "<Keyboard>/space",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": ";Keyboard and Mouse",
                     "action": "Parking Brake",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -460,6 +496,50 @@
                     "processors": "",
                     "groups": "",
                     "action": "New action",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "6e519e9d-6e43-40b8-b0f8-c5c753ac3d09",
+                    "path": "<Keyboard>/leftBracket",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard and Mouse",
+                    "action": "Left Blinker",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "4f3498d8-3f9f-44f9-a8b3-cc4a7f4b5cd6",
+                    "path": "<Keyboard>/rightBracket",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard and Mouse",
+                    "action": "Right Blinker",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "23f2e47d-474d-43f6-868a-0a1d0d89588a",
+                    "path": "<Keyboard>/leftBracket",
+                    "interactions": "Tap",
+                    "processors": "",
+                    "groups": ";Keyboard and Mouse",
+                    "action": "Left Comfort Blinker",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "0449cc06-6c5d-4878-9cc4-c529144cc98f",
+                    "path": "<Keyboard>/rightBracket",
+                    "interactions": "Tap",
+                    "processors": "",
+                    "groups": ";Keyboard and Mouse",
+                    "action": "Right Comfort Blinker",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
@@ -602,5 +682,22 @@
             ]
         }
     ],
-    "controlSchemes": []
+    "controlSchemes": [
+        {
+            "name": "Keyboard and Mouse",
+            "bindingGroup": "Keyboard and Mouse",
+            "devices": [
+                {
+                    "devicePath": "<Keyboard>",
+                    "isOptional": false,
+                    "isOR": false
+                },
+                {
+                    "devicePath": "<Mouse>",
+                    "isOptional": false,
+                    "isOR": false
+                }
+            ]
+        }
+    ]
 }

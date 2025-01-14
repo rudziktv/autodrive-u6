@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Armature_blinker_right_short_anim
+  m_Name: Left Blinker Stick Cancel Anim
   serializedVersion: 7
   m_Legacy: 0
   m_Compressed: 0
@@ -17,45 +17,36 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: {x: -0.5881051, y: 0.7365336, z: -0.2019026, w: 0.26624432}
-        inSlope: {x: 0.16311406, y: -0.12414693, z: -0.44842955, w: 0.35789964}
-        outSlope: {x: 0.16311406, y: -0.12414693, z: -0.44842955, w: 0.35789964}
+        value: {x: -0.6178257, y: 0.7565861, z: -0.10403828, w: 0.18720338}
+        inSlope: {x: 0.1155281, y: -0.06485224, z: -0.46286163, w: 0.37781236}
+        outSlope: {x: 0.1155281, y: -0.06485224, z: -0.46286163, w: 0.37781236}
         tangentMode: 0
         weightedMode: 0
         inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
         outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
       - serializedVersion: 3
-        time: 0.35833335
-        value: {x: -0.57577586, y: 0.7269005, z: -0.23422633, w: 0.29195166}
-        inSlope: {x: -0.0005185609, y: 0.00041127246, z: 0.0012964023, w: -0.001028181}
-        outSlope: {x: -0.0005185609, y: 0.00041127246, z: 0.0012964023, w: -0.001028181}
+        time: 0.40833336
+        value: {x: -0.5867616, y: 0.7355111, z: -0.20559633, w: 0.26919237}
+        inSlope: {x: 0.029350547, y: -0.022416135, z: -0.08019455, w: 0.06397611}
+        outSlope: {x: 0.029350547, y: -0.022416135, z: -0.08019455, w: 0.06397611}
         tangentMode: 0
         weightedMode: 0
         inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
         outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
       - serializedVersion: 3
-        time: 0.65000004
-        value: {x: -0.57592756, y: 0.7270222, z: -0.23384842, w: 0.2916523}
-        inSlope: {x: -0.0005149846, y: 0.00041484874, z: 0.0012964023, w: -0.001028181}
-        outSlope: {x: -0.0005149846, y: 0.00041484874, z: 0.0012964023, w: -0.001028181}
+        time: 0.8166667
+        value: {x: -0.58676434, y: 0.73551315, z: -0.20558877, w: 0.26918632}
+        inSlope: {x: -0.011959087, y: 0.009130248, z: 0.032672912, w: -0.026065731}
+        outSlope: {x: -0.011959087, y: 0.009130248, z: 0.032672912, w: -0.026065731}
         tangentMode: 0
         weightedMode: 0
         inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
         outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
       - serializedVersion: 3
-        time: 0.73333335
-        value: {x: -0.58533823, y: 0.73442006, z: -0.20946018, w: 0.27227333}
-        inSlope: {x: -0.077637255, y: 0.059741594, z: 0.20932268, w: -0.16682586}
-        outSlope: {x: -0.077637255, y: 0.059741594, z: 0.20932268, w: -0.16682586}
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
-        outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
-      - serializedVersion: 3
-        time: 0.975
-        value: {x: -0.5881506, y: 0.7365681, z: -0.20177679, w: 0.2661439}
-        inSlope: {x: 0.0042629284, y: -0.003232959, z: -0.011819612, w: 0.009441385}
-        outSlope: {x: 0.0042629284, y: -0.003232959, z: -0.011819612, w: 0.009441385}
+        time: 0.9416667
+        value: {x: -0.58796674, y: 0.7364286, z: -0.20228517, w: 0.26654977}
+        inSlope: {x: -0.008440026, y: 0.0064086975, z: 0.023310207, w: -0.018610973}
+        outSlope: {x: -0.008440026, y: 0.0064086975, z: 0.023310207, w: -0.018610973}
         tangentMode: 0
         weightedMode: 0
         inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
@@ -83,7 +74,7 @@ AnimationClip:
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.975
+    m_StopTime: 0.9416667
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0

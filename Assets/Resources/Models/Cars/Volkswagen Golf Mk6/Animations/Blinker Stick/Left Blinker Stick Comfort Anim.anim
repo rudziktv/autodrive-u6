@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Armature_blinker_right_anim
+  m_Name: Left Blinker Stick Comfort Anim
   serializedVersion: 7
   m_Legacy: 0
   m_Compressed: 0
@@ -18,35 +18,44 @@ AnimationClip:
       - serializedVersion: 3
         time: 0
         value: {x: -0.5881051, y: 0.7365336, z: -0.2019026, w: 0.26624432}
-        inSlope: {x: 0.16385792, y: -0.12471198, z: -0.45043764, w: 0.3595018}
-        outSlope: {x: 0.16385792, y: -0.12471198, z: -0.45043764, w: 0.3595018}
+        inSlope: {x: -0.16130446, y: 0.12187242, z: 0.44906434, w: -0.35872933}
+        outSlope: {x: -0.16130446, y: 0.12187242, z: 0.44906434, w: -0.35872933}
         tangentMode: 0
         weightedMode: 0
         inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
         outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
       - serializedVersion: 3
-        time: 0.40833336
-        value: {x: -0.5466048, y: 0.70238274, z: -0.2998415, w: 0.3434776}
-        inSlope: {x: 0.03511909, y: -0.03065589, z: -0.07181353, w: 0.05588656}
-        outSlope: {x: 0.03511909, y: -0.03065589, z: -0.07181353, w: 0.05588656}
+        time: 0.35833335
+        value: {x: -0.5993454, y: 0.744771, z: -0.16900447, w: 0.23987237}
+        inSlope: {x: 0.0006222731, y: -0.0004363064, z: -0.0019285101, w: 0.0015512124}
+        outSlope: {x: 0.0006222731, y: -0.0004363064, z: -0.0019285101, w: 0.0015512124}
         tangentMode: 0
         weightedMode: 0
         inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
         outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
       - serializedVersion: 3
-        time: 0.8166667
-        value: {x: -0.5466165, y: 0.70239294, z: -0.2998176, w: 0.343459}
-        inSlope: {x: -0.01595737, y: 0.0139296185, z: 0.03263536, w: -0.025398755}
-        outSlope: {x: -0.01595737, y: 0.0139296185, z: 0.03263536, w: -0.025398755}
+        time: 0.65000004
+        value: {x: -0.59916395, y: 0.7446431, z: -0.16956723, w: 0.24032521}
+        inSlope: {x: 0.0006222731, y: -0.0004398827, z: -0.0019276161, w: 0.0015512124}
+        outSlope: {x: 0.0006222731, y: -0.0004398827, z: -0.0019276161, w: 0.0015512124}
         tangentMode: 0
         weightedMode: 0
         inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
         outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
       - serializedVersion: 3
-        time: 0.8833334
-        value: {x: -0.5475743, y: 0.7032281, z: -0.29785344, w: 0.34193003}
-        inSlope: {x: -0.014126314, y: 0.012302411, z: 0.029017953, w: -0.022594951}
-        outSlope: {x: -0.014126314, y: 0.012302411, z: 0.029017953, w: -0.022594951}
+        time: 0.725
+        value: {x: -0.591474, y: 0.7390644, z: -0.19243246, w: 0.258674}
+        inSlope: {x: 0.0834883, y: -0.062094986, z: -0.2386185, w: 0.19096988}
+        outSlope: {x: 0.0834883, y: -0.062094986, z: -0.2386185, w: 0.19096988}
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+        outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
+      - serializedVersion: 3
+        time: 0.9666667
+        value: {x: -0.58800715, y: 0.73645926, z: -0.20217347, w: 0.2664606}
+        inSlope: {x: -0.0041770977, y: 0.003168586, z: 0.011531722, w: -0.009208926}
+        outSlope: {x: -0.0041770977, y: 0.003168586, z: 0.011531722, w: -0.009208926}
         tangentMode: 0
         weightedMode: 0
         inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
@@ -74,7 +83,7 @@ AnimationClip:
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.8833334
+    m_StopTime: 0.9666667
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0

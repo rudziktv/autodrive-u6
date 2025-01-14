@@ -14,6 +14,7 @@ namespace Core.Entities.Vehicle.Managers
         [SerializeField] private ComfortConfig comfortConfig;
         [SerializeField] private ElectricityConfig electricityConfig;
         [SerializeField] private InteractionsConfig interactionsConfig;
+        [field: SerializeField] public SoundsConfig SoundsConfig { get; private set; }
         
         
         

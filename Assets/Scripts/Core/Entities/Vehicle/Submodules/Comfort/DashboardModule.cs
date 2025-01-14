@@ -93,8 +93,6 @@ namespace Core.Entities.Vehicle.Submodules.Comfort
             Indicators.AirbagIndicator.SetIndicator(false);
             
             // others
-            Indicators.BlinkerLeftIndicator.SetIndicator(false);
-            Indicators.BlinkerRightIndicator.SetIndicator(false);
             
             Indicators.ParkingBrakeIndicator.SetIndicator(false);
             Indicators.SeatbeltIndicator.SetIndicator(false);
