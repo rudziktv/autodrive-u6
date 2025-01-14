@@ -11,5 +11,7 @@ namespace Core.Entities.Vehicle.Configs.Comfort
         [field: SerializeField] public float BlinkDuration { get; private set; }
         [Tooltip("Timer between blinker light down and light up.")]
         [field: SerializeField] public float BreakerDuration { get; private set; }
+
+        [field: SerializeField] public int ComfortBlinkerBlinks { get; private set; } = 3;
     }
 }

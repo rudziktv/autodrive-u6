@@ -35,7 +35,10 @@ namespace Core.Entities.Vehicle.Submodules.Comfort
             base.OnElectricityStateChanged(newState);
             
             if (_hazards) return;
-            
+
+            if (newState < ElectricityState.LowPowerMode &&
+                Interactions.BlinkerStick.CurrentBlinkerState == BlinkerStickState.Zero)
+                _currentBlinkerSide = 0;
             if (newState < ElectricityState.LowPowerMode)
                 TurnOffBlinker();
             else if (_currentBlinkerSide != 0)
@@ -49,12 +52,24 @@ namespace Core.Entities.Vehicle.Submodules.Comfort
 
         private void OnBlinkerStickStateChanged(BlinkerStickState stick)
         {
-            _currentBlinkerSide = Mathf.Clamp((int)stick, -1, 1);
-            if (CurrentElectricityState < ElectricityState.LowPowerMode) return;
+            if (stick is BlinkerStickState.LeftComfort or BlinkerStickState.RightComfort
+                && CurrentElectricityState < ElectricityState.LowPowerMode)
+            {
+                TurnOffBlinker();
+                return;
+            }
+                
+            if (CurrentElectricityState < ElectricityState.LowPowerMode &&
+                stick is not (BlinkerStickState.LeftComfort or BlinkerStickState.RightComfort))
+            {
+                _currentBlinkerSide = Mathf.Clamp((int)stick, -1, 1);
+                return;
+            }
             
             switch (stick)
             {
                 case BlinkerStickState.LeftComfort:
+                    TurnOnComfortBlinker(-1);
                     break;
                 case BlinkerStickState.Left:
                     TurnOnBlinker(-1);
@@ -67,9 +82,19 @@ namespace Core.Entities.Vehicle.Submodules.Comfort
                     TurnOnBlinker(1);
                     break;
                 case BlinkerStickState.RightComfort:
+                    TurnOnComfortBlinker(1);
                     break;
             }
             // throw new System.NotImplementedException();
+        }
+
+        private void TurnOnComfortBlinker(int side)
+        {
+            if (_currentBlinkerSide != side)
+                TurnOffBlinker();
+            _currentBlinkerSide = side;
+            if (_hazards) return;
+            _blinkerCoroutine = StartCoroutine(ComfortBlinkerCoroutine());
         }
 
         private void TurnOnBlinker(int side)
@@ -95,11 +120,6 @@ namespace Core.Entities.Vehicle.Submodules.Comfort
             _isBetweenBlinks = false;
         }
 
-        private IEnumerator ComfortBlinkerCoroutine() // TODO
-        {
-            yield break;
-        }
-
         private IEnumerator BlinkerCoroutine()
         {
             while (_currentBlinkerSide != 0)
@@ -108,6 +128,22 @@ namespace Core.Entities.Vehicle.Submodules.Comfort
                 _isBetweenBlinks = !_isBetweenBlinks;
                 yield return new WaitForSeconds(_isBetweenBlinks ? Config.BreakerDuration : Config.BlinkDuration);
             }
+        }
+        
+        private IEnumerator ComfortBlinkerCoroutine()
+        {
+            var i = 0;
+            while (i < Config.ComfortBlinkerBlinks)
+            {
+                Blink();
+                _isBetweenBlinks = !_isBetweenBlinks;
+                yield return new WaitForSeconds(_isBetweenBlinks ? Config.BreakerDuration : Config.BlinkDuration);
+                Blink();
+                _isBetweenBlinks = !_isBetweenBlinks;
+                yield return new WaitForSeconds(_isBetweenBlinks ? Config.BreakerDuration : Config.BlinkDuration);
+                i++;
+            }
+            TurnOffBlinker();
         }
 
         private void Blink()

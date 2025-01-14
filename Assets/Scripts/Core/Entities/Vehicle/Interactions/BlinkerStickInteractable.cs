@@ -16,6 +16,7 @@ namespace Core.Entities.Vehicle.Interactions
         
         [SerializeField] private FMODCustomEmitter stickEngageEmitter;
         [SerializeField] private FMODCustomEmitter stickCancelEmitter;
+        [SerializeField] private FMODCustomEmitter stickComfortEmitter;
 
         #endregion
         
@@ -26,6 +27,20 @@ namespace Core.Entities.Vehicle.Interactions
         {
             Input.Functions.LeftBlinker.performed += OnLeftBlinkerButton;
             Input.Functions.RightBlinker.performed += OnRightBlinkerButton;
+            Input.Functions.LeftComfortBlinker.performed += OnLeftComfortBlinkerButton;
+            Input.Functions.RightComfortBlinker.performed += OnRightComfortBlinkerButton;
+        }
+
+        private void OnRightComfortBlinkerButton(InputAction.CallbackContext obj)
+        {
+            if (CancelBlinkerIfNotZero() || !comfortBlinkers) return;
+            InvokeBlinkerEvent(BlinkerStickState.RightComfort);
+        }
+
+        private void OnLeftComfortBlinkerButton(InputAction.CallbackContext obj)
+        {
+            if (CancelBlinkerIfNotZero() || !comfortBlinkers) return;
+            InvokeBlinkerEvent(BlinkerStickState.LeftComfort);
         }
 
         private void SetBlinkerState(BlinkerStickState state)
@@ -39,8 +54,13 @@ namespace Core.Entities.Vehicle.Interactions
         {
             switch (state)
             {
-                case BlinkerStickState.LeftComfort: // TODO
+                case BlinkerStickState.LeftComfort:
+                    stickComfortEmitter?.Play();
+                    Animator.SetTrigger(InteractionVehicleAnimParams.LeftComfortBlinker);
+                    break;
                 case BlinkerStickState.RightComfort:
+                    stickComfortEmitter?.Play();
+                    Animator.SetTrigger(InteractionVehicleAnimParams.RightComfortBlinker);
                     break;
                 case BlinkerStickState.Zero:
                     stickCancelEmitter.Play();
