@@ -1,9 +1,9 @@
-using System;
 using System.Collections;
 using Core.Entities.Vehicle.Configs.Comfort;
 using Core.Entities.Vehicle.Enums;
 using Core.Entities.Vehicle.Modules;
 using Core.Entities.Vehicle.Subentities.Dashboard;
+using Core.Helpers;
 using UnityEngine;
 
 namespace Core.Entities.Vehicle.Submodules.Comfort
@@ -18,7 +18,8 @@ namespace Core.Entities.Vehicle.Submodules.Comfort
         private int _currentBlinkerSide;
         private bool _isBetweenBlinks;
         private bool _hazards;
-        
+
+        private Timer _blinkTimer;
         private Coroutine _blinkerCoroutine;
         
         public BlinkerModule(VehicleController ctr) : base(ctr) { }
@@ -26,7 +27,7 @@ namespace Core.Entities.Vehicle.Submodules.Comfort
         public override void Initialize()
         {
             base.Initialize();
-            
+            _blinkTimer = new Timer(Controller);
             Interactions.BlinkerStick.BlinkerStickStateChanged += OnBlinkerStickStateChanged;
         }
 
@@ -43,11 +44,6 @@ namespace Core.Entities.Vehicle.Submodules.Comfort
                 TurnOffBlinker();
             else if (_currentBlinkerSide != 0)
                 TurnOnBlinker(_currentBlinkerSide);
-
-            // switch (expression)
-            // {
-            //     
-            // }
         }
 
         private void OnBlinkerStickStateChanged(BlinkerStickState stick)
@@ -85,16 +81,16 @@ namespace Core.Entities.Vehicle.Submodules.Comfort
                     TurnOnComfortBlinker(1);
                     break;
             }
-            // throw new System.NotImplementedException();
         }
 
         private void TurnOnComfortBlinker(int side)
         {
+            if (_hazards) return;
+            StopCoroutine(_blinkerCoroutine);
             if (_currentBlinkerSide != side)
                 TurnOffBlinker();
             _currentBlinkerSide = side;
-            if (_hazards) return;
-            _blinkerCoroutine = StartCoroutine(ComfortBlinkerCoroutine());
+            _blinkerCoroutine = StartCoroutine(ComfortBlinkerCoroutine(_blinkTimer.ElapsedTime));
         }
 
         private void TurnOnBlinker(int side)
@@ -144,6 +140,29 @@ namespace Core.Entities.Vehicle.Submodules.Comfort
                 i++;
             }
             TurnOffBlinker();
+        }
+        
+        private IEnumerator ComfortBlinkerCoroutine(float initialTimer)
+        {
+            _blinkTimer.Restart();
+            var i = 0;
+            var duration = Mathf.Clamp((_isBetweenBlinks ? Config.BreakerDuration : Config.BlinkDuration) - initialTimer, 0, float.MaxValue);
+            var blinksCount = Config.ComfortBlinkerBlinks * 2 + (_isBetweenBlinks ? 1 : 0);
+            if (initialTimer > 0f)
+            {
+                
+                yield return new WaitForSeconds(duration);
+            }
+            while (i < blinksCount)
+            {
+                _blinkTimer.Restart();
+                Blink();
+                _isBetweenBlinks = !_isBetweenBlinks;
+                yield return new WaitForSeconds(_isBetweenBlinks ? Config.BreakerDuration : Config.BlinkDuration);
+                i++;
+            }
+            TurnOffBlinker();
+            _blinkTimer.Reset();
         }
 
         private void Blink()
