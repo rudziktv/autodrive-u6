@@ -409,15 +409,6 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "New action",
-                    "type": "Button",
-                    "id": "703c6fe6-87d6-4e7b-8f68-c04c152a3c83",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
                     "name": "Left Blinker",
                     "type": "Button",
                     "id": "350e29a9-35c3-4125-856c-2098d4f8dc09",
@@ -448,6 +439,15 @@
                     "name": "Right Comfort Blinker",
                     "type": "Button",
                     "id": "b57c1a88-2702-481c-b1c4-9f32384c26b7",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Hazards",
+                    "type": "Button",
+                    "id": "ca060e54-a956-4409-92a0-27777afe3637",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
@@ -485,17 +485,6 @@
                     "processors": "",
                     "groups": ";Keyboard and Mouse",
                     "action": "Parking Brake",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "fd637130-170a-43ae-abb9-08f89009e906",
-                    "path": "",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "New action",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -540,6 +529,28 @@
                     "processors": "",
                     "groups": ";Keyboard and Mouse",
                     "action": "Right Comfort Blinker",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "29a64cfb-aeda-40bc-8702-300d15c18337",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Hazards",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "2144a905-10bf-49df-8f1d-e1513ec5344e",
+                    "path": "<Keyboard>/g",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard and Mouse",
+                    "action": "Hazards",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

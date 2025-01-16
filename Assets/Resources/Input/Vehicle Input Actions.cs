@@ -431,15 +431,6 @@ public partial class @VehicleInputActions: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""New action"",
-                    ""type"": ""Button"",
-                    ""id"": ""703c6fe6-87d6-4e7b-8f68-c04c152a3c83"",
-                    ""expectedControlType"": """",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
                     ""name"": ""Left Blinker"",
                     ""type"": ""Button"",
                     ""id"": ""350e29a9-35c3-4125-856c-2098d4f8dc09"",
@@ -470,6 +461,15 @@ public partial class @VehicleInputActions: IInputActionCollection2, IDisposable
                     ""name"": ""Right Comfort Blinker"",
                     ""type"": ""Button"",
                     ""id"": ""b57c1a88-2702-481c-b1c4-9f32384c26b7"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Hazards"",
+                    ""type"": ""Button"",
+                    ""id"": ""ca060e54-a956-4409-92a0-27777afe3637"",
                     ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """",
@@ -507,17 +507,6 @@ public partial class @VehicleInputActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": "";Keyboard and Mouse"",
                     ""action"": ""Parking Brake"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""fd637130-170a-43ae-abb9-08f89009e906"",
-                    ""path"": """",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""New action"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -562,6 +551,28 @@ public partial class @VehicleInputActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": "";Keyboard and Mouse"",
                     ""action"": ""Right Comfort Blinker"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""29a64cfb-aeda-40bc-8702-300d15c18337"",
+                    ""path"": """",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Hazards"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""2144a905-10bf-49df-8f1d-e1513ec5344e"",
+                    ""path"": ""<Keyboard>/g"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard and Mouse"",
+                    ""action"": ""Hazards"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -750,11 +761,11 @@ public partial class @VehicleInputActions: IInputActionCollection2, IDisposable
         m_Functions_Ignition = m_Functions.FindAction("Ignition", throwIfNotFound: true);
         m_Functions_Starter = m_Functions.FindAction("Starter", throwIfNotFound: true);
         m_Functions_ParkingBrake = m_Functions.FindAction("Parking Brake", throwIfNotFound: true);
-        m_Functions_Newaction = m_Functions.FindAction("New action", throwIfNotFound: true);
         m_Functions_LeftBlinker = m_Functions.FindAction("Left Blinker", throwIfNotFound: true);
         m_Functions_RightBlinker = m_Functions.FindAction("Right Blinker", throwIfNotFound: true);
         m_Functions_LeftComfortBlinker = m_Functions.FindAction("Left Comfort Blinker", throwIfNotFound: true);
         m_Functions_RightComfortBlinker = m_Functions.FindAction("Right Comfort Blinker", throwIfNotFound: true);
+        m_Functions_Hazards = m_Functions.FindAction("Hazards", throwIfNotFound: true);
         // View
         m_View = asset.FindActionMap("View", throwIfNotFound: true);
         m_View_ChangeVehicleView = m_View.FindAction("Change Vehicle View", throwIfNotFound: true);
@@ -1058,11 +1069,11 @@ public partial class @VehicleInputActions: IInputActionCollection2, IDisposable
     private readonly InputAction m_Functions_Ignition;
     private readonly InputAction m_Functions_Starter;
     private readonly InputAction m_Functions_ParkingBrake;
-    private readonly InputAction m_Functions_Newaction;
     private readonly InputAction m_Functions_LeftBlinker;
     private readonly InputAction m_Functions_RightBlinker;
     private readonly InputAction m_Functions_LeftComfortBlinker;
     private readonly InputAction m_Functions_RightComfortBlinker;
+    private readonly InputAction m_Functions_Hazards;
     public struct FunctionsActions
     {
         private @VehicleInputActions m_Wrapper;
@@ -1070,11 +1081,11 @@ public partial class @VehicleInputActions: IInputActionCollection2, IDisposable
         public InputAction @Ignition => m_Wrapper.m_Functions_Ignition;
         public InputAction @Starter => m_Wrapper.m_Functions_Starter;
         public InputAction @ParkingBrake => m_Wrapper.m_Functions_ParkingBrake;
-        public InputAction @Newaction => m_Wrapper.m_Functions_Newaction;
         public InputAction @LeftBlinker => m_Wrapper.m_Functions_LeftBlinker;
         public InputAction @RightBlinker => m_Wrapper.m_Functions_RightBlinker;
         public InputAction @LeftComfortBlinker => m_Wrapper.m_Functions_LeftComfortBlinker;
         public InputAction @RightComfortBlinker => m_Wrapper.m_Functions_RightComfortBlinker;
+        public InputAction @Hazards => m_Wrapper.m_Functions_Hazards;
         public InputActionMap Get() { return m_Wrapper.m_Functions; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1093,9 +1104,6 @@ public partial class @VehicleInputActions: IInputActionCollection2, IDisposable
             @ParkingBrake.started += instance.OnParkingBrake;
             @ParkingBrake.performed += instance.OnParkingBrake;
             @ParkingBrake.canceled += instance.OnParkingBrake;
-            @Newaction.started += instance.OnNewaction;
-            @Newaction.performed += instance.OnNewaction;
-            @Newaction.canceled += instance.OnNewaction;
             @LeftBlinker.started += instance.OnLeftBlinker;
             @LeftBlinker.performed += instance.OnLeftBlinker;
             @LeftBlinker.canceled += instance.OnLeftBlinker;
@@ -1108,6 +1116,9 @@ public partial class @VehicleInputActions: IInputActionCollection2, IDisposable
             @RightComfortBlinker.started += instance.OnRightComfortBlinker;
             @RightComfortBlinker.performed += instance.OnRightComfortBlinker;
             @RightComfortBlinker.canceled += instance.OnRightComfortBlinker;
+            @Hazards.started += instance.OnHazards;
+            @Hazards.performed += instance.OnHazards;
+            @Hazards.canceled += instance.OnHazards;
         }
 
         private void UnregisterCallbacks(IFunctionsActions instance)
@@ -1121,9 +1132,6 @@ public partial class @VehicleInputActions: IInputActionCollection2, IDisposable
             @ParkingBrake.started -= instance.OnParkingBrake;
             @ParkingBrake.performed -= instance.OnParkingBrake;
             @ParkingBrake.canceled -= instance.OnParkingBrake;
-            @Newaction.started -= instance.OnNewaction;
-            @Newaction.performed -= instance.OnNewaction;
-            @Newaction.canceled -= instance.OnNewaction;
             @LeftBlinker.started -= instance.OnLeftBlinker;
             @LeftBlinker.performed -= instance.OnLeftBlinker;
             @LeftBlinker.canceled -= instance.OnLeftBlinker;
@@ -1136,6 +1144,9 @@ public partial class @VehicleInputActions: IInputActionCollection2, IDisposable
             @RightComfortBlinker.started -= instance.OnRightComfortBlinker;
             @RightComfortBlinker.performed -= instance.OnRightComfortBlinker;
             @RightComfortBlinker.canceled -= instance.OnRightComfortBlinker;
+            @Hazards.started -= instance.OnHazards;
+            @Hazards.performed -= instance.OnHazards;
+            @Hazards.canceled -= instance.OnHazards;
         }
 
         public void RemoveCallbacks(IFunctionsActions instance)
@@ -1315,11 +1326,11 @@ public partial class @VehicleInputActions: IInputActionCollection2, IDisposable
         void OnIgnition(InputAction.CallbackContext context);
         void OnStarter(InputAction.CallbackContext context);
         void OnParkingBrake(InputAction.CallbackContext context);
-        void OnNewaction(InputAction.CallbackContext context);
         void OnLeftBlinker(InputAction.CallbackContext context);
         void OnRightBlinker(InputAction.CallbackContext context);
         void OnLeftComfortBlinker(InputAction.CallbackContext context);
         void OnRightComfortBlinker(InputAction.CallbackContext context);
+        void OnHazards(InputAction.CallbackContext context);
     }
     public interface IViewActions
     {

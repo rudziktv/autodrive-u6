@@ -4339,6 +4339,57 @@ Transform:
   - {fileID: 4701439498416220091}
   m_Father: {fileID: 540897177}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &577087780
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 577087781}
+  - component: {fileID: 577087782}
+  m_Layer: 0
+  m_Name: Hazards Button
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &577087781
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 577087780}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3759808872985981700}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &577087782
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 577087780}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25b78919179d42fdbc05505ed6108842, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <Details>k__BackingField:
+    <Name>k__BackingField: 
+    <Cursor>k__BackingField: {fileID: 0}
+  interact:
+    m_PersistentCalls:
+      m_Calls: []
+  hazardsButton: {fileID: 7365243532993506889}
 --- !u!1 &582977855
 GameObject:
   m_ObjectHideFlags: 0
@@ -36703,6 +36754,7 @@ Transform:
   - {fileID: 279737888254466244}
   - {fileID: 839765122}
   - {fileID: 1661512670}
+  - {fileID: 577087781}
   m_Father: {fileID: 6469037577523226391}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &3764701044441973962
@@ -38179,7 +38231,7 @@ Transform:
   m_GameObject: {fileID: 12753262592474620}
   serializedVersion: 2
   m_LocalRotation: {x: -0.43862236, y: -0, z: -0, w: 0.8986715}
-  m_LocalPosition: {x: -0.000012874603, y: 0.8070152, z: 0.58710647}
+  m_LocalPosition: {x: -0.0000128746, y: 0.8070152, z: 0.58710647}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -52225,7 +52277,10 @@ GameObject:
   - component: {fileID: 5052872315563969567}
   - component: {fileID: 2771756426455274424}
   - component: {fileID: 7365243532993506887}
-  m_Layer: 8
+  - component: {fileID: 7365243532993506890}
+  - component: {fileID: 7365243532993506889}
+  - component: {fileID: 7365243532993506888}
+  m_Layer: 7
   m_Name: hazard_lights_button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -56450,6 +56505,7 @@ MonoBehaviour:
     interactionsConfig:
       lightSwitch: {fileID: 3926761268403946686}
       keyIgnition: {fileID: 9139028192836713477}
+      <Hazards>k__BackingField: {fileID: 577087782}
       <BlinkerStick>k__BackingField: {fileID: 1661512671}
     <SoundsConfig>k__BackingField:
       <BlinkerOnEmitter>k__BackingField: {fileID: 1414671047}
@@ -58851,6 +58907,70 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &7365243532993506888
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6435593630232236373}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86e57c04ba4747ccb44f5297c5fd065e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bankName: Volkswagen Golf Mk6.bank
+  eventReference:
+    Guid:
+      Data1: 245343121
+      Data2: 1289087510
+      Data3: 1445032067
+      Data4: 854114948
+    Path: event:/Vehicle/Interior/Generic Button
+--- !u!114 &7365243532993506889
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6435593630232236373}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 933bc81bd82d42e28fe9a8d237f3613e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <Details>k__BackingField:
+    <Name>k__BackingField: Hazards
+    <Cursor>k__BackingField: {fileID: 11400000, guid: 9740b10c27e73eccabd3c2f5cce90698, type: 2}
+  interact:
+    m_PersistentCalls:
+      m_Calls: []
+  animStateName: Hazards Button Anim
+  layerName: Buttons
+  animator: {fileID: 0}
+  emitter: {fileID: 7365243532993506888}
+--- !u!64 &7365243532993506890
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6435593630232236373}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -2269202768948588935, guid: 87e05218b6febd134b00d23a905d0c0d, type: 3}
 --- !u!4 &7368416286190582984
 Transform:
   m_ObjectHideFlags: 0
@@ -63693,7 +63813,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3759808872985981700}
   m_Layer: 0
-  m_Name: Interactions Test
+  m_Name: Interactions
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

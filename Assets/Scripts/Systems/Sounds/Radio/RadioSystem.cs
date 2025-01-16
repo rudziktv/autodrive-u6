@@ -132,6 +132,7 @@ namespace Systems.Sounds.Radio
         [AOT.MonoPInvokeCallback(typeof(EVENT_CALLBACK))]
         private RESULT EventCallback(EVENT_CALLBACK_TYPE type, IntPtr instance, IntPtr parameterPtr)
         {
+            Debug.Log($"FMOD EventCallback {type}");
             if (type != EVENT_CALLBACK_TYPE.CREATE_PROGRAMMER_SOUND) return RESULT.OK;
             var soundInfo = Marshal.PtrToStructure<PROGRAMMER_SOUND_PROPERTIES>(parameterPtr);
             soundInfo.sound = _radioStream.handle;

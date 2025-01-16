@@ -10,13 +10,13 @@ namespace Core.Entities.Vehicle.Configs.Comfort
     public class SingleBlinkerModule : ElectricalModule
     {
         public Timer Timer { get; private set; }
+        public bool IsBetweenBlinks { get; private set; }
         
         private BlinkersConfig Config => ComfortConfig.BlinkersConfig;
         
         private readonly BlinkerController _lights;
         private readonly IndicatorController _indicator;
-        
-        private bool _isBetweenBlinks;
+
         private Coroutine _blinkingRoutine;
 
         public SingleBlinkerModule(VehicleController controller, BlinkerController lights, IndicatorController indicator) : base(controller)
@@ -32,8 +32,17 @@ namespace Core.Entities.Vehicle.Configs.Comfort
             _blinkingRoutine = StartCoroutine(BlinkingCoroutine(Timer.ElapsedTime, true));
         }
 
+        public void TurnOnBlinkerContinuous(bool isBetweenBlinks, float initialTime = 0)
+        {
+            IsBetweenBlinks = isBetweenBlinks;
+            StopCoroutine(_blinkingRoutine);
+            _blinkingRoutine = StartCoroutine(BlinkingCoroutine(
+                initialTime != 0 ? initialTime : Timer.ElapsedTime, false));
+        }
+
         public void TurnOnBlinker(float initialTime = 0f)
         {
+            StopCoroutine(_blinkingRoutine);
             TurnOffBlinker();
             _blinkingRoutine = StartCoroutine(BlinkingCoroutine(
                 initialTime != 0 ? initialTime : Timer.ElapsedTime, false));
@@ -44,9 +53,9 @@ namespace Core.Entities.Vehicle.Configs.Comfort
             if (_blinkingRoutine != null)
                 StopCoroutine(_blinkingRoutine);
             
-            if (_isBetweenBlinks)
+            if (IsBetweenBlinks)
                 Sounds.BlinkerOffEmitter.Play();
-            _isBetweenBlinks = false;
+            IsBetweenBlinks = false;
             
             _lights.TurnOffBlinker();
             _indicator.SetIndicator(false);
@@ -58,9 +67,9 @@ namespace Core.Entities.Vehicle.Configs.Comfort
             if (_blinkingRoutine != null)
                 StopCoroutine(_blinkingRoutine);
             
-            if (_isBetweenBlinks && playSound)
+            if (IsBetweenBlinks && playSound)
                 Sounds.BlinkerOffEmitter.Play();
-            _isBetweenBlinks = false;
+            IsBetweenBlinks = false;
             
             _lights.TurnOffBlinker();
             _indicator.SetIndicator(false);
@@ -70,20 +79,20 @@ namespace Core.Entities.Vehicle.Configs.Comfort
         {
             Timer.Restart();
             var i = 0;
-            var duration = Mathf.Clamp((_isBetweenBlinks ? Config.BreakerDuration : Config.BlinkDuration) - initialTimer, 0, float.MaxValue);
+            var duration = Mathf.Clamp((IsBetweenBlinks ? Config.BreakerDuration : Config.BlinkDuration) - initialTimer, 0, float.MaxValue);
             var blinksCount = Config.ComfortBlinkerBlinks * 2;
             if (initialTimer > 0f)
             {
                 yield return new WaitForSeconds(duration);
-                _isBetweenBlinks = !_isBetweenBlinks;
-                blinksCount += _isBetweenBlinks ? 1 : 0;
+                IsBetweenBlinks = !IsBetweenBlinks;
+                blinksCount += IsBetweenBlinks ? 1 : 0;
             }
             while (!comfort || i < blinksCount)
             {
                 Timer.Restart();
                 Blink();
-                yield return new WaitForSeconds(_isBetweenBlinks ? Config.BreakerDuration : Config.BlinkDuration);
-                _isBetweenBlinks = !_isBetweenBlinks;
+                yield return new WaitForSeconds(IsBetweenBlinks ? Config.BreakerDuration : Config.BlinkDuration);
+                IsBetweenBlinks = !IsBetweenBlinks;
                 i++;
             }
             TurnOffBlinker();
@@ -92,9 +101,9 @@ namespace Core.Entities.Vehicle.Configs.Comfort
 
         private void Blink()
         {
-            _lights.ApplyBlinker(!_isBetweenBlinks);
-            _indicator.SetIndicator(!_isBetweenBlinks);
-            if (_isBetweenBlinks)
+            _lights.ApplyBlinker(!IsBetweenBlinks);
+            _indicator.SetIndicator(!IsBetweenBlinks);
+            if (IsBetweenBlinks)
                 Sounds.BlinkerOnEmitter.Play();
             else
                 Sounds.BlinkerOffEmitter.Play();
