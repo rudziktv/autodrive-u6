@@ -7,7 +7,7 @@ namespace Core.Components.Lights.Standalone
     public class LightLevelStandalone : MonoBehaviour, ILightLevel
     {
         [SerializeField] private AdvancedPhysicalLightStandalone[] lights;
-        [SerializeField] private AdvancedEmissiveLightStandalone[] emissives;
+        [SerializeField] private EmissiveLightStandalone[] emissives;
         [SerializeField] private GameObject[] cutOffLineObjects;
 
         [SerializeField] private bool useCutOffLine;
@@ -112,7 +112,7 @@ namespace Core.Components.Lights.Standalone
             }
         }
         
-        private void StopTransition(AdvancedPhysicalLightStandalone[] customLights, AdvancedEmissiveLightStandalone[] customEmissives)
+        private void StopTransition(AdvancedPhysicalLightStandalone[] customLights, EmissiveLightStandalone[] customEmissives)
         {
             if (_transitionCoroutine != null) StopCoroutine(_transitionCoroutine);
 
@@ -179,7 +179,7 @@ namespace Core.Components.Lights.Standalone
             return lights.Where(l => !excludedNames.Contains(l.name)).ToArray();
         }
 
-        public AdvancedEmissiveLightStandalone[] GetEmissivesExcluding(string[] excludedNames)
+        public EmissiveLightStandalone[] GetEmissivesExcluding(string[] excludedNames)
         {
             return emissives.Where(e => !excludedNames.Contains(e.name)).ToArray();
         }

@@ -15,18 +15,28 @@ namespace Core.Helpers
             _mono = monoBehaviour;
         }
 
+        /// <summary>
+        /// Starts the timer
+        /// </summary>
         public void Start()
         {
             Stop();
             _routine = _mono.StartCoroutine(TimerRoutine());
         }
 
+        /// <summary>
+        /// Stops timer and resets ElapsedTime
+        /// </summary>
         public void Reset()
         {
             Stop();
             ElapsedTime = 0;
         }
 
+        /// <summary>
+        /// Stops and reset timer,
+        /// then starts it again
+        /// </summary>
         public void Restart()
         {
             Reset();

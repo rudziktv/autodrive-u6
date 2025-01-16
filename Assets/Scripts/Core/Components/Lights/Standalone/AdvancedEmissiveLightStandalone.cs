@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Core.Components.Lights.Standalone
 {
-    public class AdvancedEmissiveLightStandalone : MonoBehaviour
+    public class AdvancedEmissiveLightStandalone : EmissiveLightStandalone
     {
         [SerializeField] private string materialName;
         [SerializeField] private int materialIndex;
@@ -45,7 +45,7 @@ namespace Core.Components.Lights.Standalone
             _material = mat;
         }
 
-        public void ApplyInstantEmission(float percentage = 1f)
+        public override void ApplyInstantEmission(float percentage = 1f)
         {
             StopTransition();
             
@@ -63,14 +63,14 @@ namespace Core.Components.Lights.Standalone
             }
         }
 
-        public void ApplyAnimatedEmission(float duration, float percentage = 1f)
+        public override void ApplyAnimatedEmission(float duration, float percentage = 1f)
         {
             StopTransition();
 
             _transitionCoroutine = StartCoroutine(Transition(duration, percentage));
         }
 
-        public void StopTransition()
+        public override void StopTransition()
         {
             if (_transitionCoroutine != null)
                 StopCoroutine(_transitionCoroutine);
