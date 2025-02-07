@@ -6,6 +6,13 @@ TagManager:
   tags:
   - DashboardIllumination
   - Equipment
+  - CameraRig
+  - CameraYaw
+  - CameraPitch
+  - CameraRigAnchor
+  - SpawnPoint
+  - PersonSpawnPoint
+  - VehicleSpawnPoint
   layers:
   - Default
   - TransparentFX
@@ -20,8 +27,8 @@ TagManager:
   - Lights
   - Dusk Sensor
   - Player
-  - 
-  - 
+  - Interior
+  - Exterior
   - 
   - 
   - 
@@ -46,11 +53,11 @@ TagManager:
   m_RenderingLayers:
   - Default
   - Light Layer 1
-  - Light Layer 2
+  - Mirror Render Layer
   - Light Layer 3
-  - Light Layer 4
+  - Vehicle Exterior
   - Light Layer 5
-  - Light Layer 6
+  - Ignore Interior Reflection Probe
   - Light Layer 7
   - Decal Layer default
   - Decal Layer 1

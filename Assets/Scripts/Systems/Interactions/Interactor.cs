@@ -14,6 +14,15 @@ namespace Systems.Interactions
         [SerializeField] private LayerMask interactionLayer;
         [SerializeField] private Camera interactionCamera;
 
+        private void Start()
+        {
+            if (interactionCamera == null)
+                interactionCamera = Camera.main;
+            
+            var interactAction = InputSystem.actions.FindAction(GlobalInputs.INTERACT); 
+            interactAction.performed += Interact;
+        }
+
         [CanBeNull]
         public Interactable TryGetInteractable(Vector3 origin, Vector3 direction)
         {

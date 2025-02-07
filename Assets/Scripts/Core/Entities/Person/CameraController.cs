@@ -1,3 +1,6 @@
+using System;
+using Core.Utils;
+using Core.Utils.Extensions;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -5,6 +8,8 @@ namespace Core.Entities.Person
 {
     public class CameraController : MonoBehaviour
     {
+        public static CameraController Instance { get; private set; }
+        
         [SerializeField] private float mouseSensitivity = 0.015f;
         [SerializeField] private Camera playerCamera;
 
@@ -26,12 +31,56 @@ namespace Core.Entities.Person
 
         private int _zoomInOut;
 
+        public bool PanningLocked { get; private set; }
+
+        private void Awake()
+        {
+            Instance = this;
+        }
+
+        private void Start()
+        {
+            if (playerCamera == null)
+                playerCamera = Camera.main;
+            if (cameraYaw == null)
+                cameraYaw = GlobalUtils.GetCameraYaw().transform;
+            if (cameraPitch == null)
+                cameraPitch = GlobalUtils.GetCameraPitch().transform;
+            
+            _rotX = transform.localEulerAngles.x;
+            _targetFov = fov;
+
+            InitializeInput();
+        }
+
+        private void InitializeInput()
+        {
+            InputSystem.actions.FindAction(GlobalInputs.TOGGLE_CURSOR)
+                .performed += ToggleCursor;
+            InputSystem.actions.FindAction(GlobalInputs.CAMERA).performed += OnMouseMove;
+
+            this.GetInputAction(GlobalInputs.ZOOM_IN).performed += ZoomIn;
+            this.GetInputAction(GlobalInputs.ZOOM_OUT).performed += ZoomOut;
+            this.GetInputAction(GlobalInputs.TOGGLE_ZOOM).performed += ToggleZoom;
+            this.GetInputAction(GlobalInputs.RESET_ZOOM).performed += ResetZoom;
+        }
+
+        public void ResetAndLockView()
+        {
+            PanningLocked = true;
+            cameraYaw.localEulerAngles = Vector3.zero;
+            cameraPitch.localEulerAngles = Vector3.zero;
+        }
+        
+        public void UnlockView() =>
+            PanningLocked = false;
+        
         public void OnMouseMove(InputAction.CallbackContext ctx)
         {
             _mouseDelta += ctx.ReadValue<Vector2>();
         }
 
-        public void ToggleCursor()
+        public void ToggleCursor(InputAction.CallbackContext ctx)
         {
             Cursor.lockState = Cursor.lockState == CursorLockMode.Locked ? CursorLockMode.None : CursorLockMode.Locked;
             // Cursor.visible = !Cursor.visible;
@@ -61,21 +110,15 @@ namespace Core.Entities.Person
             _zoomInOut = 1;
         }
 
-        public void ResetZoom()
+        public void ResetZoom(InputAction.CallbackContext ctx)
         {
             _targetFov = fov;
         }
 
-        public void ToggleZoom()
+        public void ToggleZoom(InputAction.CallbackContext ctx)
         {
             _isZooming = !_isZooming;
             _targetFov = _isZooming ? zoomFov : fov;
-        }
-
-        private void Start()
-        {
-            _rotX = transform.localEulerAngles.x;
-            _targetFov = fov;
         }
 
         private void Update()
@@ -86,7 +129,8 @@ namespace Core.Entities.Person
 
         private void UpdateRotation()
         {
-            if (_mouseDelta == Vector2.zero || Cursor.lockState != CursorLockMode.Locked)
+            if (_mouseDelta == Vector2.zero || Cursor.lockState != CursorLockMode.Locked ||
+                PanningLocked)
             {
                 _mouseDelta = Vector2.zero;
                 return;

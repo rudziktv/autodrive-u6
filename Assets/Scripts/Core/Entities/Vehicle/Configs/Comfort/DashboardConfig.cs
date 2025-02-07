@@ -13,6 +13,8 @@ namespace Core.Entities.Vehicle.Configs.Comfort
         [SerializeField] private DashboardIllumination dashboardIllumination;
         [SerializeField] private IndicatorsConfig indicatorsConfig;
         
+        [field: SerializeField] public GaugeController Tachometer { get; private set; }
+        
         // [SerializeField] private LightLevel 
         
         public GaugeController FuelGauge => fuelGauge;

@@ -1,0 +1,47 @@
+using Systems.Info;
+using UnityEngine;
+
+namespace Core.Entities.Vehicle.Data.Drivetrain.Engine
+{
+    [CreateAssetMenu(fileName = "Combustion Engine", menuName = "Vehicle/Engine/Combustion Engine", order = 0)]
+    public class CombustionEngineData : VehicleEngineData
+    {
+        [Header("Combustion Info")]
+        public int capacity;
+        public string cylindersInfo;
+        public string valvesInfo;
+        public string intakeInfo;
+        public string powerInfo;
+        public string torqueInfo;
+
+        public float compressionRatio;
+        public float cylinderBore;
+        public float cylinderStroke;
+        
+        [Header("Fuel")]
+        public FuelTypeEnum fuelType;
+        public float targetOctane;
+        public float octaneTolerance;
+        public float targetCetane;
+        public float cetaneTolerance;
+        
+        [Header("Revs")]
+        public float stallRev;
+
+        public float redLineRev;
+        public bool redLineCutOff;
+        public float redLineCutOffTime;
+
+        public float timingGearRevLimit;
+
+        [Header("Other")]
+        public float innerDrag;
+        public float innerRevDrag;
+        public AnimationCurve innerRevDragCurve;
+
+        public float torqueBasedDrag;
+        public float flywheelWeight;
+        public float flywheelRadius;
+        public float flywheelFreeMotionFactor;
+    }
+}

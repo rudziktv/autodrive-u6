@@ -1,4 +1,6 @@
 using System;
+using Systems.Gamemodes.Base;
+using Systems.Gamemodes.PersonMode;
 using Systems.Sounds.Radio;
 using UnityEngine;
 
@@ -6,6 +8,9 @@ namespace Systems.Managers
 {
     public class GameManager : MonoBehaviour
     {
+        public static IGamemode CurrentGamemode { get; private set; }
+        public static event Action<IGamemode> GamemodeChanged;
+        
         public static GameManager Instance { get; private set; }
         
         // [SerializeField] private GameObject playerPrefab;
@@ -15,6 +20,8 @@ namespace Systems.Managers
         {
             Instance = this;
             InitializeData();
+
+            CurrentGamemode = new PersonGamemode();
         }
 
         private void InitializeData()
@@ -24,8 +31,15 @@ namespace Systems.Managers
 
         private void Start()
         {
-            // if (playerPrefab != null)
-            //     Instantiate(playerPrefab, spawnPoint.position, spawnPoint.rotation);
+            CurrentGamemode.EnterMode();
+        }
+
+        public static void ChangeGamemode(IGamemode gamemode)
+        {
+            CurrentGamemode.ExitMode();
+            CurrentGamemode = gamemode;
+            CurrentGamemode.EnterMode();
+            GamemodeChanged?.Invoke(gamemode);
         }
     }
 }

@@ -9,12 +9,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 15f930322051481eaa6f06ef03e68213, type: 3}
+  m_Script: {fileID: 11500000, guid: d870a60774554eb79b7943eff5a7584c, type: 3}
   m_Name: EA111 1.4 TSI 122 KM CAXA
   m_EditorClassIdentifier: 
-  <EngineName>k__BackingField: CAXA EA111
-  <MaxTorque>k__BackingField: 200
-  <TorqueCurve>k__BackingField:
+  engineName: 1.4 TSI 122KM
+  engineCode: CAXA
+  engineType: 0
+  maxTorque: 210
+  torqueRevScale: 8000
+  torqueCurve:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
@@ -74,8 +77,52 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  <MaxRev>k__BackingField: 8000
-  <IdleRev>k__BackingField: 800
-  <MinRev>k__BackingField: 350
-  <CutOffRev>k__BackingField: 6100
-  <CutOff>k__BackingField: 1
+  capacity: 1390
+  cylindersInfo: Inline 4
+  valvesInfo: DOHC
+  intakeInfo: Turbo Intercooler
+  powerInfo: 90kW @5000rpm
+  torqueInfo: 200Nm @1500-4000rpm
+  compressionRatio: 10
+  cylinderBore: 76.5
+  cylinderStroke: 75.6
+  fuelType: 0
+  targetOctane: 92
+  octaneTolerance: 7
+  targetCetane: 5
+  cetaneTolerance: 2
+  stallRev: 325
+  redLineRev: 6100
+  redLineCutOff: 1
+  redLineCutOffTime: 0.15
+  timingGearRevLimit: 7200
+  innerDrag: 0
+  innerRevDrag: 0
+  innerRevDragCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  torqueBasedDrag: 0
+  flywheelWeight: 20
+  flywheelRadius: 0.17
+  flywheelFreeMotionFactor: 1

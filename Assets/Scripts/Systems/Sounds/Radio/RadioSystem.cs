@@ -26,6 +26,8 @@ namespace Systems.Sounds.Radio
         private Sound _radioStream;
         private EventInstance _eventInstance;
         private CancellationTokenSource _tokenSource;
+
+        private string _currentUrl;
         
         public delegate void StreamBufferingCallback(OPENSTATE openState, uint percentBuffered);
 
@@ -35,9 +37,21 @@ namespace Systems.Sounds.Radio
             _tokenSource = new CancellationTokenSource();
         }
 
+        private void Update()
+        {
+            var res = _radioStream.getOpenState(out var state, out var percentBuffered, out var _, out var __);
+            // if (res != RESULT.OK)
+            //     Debug.Log($"RadioStream res={res}, state={state}, %={percentBuffered / 100f}");
+            if (state == OPENSTATE.ERROR && res == RESULT.ERR_FILE_COULDNOTSEEK && !string.IsNullOrEmpty(_currentUrl))
+            {
+                PlayRadio(_eventInstance, _currentUrl);
+            }
+        }
+
         public async void PlayRadio(EventInstance eventInstance, string radioUrl,
             StreamBufferingCallback bufferingCallback = null)
         {
+            _currentUrl = radioUrl;
             _tokenSource?.Cancel();
             _tokenSource?.Dispose();
             _tokenSource = new CancellationTokenSource();

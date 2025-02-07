@@ -1,6 +1,8 @@
 using Core.Entities.Vehicle.Managers;
 using Core.Entities.Vehicle.Modules;
+using Core.Entities.Vehicle.Modules.Drivetrain;
 using Core.Helpers;
+using Systems.Cameras.Vehicle;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -13,6 +15,7 @@ namespace Core.Entities.Vehicle
         
         public string VehicleTag => vehicleTag;
         public VehicleConfigManager VehicleConfigs => vehicleConfigs;
+        public VehicleCameraSystem CameraSystem => VehicleConfigs.ComponentsReferences.CameraSystem;
         
         public ModuleManager ModuleManager { get; private set; }
         public ElectricityManager ElectricityManager { get; private set; }
@@ -32,6 +35,7 @@ namespace Core.Entities.Vehicle
             ElectricityManager = new(this);
 
             ModuleManager.RegisterModule(new ComfortModule(this));
+            ModuleManager.RegisterModule(new DrivetrainModule(this));
         }
 
         private void OnEnable()
@@ -49,6 +53,9 @@ namespace Core.Entities.Vehicle
         private void Start()
         {
             ModuleManager.InitializeModules();
+            
+            VehicleInput.Disable();
+            InputActions.Disable();
         }
 
         private void Update()

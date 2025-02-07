@@ -13,11 +13,11 @@ namespace Core.Entities.Vehicle.Subentities.Dashboard
         [SerializeField] private AnimationCurve curve = AnimationCurve.Linear(0f, 0f, 1f, 1f);
 
         public float Value { get; set; }
-        private float target => valueControlled;
+        // private float Target => Value;
         
         private void Update()
         {
-            // var target = Mathf.Clamp01((Value - minScale) / (maxScale - minScale));
+            var target = Mathf.Clamp01((Value - minScale) / (maxScale - minScale));
             var current = animator.GetFloat(animatorName);
             var animatedValue = Mathf.Lerp(current, target, Time.deltaTime / smoothing);
             animator.SetFloat(animatorName, curve.Evaluate(animatedValue));

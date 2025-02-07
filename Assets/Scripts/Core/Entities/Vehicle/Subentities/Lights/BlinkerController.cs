@@ -1,3 +1,4 @@
+using System;
 using Core.Components.Lights.Standalone;
 using UnityEngine;
 
@@ -6,6 +7,11 @@ namespace Core.Entities.Vehicle.Subentities.Lights
     public class BlinkerController : MonoBehaviour
     {
         [SerializeField] private LightLevelStandalone lights;
+
+        private void Start()
+        {
+            TurnOffBlinker();
+        }
 
         public void TurnOnBlinker()
         {

@@ -70,7 +70,7 @@ Material:
     - _PerPixelSorting: 0
     - _Power: 4
     - _Range: 0.125
-    - _Raw_Power: 2.5
+    - _Raw_Power: 0.78
     - _RayTracing: 0
     - _ReceivesSSR: 1
     - _ReceivesSSRTransparent: 0

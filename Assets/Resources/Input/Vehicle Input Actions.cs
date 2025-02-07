@@ -29,49 +29,60 @@ public partial class @VehicleInputActions: IInputActionCollection2, IDisposable
             ""actions"": [
                 {
                     ""name"": ""Gas Pedal"",
-                    ""type"": ""Button"",
+                    ""type"": ""Value"",
                     ""id"": ""ac18c5f0-a031-4f4c-b9d7-946bdc78a9c3"",
-                    ""expectedControlType"": """",
+                    ""expectedControlType"": ""Axis"",
                     ""processors"": """",
                     ""interactions"": """",
-                    ""initialStateCheck"": false
+                    ""initialStateCheck"": true
                 },
                 {
                     ""name"": ""Brake Pedal"",
-                    ""type"": ""Button"",
+                    ""type"": ""Value"",
                     ""id"": ""42338992-d098-4733-8769-fbd7c0d8c19c"",
-                    ""expectedControlType"": """",
+                    ""expectedControlType"": ""Axis"",
                     ""processors"": """",
                     ""interactions"": """",
-                    ""initialStateCheck"": false
+                    ""initialStateCheck"": true
                 },
                 {
                     ""name"": ""Clutch Pedal"",
-                    ""type"": ""Button"",
+                    ""type"": ""Value"",
                     ""id"": ""c11df8d3-61f9-4bce-b015-3d00c7e06e44"",
-                    ""expectedControlType"": """",
+                    ""expectedControlType"": ""Axis"",
                     ""processors"": """",
                     ""interactions"": """",
-                    ""initialStateCheck"": false
+                    ""initialStateCheck"": true
                 },
                 {
                     ""name"": ""Steering Wheel"",
-                    ""type"": ""Button"",
+                    ""type"": ""Value"",
                     ""id"": ""5345d260-5037-4b92-8f09-1bd084ce4255"",
-                    ""expectedControlType"": """",
+                    ""expectedControlType"": ""Axis"",
                     ""processors"": """",
                     ""interactions"": """",
-                    ""initialStateCheck"": false
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
                 {
                     ""name"": """",
                     ""id"": ""17f3c19d-9633-436c-b9ff-8ee95f236b96"",
-                    ""path"": """",
+                    ""path"": ""<Linux::ThrustMasterInc::ThrustmasterThrustmasterT300RSRacingwheel>/Stick/up"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": "";T300RS"",
+                    ""action"": ""Gas Pedal"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""48c41137-3c1c-47f6-abc4-a1dcefcf1657"",
+                    ""path"": ""<Keyboard>/w"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard and Mouse"",
                     ""action"": ""Gas Pedal"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -79,10 +90,10 @@ public partial class @VehicleInputActions: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""f405d88c-2693-4a01-a5e4-0013f12644ec"",
-                    ""path"": """",
+                    ""path"": ""<Linux::ThrustMasterInc::ThrustmasterThrustmasterT300RSRacingwheel>/Stick/down"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": "";T300RS"",
                     ""action"": ""Brake Pedal"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -90,10 +101,10 @@ public partial class @VehicleInputActions: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""490ccd23-7d8c-4d67-919d-af2851532fc6"",
-                    ""path"": """",
+                    ""path"": ""<Linux::ThrustMasterInc::ThrustmasterThrustmasterT300RSRacingwheel>/Stick/y"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": "";T300RS"",
                     ""action"": ""Clutch Pedal"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -101,10 +112,10 @@ public partial class @VehicleInputActions: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""ecf89d8e-3ac3-4943-8c5e-796b77b11ccc"",
-                    ""path"": """",
+                    ""path"": ""<Linux::ThrustMasterInc::ThrustmasterThrustmasterT300RSRacingwheel>/Stick/x"",
                     ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
+                    ""processors"": ""AxisDeadzone(max=1)"",
+                    ""groups"": "";T300RS"",
                     ""action"": ""Steering Wheel"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -246,10 +257,10 @@ public partial class @VehicleInputActions: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""d56f99c8-21fc-48b3-a58b-49278d8c9ccf"",
-                    ""path"": """",
+                    ""path"": ""<Linux::ThrustMasterInc::ThustmasterT500RSGearShift>/Base2"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": "";TH8A Shifter"",
                     ""action"": ""Reverse"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -257,10 +268,10 @@ public partial class @VehicleInputActions: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""2e8d5d9d-a761-437b-a4ea-43f2da32a8b8"",
-                    ""path"": """",
+                    ""path"": ""<Linux::ThrustMasterInc::ThustmasterT500RSGearShift>/Trigger"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": "";TH8A Shifter"",
                     ""action"": ""Gear 1"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -268,10 +279,10 @@ public partial class @VehicleInputActions: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""f29e2d9e-2ed3-4919-a13b-04fd57426651"",
-                    ""path"": """",
+                    ""path"": ""<Linux::ThrustMasterInc::ThustmasterT500RSGearShift>/Thumb"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": "";TH8A Shifter"",
                     ""action"": ""Gear 2"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -279,10 +290,10 @@ public partial class @VehicleInputActions: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""92bfa6bf-e39d-4351-9433-833e7756a3c4"",
-                    ""path"": """",
+                    ""path"": ""<Linux::ThrustMasterInc::ThustmasterT500RSGearShift>/Thumb2"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": "";TH8A Shifter"",
                     ""action"": ""Gear 3"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -290,10 +301,10 @@ public partial class @VehicleInputActions: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""5593c489-71df-4a28-a6c7-c9b718c9562d"",
-                    ""path"": """",
+                    ""path"": ""<Linux::ThrustMasterInc::ThustmasterT500RSGearShift>/Top"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": "";TH8A Shifter"",
                     ""action"": ""Gear 4"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -301,10 +312,10 @@ public partial class @VehicleInputActions: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""1a3bfeb5-843a-4b72-b288-a3134952e869"",
-                    ""path"": """",
+                    ""path"": ""<Linux::ThrustMasterInc::ThustmasterT500RSGearShift>/Top2"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": "";TH8A Shifter"",
                     ""action"": ""Gear 5"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -312,10 +323,10 @@ public partial class @VehicleInputActions: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""c104f686-9eb7-4818-b93e-7351fed4254d"",
-                    ""path"": """",
+                    ""path"": ""<Linux::ThrustMasterInc::ThustmasterT500RSGearShift>/Pinkie"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": "";TH8A Shifter"",
                     ""action"": ""Gear 6"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -323,10 +334,10 @@ public partial class @VehicleInputActions: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""447965a1-98f3-479d-b56e-ef833d70e976"",
-                    ""path"": """",
+                    ""path"": ""<Linux::ThrustMasterInc::ThustmasterT500RSGearShift>/Thumb"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": "";TH8A Shifter"",
                     ""action"": ""Automatic Drive"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -334,10 +345,10 @@ public partial class @VehicleInputActions: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""35c74075-e7bb-4924-a69e-a4594c045fd2"",
-                    ""path"": """",
+                    ""path"": ""<Linux::ThrustMasterInc::ThustmasterT500RSGearShift>/Trigger"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": "";TH8A Shifter"",
                     ""action"": ""Automatic Parking"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -345,10 +356,10 @@ public partial class @VehicleInputActions: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""83b5f3cd-3859-4d0a-bec4-c2ec78e2efaf"",
-                    ""path"": """",
+                    ""path"": ""<Linux::ThrustMasterInc::ThustmasterT500RSGearShift>/Base2"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": "";TH8A Shifter"",
                     ""action"": ""Automatic Reverse"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -356,10 +367,10 @@ public partial class @VehicleInputActions: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""c9b5b440-bd46-4945-8043-dfbb062b2e7b"",
-                    ""path"": """",
+                    ""path"": ""<Linux::ThrustMasterInc::ThustmasterT500RSGearShift>/Top2"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": "";TH8A Shifter"",
                     ""action"": ""Automatic Sport"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -367,10 +378,10 @@ public partial class @VehicleInputActions: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""71c5fea9-6e89-4805-99b5-ec48a31661e2"",
-                    ""path"": """",
+                    ""path"": ""<Linux::ThrustMasterInc::ThustmasterT500RSGearShift>/Pinkie"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": "";TH8A Shifter"",
                     ""action"": ""Automatic Manual"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -378,10 +389,10 @@ public partial class @VehicleInputActions: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""5989a34c-d1d0-4c42-8485-7b0431e2fc2d"",
-                    ""path"": """",
+                    ""path"": ""<Linux::ThrustMasterInc::ThrustmasterThrustmasterT300RSRacingwheel>/Thumb"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": "";T300RS"",
                     ""action"": ""Gear Up"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -389,10 +400,10 @@ public partial class @VehicleInputActions: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""07629d69-f2de-4e88-8ee8-25c161478827"",
-                    ""path"": """",
+                    ""path"": ""<Linux::ThrustMasterInc::ThrustmasterThrustmasterT300RSRacingwheel>/Trigger"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": "";T300RS"",
                     ""action"": ""Gear Down"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -523,11 +534,33 @@ public partial class @VehicleInputActions: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""199ca4c2-4e3a-4d38-af1f-220c6aaee501"",
+                    ""path"": ""<Linux::ThrustMasterInc::ThrustmasterThrustmasterT300RSRacingwheel>/Base5"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";T300RS"",
+                    ""action"": ""Left Blinker"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""4f3498d8-3f9f-44f9-a8b3-cc4a7f4b5cd6"",
                     ""path"": ""<Keyboard>/rightBracket"",
                     ""interactions"": ""Hold(duration=0.15)"",
                     ""processors"": """",
                     ""groups"": "";Keyboard and Mouse"",
+                    ""action"": ""Right Blinker"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""27dc4873-463d-42bb-9e90-a661fa1f13e5"",
+                    ""path"": ""<Linux::ThrustMasterInc::ThrustmasterThrustmasterT300RSRacingwheel>/Base6"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";T300RS"",
                     ""action"": ""Right Blinker"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -545,11 +578,33 @@ public partial class @VehicleInputActions: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""ed5c1f16-9050-4d0d-b68f-1e924b3224d6"",
+                    ""path"": ""<Linux::ThrustMasterInc::ThrustmasterThrustmasterT300RSRacingwheel>/Base5"",
+                    ""interactions"": ""Tap(duration=0.15)"",
+                    ""processors"": """",
+                    ""groups"": "";T300RS"",
+                    ""action"": ""Left Comfort Blinker"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""0449cc06-6c5d-4878-9cc4-c529144cc98f"",
                     ""path"": ""<Keyboard>/rightBracket"",
                     ""interactions"": ""Tap(duration=0.15)"",
                     ""processors"": """",
                     ""groups"": "";Keyboard and Mouse"",
+                    ""action"": ""Right Comfort Blinker"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""9c0ea74e-37b6-42b8-9116-2baa3b5ee9c5"",
+                    ""path"": ""<Linux::ThrustMasterInc::ThrustmasterThrustmasterT300RSRacingwheel>/Base6"",
+                    ""interactions"": ""Tap(duration=0.15)"",
+                    ""processors"": """",
+                    ""groups"": "";T300RS"",
                     ""action"": ""Right Comfort Blinker"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -626,16 +681,25 @@ public partial class @VehicleInputActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Exterior Vehicle View"",
+                    ""type"": ""Button"",
+                    ""id"": ""88c10f2e-84e5-465b-9eeb-91946e49bba0"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
                 {
                     ""name"": """",
                     ""id"": ""4d3133f9-61a4-49f1-95d7-7403f3a66391"",
-                    ""path"": """",
+                    ""path"": ""<Keyboard>/c"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": "";Keyboard and Mouse"",
                     ""action"": ""Change Vehicle View"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -643,7 +707,7 @@ public partial class @VehicleInputActions: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""caaba3a8-675d-43d3-a32e-97cf8fac02cd"",
-                    ""path"": """",
+                    ""path"": ""<Keyboard>/1"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -681,6 +745,17 @@ public partial class @VehicleInputActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Infotainment View"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""63ebe8f1-6e6e-4bd8-8417-37edaa4c3bfa"",
+                    ""path"": ""<Keyboard>/9"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Exterior Vehicle View"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -731,6 +806,28 @@ public partial class @VehicleInputActions: IInputActionCollection2, IDisposable
                     ""isOR"": false
                 }
             ]
+        },
+        {
+            ""name"": ""T300RS"",
+            ""bindingGroup"": ""T300RS"",
+            ""devices"": [
+                {
+                    ""devicePath"": ""<Linux::ThrustMasterInc::ThrustmasterThrustmasterT300RSRacingwheel>"",
+                    ""isOptional"": false,
+                    ""isOR"": false
+                }
+            ]
+        },
+        {
+            ""name"": ""TH8A Shifter"",
+            ""bindingGroup"": ""TH8A Shifter"",
+            ""devices"": [
+                {
+                    ""devicePath"": ""<Linux::ThrustMasterInc::ThustmasterT500RSGearShift>"",
+                    ""isOptional"": false,
+                    ""isOR"": false
+                }
+            ]
         }
     ]
 }");
@@ -773,6 +870,7 @@ public partial class @VehicleInputActions: IInputActionCollection2, IDisposable
         m_View_View1 = m_View.FindAction("View 1", throwIfNotFound: true);
         m_View_DashboardView = m_View.FindAction("Dashboard View", throwIfNotFound: true);
         m_View_InfotainmentView = m_View.FindAction("Infotainment View", throwIfNotFound: true);
+        m_View_ExteriorVehicleView = m_View.FindAction("Exterior Vehicle View", throwIfNotFound: true);
         // Trip Computer
         m_TripComputer = asset.FindActionMap("Trip Computer", throwIfNotFound: true);
         m_TripComputer_Newaction = m_TripComputer.FindAction("New action", throwIfNotFound: true);
@@ -1173,6 +1271,7 @@ public partial class @VehicleInputActions: IInputActionCollection2, IDisposable
     private readonly InputAction m_View_View1;
     private readonly InputAction m_View_DashboardView;
     private readonly InputAction m_View_InfotainmentView;
+    private readonly InputAction m_View_ExteriorVehicleView;
     public struct ViewActions
     {
         private @VehicleInputActions m_Wrapper;
@@ -1182,6 +1281,7 @@ public partial class @VehicleInputActions: IInputActionCollection2, IDisposable
         public InputAction @View1 => m_Wrapper.m_View_View1;
         public InputAction @DashboardView => m_Wrapper.m_View_DashboardView;
         public InputAction @InfotainmentView => m_Wrapper.m_View_InfotainmentView;
+        public InputAction @ExteriorVehicleView => m_Wrapper.m_View_ExteriorVehicleView;
         public InputActionMap Get() { return m_Wrapper.m_View; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1206,6 +1306,9 @@ public partial class @VehicleInputActions: IInputActionCollection2, IDisposable
             @InfotainmentView.started += instance.OnInfotainmentView;
             @InfotainmentView.performed += instance.OnInfotainmentView;
             @InfotainmentView.canceled += instance.OnInfotainmentView;
+            @ExteriorVehicleView.started += instance.OnExteriorVehicleView;
+            @ExteriorVehicleView.performed += instance.OnExteriorVehicleView;
+            @ExteriorVehicleView.canceled += instance.OnExteriorVehicleView;
         }
 
         private void UnregisterCallbacks(IViewActions instance)
@@ -1225,6 +1328,9 @@ public partial class @VehicleInputActions: IInputActionCollection2, IDisposable
             @InfotainmentView.started -= instance.OnInfotainmentView;
             @InfotainmentView.performed -= instance.OnInfotainmentView;
             @InfotainmentView.canceled -= instance.OnInfotainmentView;
+            @ExteriorVehicleView.started -= instance.OnExteriorVehicleView;
+            @ExteriorVehicleView.performed -= instance.OnExteriorVehicleView;
+            @ExteriorVehicleView.canceled -= instance.OnExteriorVehicleView;
         }
 
         public void RemoveCallbacks(IViewActions instance)
@@ -1297,6 +1403,24 @@ public partial class @VehicleInputActions: IInputActionCollection2, IDisposable
             return asset.controlSchemes[m_KeyboardandMouseSchemeIndex];
         }
     }
+    private int m_T300RSSchemeIndex = -1;
+    public InputControlScheme T300RSScheme
+    {
+        get
+        {
+            if (m_T300RSSchemeIndex == -1) m_T300RSSchemeIndex = asset.FindControlSchemeIndex("T300RS");
+            return asset.controlSchemes[m_T300RSSchemeIndex];
+        }
+    }
+    private int m_TH8AShifterSchemeIndex = -1;
+    public InputControlScheme TH8AShifterScheme
+    {
+        get
+        {
+            if (m_TH8AShifterSchemeIndex == -1) m_TH8AShifterSchemeIndex = asset.FindControlSchemeIndex("TH8A Shifter");
+            return asset.controlSchemes[m_TH8AShifterSchemeIndex];
+        }
+    }
     public interface IDriveActions
     {
         void OnGasPedal(InputAction.CallbackContext context);
@@ -1339,6 +1463,7 @@ public partial class @VehicleInputActions: IInputActionCollection2, IDisposable
         void OnView1(InputAction.CallbackContext context);
         void OnDashboardView(InputAction.CallbackContext context);
         void OnInfotainmentView(InputAction.CallbackContext context);
+        void OnExteriorVehicleView(InputAction.CallbackContext context);
     }
     public interface ITripComputerActions
     {

@@ -1,6 +1,7 @@
 using System.Collections;
 using Core.Entities.Vehicle.Configs;
 using Core.Entities.Vehicle.Configs.Interactions;
+using Core.Entities.Vehicle.Data;
 using Core.Entities.Vehicle.Managers;
 using UnityEngine;
 
@@ -14,6 +15,8 @@ namespace Core.Entities.Vehicle
         protected InteractionsConfig Interactions => VehicleConfigs.InteractionsConfig;
         protected ComponentsReferences Components => VehicleConfigs.ComponentsReferences;
         protected SoundsConfig Sounds => VehicleConfigs.SoundsConfig;
+        protected VehicleInstanceData VehicleData => VehicleConfigs.VehicleData;
+        protected VehicleInputActions VehicleInput => Controller.VehicleInput;
         
         protected Coroutine StartCoroutine(IEnumerator enumerator) =>
             Controller.StartCoroutine(enumerator);
@@ -24,9 +27,9 @@ namespace Core.Entities.Vehicle
             Controller.StopCoroutine(coroutine);
         }
 
-        protected VehicleModule(VehicleController controller)
+        protected VehicleModule(VehicleController ctr)
         {
-            Controller = controller;
+            Controller = ctr;
         }
 
         public virtual void Initialize() { }
