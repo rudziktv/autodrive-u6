@@ -14,6 +14,7 @@ namespace Core.Entities.Vehicle.Modules.Engine
             set => _throttle = Mathf.Clamp01(value);
         }
 
+        public float FlywheelAngularVelocity { get; private set; }
         public float FlywheelRPM { get; private set; } = 1500f;
         // public float CurrentTorque { get; private set; }
 
@@ -48,7 +49,7 @@ namespace Core.Entities.Vehicle.Modules.Engine
         {
             var currentTorque = CurrentTorque;
             var drag = _data.innerDrag + CurrentInnerRevDrag + CurrentTorqueBasedDrag;
-            FlywheelRPM += AngleVelocityToRPM((currentTorque - drag) / FlywheelInertiaMoment * Time.fixedDeltaTime);
+            FlywheelRPM += AngleVelocityToRPM((currentTorque - drag) / FlywheelInertiaMoment) * Time.fixedDeltaTime;
         }
 
         // private float CurrentMaxTorque =>
