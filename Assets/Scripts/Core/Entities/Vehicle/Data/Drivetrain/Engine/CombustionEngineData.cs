@@ -1,3 +1,4 @@
+using Core.Entities.Vehicle.Data.Drivetrain.EngineControl;
 using Systems.Info;
 using UnityEngine;
 
@@ -7,6 +8,7 @@ namespace Core.Entities.Vehicle.Data.Drivetrain.Engine
     public class CombustionEngineData : VehicleEngineData
     {
         [Header("Combustion Info")]
+        public ECUData ecu;
         public int capacity;
         public string cylindersInfo;
         public string valvesInfo;
@@ -15,6 +17,7 @@ namespace Core.Entities.Vehicle.Data.Drivetrain.Engine
         public string torqueInfo;
 
         public float compressionRatio;
+        public int cylinders;
         public float cylinderBore;
         public float cylinderStroke;
         
@@ -43,5 +46,21 @@ namespace Core.Entities.Vehicle.Data.Drivetrain.Engine
         public float flywheelWeight;
         public float flywheelRadius;
         public float flywheelFreeMotionFactor;
+
+        public float intakeResponseTime;
+        public AnimationCurve intakeResponseCurve;
+        
+        [Header("Arcade Fuel Consumption")]
+        public float fuelConsumptionBase = 120f;
+        public float fuelConsumptionRpmFactor = 500f;
+        public float fuelConsumptionFactor = 1f;
+        public float fuelConsumptionCapacityFactor = 1;
+
+        [Header("Cooling")]
+        public float coolantFlow = 1f;
+        public float coolantFlowRpmFactor = 1f;
+
+        public float oilPressure = 5f;
+        public float oilPressureRpmFactor = 1f;
     }
 }

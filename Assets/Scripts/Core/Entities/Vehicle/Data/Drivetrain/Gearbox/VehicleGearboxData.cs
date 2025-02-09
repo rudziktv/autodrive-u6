@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Core.Entities.Vehicle.Data.Drivetrain
+namespace Core.Entities.Vehicle.Data.Drivetrain.Gearbox
 {
     public class VehicleGearboxData : ScriptableObject
     {

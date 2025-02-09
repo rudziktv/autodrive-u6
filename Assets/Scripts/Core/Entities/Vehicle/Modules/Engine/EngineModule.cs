@@ -1,9 +1,9 @@
+using Core.Entities.Vehicle.Data.Drivetrain;
+
 namespace Core.Entities.Vehicle.Modules.Engine
 {
-    public class EngineModule : ElectricalModule
+    public class EngineModule : DrivetrainSubmodule
     {
         public EngineModule(VehicleController ctr) : base(ctr) { }
-        
-        
     }
 }

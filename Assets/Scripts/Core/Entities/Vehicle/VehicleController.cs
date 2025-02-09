@@ -1,3 +1,4 @@
+using Core.Entities.Vehicle.Builders;
 using Core.Entities.Vehicle.Managers;
 using Core.Entities.Vehicle.Modules;
 using Core.Entities.Vehicle.Modules.Drivetrain;
@@ -35,7 +36,8 @@ namespace Core.Entities.Vehicle
             ElectricityManager = new(this);
 
             ModuleManager.RegisterModule(new ComfortModule(this));
-            ModuleManager.RegisterModule(new DrivetrainModule(this));
+            ModuleManager.RegisterModule(typeof(DrivetrainModule),
+                VehicleConfigs.VehicleData.drivetrain.BuildDrivetrain(this));
         }
 
         private void OnEnable()

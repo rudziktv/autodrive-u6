@@ -12305,6 +12305,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentTemperature: 0
+  ambientTemperatureCelsius: 0
 --- !u!4 &1083628303
 Transform:
   m_ObjectHideFlags: 0
@@ -63115,6 +63116,7 @@ MonoBehaviour:
           <LeftBlinkerIndicator>k__BackingField: {fileID: 98191777}
           <RightBlinkerIndicator>k__BackingField: {fileID: 1780859338}
         <Tachometer>k__BackingField: {fileID: 6416457099634491285}
+        <CoolantGauge>k__BackingField: {fileID: 8322349510577087423}
       <BlinkersConfig>k__BackingField:
         <BlinkDuration>k__BackingField: 0.4
         <BreakerDuration>k__BackingField: 0.4

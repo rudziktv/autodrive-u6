@@ -30,14 +30,23 @@ MonoBehaviour:
       inWeight: 0.33333334
       outWeight: 0.33333334
     - serializedVersion: 3
-      time: 0.125
-      value: 0.25
-      inSlope: 2.4
-      outSlope: 2.4
-      tangentMode: 136
+      time: 0.0625
+      value: 0.5
+      inSlope: 3.9198115
+      outSlope: 3.9198115
+      tangentMode: 0
       weightedMode: 0
       inWeight: 0.33333334
-      outWeight: 0.33333334
+      outWeight: 1
+    - serializedVersion: 3
+      time: 0.125
+      value: 0.7
+      inSlope: 6.523646
+      outSlope: 6.523646
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.36433506
+      outWeight: 0.106919646
     - serializedVersion: 3
       time: 0.25
       value: 1
@@ -57,13 +66,22 @@ MonoBehaviour:
       inWeight: 0.33333334
       outWeight: 0.33333334
     - serializedVersion: 3
+      time: 0.625
+      value: 0.85
+      inSlope: -3.6936305
+      outSlope: -0.013111498
+      tangentMode: 1
+      weightedMode: 0
+      inWeight: 0.30198288
+      outWeight: 1
+    - serializedVersion: 3
       time: 0.75
-      value: 0.5
-      inSlope: -5.7793293
+      value: 0.6
+      inSlope: -6.133802
       outSlope: -6.0203114
       tangentMode: 1
       weightedMode: 0
-      inWeight: 0.12213898
+      inWeight: 0.19512653
       outWeight: 0.12213564
     - serializedVersion: 3
       time: 1
@@ -77,6 +95,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  ecu: {fileID: 11400000, guid: f1984e28ec00577379bc1f82323e3e8f, type: 2}
   capacity: 1390
   cylindersInfo: Inline 4
   valvesInfo: DOHC
@@ -84,6 +103,7 @@ MonoBehaviour:
   powerInfo: 90kW @5000rpm
   torqueInfo: 200Nm @1500-4000rpm
   compressionRatio: 10
+  cylinders: 4
   cylinderBore: 76.5
   cylinderStroke: 75.6
   fuelType: 0
@@ -92,37 +112,79 @@ MonoBehaviour:
   targetCetane: 5
   cetaneTolerance: 2
   stallRev: 325
-  redLineRev: 6100
+  redLineRev: 6300
   redLineCutOff: 1
-  redLineCutOffTime: 0.15
+  redLineCutOffTime: 0.1
   timingGearRevLimit: 7200
-  innerDrag: 0
-  innerRevDrag: 0
+  innerDrag: 6
+  innerRevDrag: 24
   innerRevDragCurve:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
-      time: 0
+      time: 0.125
       value: 0
-      inSlope: 0
-      outSlope: 0
+      inSlope: 3.2727275
+      outSlope: 3.2727275
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
-      outWeight: 0
+      outWeight: 0.078571424
+    - serializedVersion: 3
+      time: 0.6214279
+      value: 0.66081905
+      inSlope: 0.35103348
+      outSlope: 0.35103348
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
     - serializedVersion: 3
       time: 1
-      value: 1
-      inSlope: 2
-      outSlope: 2
+      value: 0.75
+      inSlope: 0.16326533
+      outSlope: 0.16326533
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0
+      inWeight: 0.91008043
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
   torqueBasedDrag: 0
-  flywheelWeight: 20
-  flywheelRadius: 0.17
+  flywheelWeight: 10.35
+  flywheelRadius: 0.114
   flywheelFreeMotionFactor: 1
+  intakeResponseTime: 0.02
+  intakeResponseCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0.125
+      value: 0.2
+      inSlope: -0.32229766
+      outSlope: -0.32229766
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.1875
+    - serializedVersion: 3
+      time: 1
+      value: 0.01
+      inSlope: 0.00404662
+      outSlope: 0.00404662
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.29375
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  fuelConsumptionBase: 1
+  fuelConsumptionRpmFactor: 1
+  fuelConsumptionFactor: 1
+  fuelConsumptionCapacityFactor: 1
+  coolantFlow: 15
+  coolantFlowRpmFactor: 1
+  oilPressure: 5000
+  oilPressureRpmFactor: 0.001

@@ -9,6 +9,9 @@ namespace Core.Entities.Vehicle.Managers
         
         private readonly Dictionary<Type, VehicleModule> _modules = new();
 
+        public bool RegisterModule(Type key, VehicleModule module)
+            => _modules.TryAdd(key, module);
+
         public bool RegisterModule(VehicleModule module)
         {
             var type = module.GetType();

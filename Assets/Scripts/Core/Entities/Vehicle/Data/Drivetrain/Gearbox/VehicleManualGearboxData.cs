@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Core.Entities.Vehicle.Data.Drivetrain
+namespace Core.Entities.Vehicle.Data.Drivetrain.Gearbox
 {
     [CreateAssetMenu(fileName = "Manual Gearbox", menuName = "Vehicle/Manual Gearbox", order = 0)]
     public class VehicleManualGearboxData : VehicleGearboxData
