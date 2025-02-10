@@ -95,3 +95,6 @@ fmod_editor.log
 /[Aa]ssets/FMOD Studio Project/autodrive_fmod_project/.cache
 /[Aa]ssets/FMOD Studio Project/autodrive_fmod_project/.user
 /[Aa]ssets/FMOD Studio Project/autodrive_fmod_project/.unsaved
+
+# mono crash files ignore
+mono_crash.*.blob

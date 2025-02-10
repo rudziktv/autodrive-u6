@@ -60,6 +60,8 @@ namespace Core.Entities.Vehicle.Modules.Engine
         /// Volume of burnt fuel in the last frame, in l/h.
         /// </summary>
         public float CurrentFuelConsumption { get; private set; }
+
+        private float _oilTempLossTimer;
         
         public GasolineEngineModule(CombustionEngineData data, GasolineECUModule ecu, VehicleController ctr) : base(ctr)
         {
@@ -73,8 +75,11 @@ namespace Core.Entities.Vehicle.Modules.Engine
             base.Initialize();
             AirTemperature = SimpleEnvironment.instance.AmbientTemperatureKelvin;
             BlockTemperature = SimpleEnvironment.instance.AmbientTemperatureKelvin;
-            OilTemperature = SimpleEnvironment.instance.AmbientTemperatureKelvin;
-            CoolantTemperature = SimpleEnvironment.instance.AmbientTemperatureKelvin;
+            // OilTemperature = SimpleEnvironment.instance.AmbientTemperatureKelvin;
+            // CoolantTemperature = SimpleEnvironment.instance.AmbientTemperatureKelvin;
+
+            OilTemperature = TempUnitUtils.CelsiusToKelvin(90);
+            CoolantTemperature = TempUnitUtils.CelsiusToKelvin(90);
         }
 
         public override void UpdateModule()
@@ -268,18 +273,27 @@ namespace Core.Entities.Vehicle.Modules.Engine
             var blockLossQ = aluminiumHeatGainFactor * blockLossArea * (BlockTemperature - outsideTemp) * Time.fixedDeltaTime;
             
             BlockTemperature -= blockLossQ / aluminiumSpecificHeat / blockMass;
+
+            const float oilHeatLossFactor = 5f / 1000f;
             
-            // oil temp loss
+            _oilTempLossTimer += Time.fixedDeltaTime;
             var oilLossArea = (_data.cylinderBore * _data.cylinderStroke / 1000000f) * 4f * 2f;
-            var oilLossQ = oilHeatGainFactor * oilLossArea * (BlockTemperature - outsideTemp) * Time.fixedDeltaTime;
-            OilTemperature -= oilLossQ / oilSpecificHeat / oilMass;
+            var oilLossQ = oilHeatLossFactor * oilLossArea * (OilTemperature - outsideTemp) * _oilTempLossTimer;
+
+            if (_oilTempLossTimer > 2f)
+            {
+                OilTemperature -= oilLossQ / oilSpecificHeat / oilMass;
+                _oilTempLossTimer = 0;
+            }
+
+            const float coolantHeatLossFactor = 15f / 1000f;
             
             // coolant temp loss
             var coolantLossArea = (_data.cylinderBore * _data.cylinderStroke / 1000000f) * 4f;
-            var coolantLossQ = coolantHeatGainFactor * oilLossArea * (BlockTemperature - outsideTemp) * Time.fixedDeltaTime;
+            var coolantLossQ = coolantHeatLossFactor * coolantLossArea * (CoolantTemperature - outsideTemp) * Time.fixedDeltaTime;
             CoolantTemperature -= coolantLossQ / coolantSpecificHeat / coolantMass;
             
-            Debug.Log($"Loss Q: {blockLossQ}, oilQ: {oilQ}, coolantQ: {coolantQ}, oil T: {TempUnitUtils.KelvinToCelsius(OilTemperature)}, coolant T: {TempUnitUtils.KelvinToCelsius(CoolantTemperature)}, block T: {TempUnitUtils.KelvinToCelsius(BlockTemperature)}");
+            Debug.Log($"Loss Q: {blockLossQ}, oil loss Q: {oilLossQ}, Δ oil loss: {oilLossQ / oilSpecificHeat / oilMass}, Δ oil: {deltaOil}, coolant loss Q: {coolantLossQ}, oil T: {TempUnitUtils.KelvinToCelsius(OilTemperature)}, coolant T: {TempUnitUtils.KelvinToCelsius(CoolantTemperature)}, block T: {TempUnitUtils.KelvinToCelsius(BlockTemperature)}");
             // Debug.Log($"Δ Oil T: {deltaOil}, Oil X: {x}, Oil Q: {oilQ}, Oil Density: {dynamicOilDensity}, Oil T {TempUnitUtils.KelvinToCelsius(OilTemperature)}, Coolant T: {TempUnitUtils.KelvinToCelsius(CoolantTemperature)}, Block T: {TempUnitUtils.KelvinToCelsius(BlockTemperature)}");
             // Debug.Log($"W: {totalE} kW, Q: {totalQ} kW, {CurrentFuelConsumption} l/h, Block T: {TempUnitUtils.KelvinToCelsius(BlockTemperature)}, Air T: {TempUnitUtils.KelvinToCelsius(AirTemperature)}, ø Air T: {TempUnitUtils.KelvinToCelsius(avgAirTemperature)}, Air Peak T: {TempUnitUtils.KelvinToCelsius(workAirTempPeak)}, cycles per frame {cycles * Time.fixedDeltaTime}");
             // Debug.Log($"W: {totalE} kW, Q: {totalQ} kW, {CurrentFuelConsumption} l/h, Block T: {TempUnitUtils.KelvinToCelsius(BlockTemperature)}, Air T: {TempUnitUtils.KelvinToCelsius(AirTemperature)}, cycles per frame {cycles * Time.fixedDeltaTime}");
