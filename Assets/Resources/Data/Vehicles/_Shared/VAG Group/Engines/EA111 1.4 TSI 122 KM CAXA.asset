@@ -187,4 +187,4 @@ MonoBehaviour:
   coolantFlow: 15
   coolantFlowRpmFactor: 1
   oilPressure: 5000
-  oilPressureRpmFactor: 0.001
+  oilPressureRpmFactor: 0.01
