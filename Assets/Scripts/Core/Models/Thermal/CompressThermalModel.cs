@@ -4,7 +4,7 @@ namespace Core.Models.Thermal
 {
     public class CompressThermalModel : ThermalModel
     {
-        private float _compressionRatio;
+        private float _compressionRatio = 1;
         public float DiabeticIndex { get; }
         public float Density { get; }
 
@@ -16,17 +16,16 @@ namespace Core.Models.Thermal
             get => _compressionRatio;
             set
             {
-                var oldCompressionRatio = _compressionRatio;
+                Temperature *= Mathf.Pow(Volume / (UncompressedVolume / value)
+                    , DiabeticIndex - 1f);
                 _compressionRatio = value;
-                Temperature *= Mathf.Pow(UncompressedVolume / oldCompressionRatio / Volume, DiabeticIndex - 1f);
             }
         }
 
-        public CompressThermalModel(float density, float diabeticIndex, float initialTemp, float mass, float specificHeat, ThermalTickUpdate tick) : base(initialTemp, mass, specificHeat, tick)
+        public CompressThermalModel(float density, float diabeticIndex, float initialTemp, float mass, float thermalCapacity, ThermalTickUpdate tick) : base(initialTemp, mass, thermalCapacity, tick)
         {
             Density = density;
             DiabeticIndex = diabeticIndex;
-            CompressionRatio = 1;
         }
     }
 }
