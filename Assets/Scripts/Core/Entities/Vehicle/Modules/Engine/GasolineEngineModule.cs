@@ -346,7 +346,9 @@ namespace Core.Entities.Vehicle.Modules.Engine
 
             _engineCapacity = VolumeUtils.ConvertCm3ToM3(_data.capacity);
             _cylindersArea = AreaUtils.ConvertMm2ToM2(2 * Mathf.PI * (_data.cylinderBore / 2f) +
-                                                           _data.cylinderStroke * 2 * Mathf.PI * (_data.cylinderBore / 2f));
+                                                           _data.cylinderStroke * 2 * Mathf.PI * (_data.cylinderBore / 2f)) * _data.cylinders;
+
+// _cylindersArea must be multiplied by number of cylinders, because it's critical within convection
             
             // Debug.Log($"Cylinders Area: {_cylindersArea} m³, Engine Capacity: {_engineCapacity} m³");
             // Debug.Log($"V: {VolumeUtils.ConvertDm3ToM3(oilVolume)} m³, Oil Mass: {oilMass} kg, Coolant Mass: {coolantMass} kg, V: {VolumeUtils.ConvertDm3ToM3(coolantVolume)} m³");
