@@ -266,8 +266,8 @@ namespace Core.Entities.Vehicle.Modules.Engine
 
             // block temp loss
             const float metalEmissionFactor = 0.2f;
-            var blockLossArea = (_data.cylinderBore * _data.cylinderStroke / 1000000f) * 4f * 4f
-                                + (_data.cylinderBore * _data.cylinderStroke / 1000000f) * 2f;
+            var blockLossArea = (((_data.cylinderBore * 4f / 1000f) * (_data.cylinderStroke / 1000f)) * 4f
+                                 + (_data.cylinderBore * _data.cylinderStroke / 1000000f) * 2f) * 1.5f;
             // var oConst = 5.67f * Mathf.Pow(10, -8);
             // var lossQ = metalEmissionFactor * oConst * blockLossArea * (BlockTemperature - outsideTemp);
             var blockLossQ = aluminiumHeatGainFactor * blockLossArea * (BlockTemperature - outsideTemp) * Time.fixedDeltaTime;
@@ -277,7 +277,8 @@ namespace Core.Entities.Vehicle.Modules.Engine
             const float oilHeatLossFactor = 5f / 1000f;
             
             _oilTempLossTimer += Time.fixedDeltaTime;
-            var oilLossArea = (_data.cylinderBore * _data.cylinderStroke / 1000000f) * 4f * 2f;
+            var oilLossArea = (_data.cylinderBore * 4f / 1000f) * (_data.cylinderBore / 1000f) * 2f;
+            // var oilLossArea = 0.15f;
             var oilLossQ = oilHeatLossFactor * oilLossArea * (OilTemperature - outsideTemp) * _oilTempLossTimer;
 
             if (_oilTempLossTimer > 2f)
@@ -286,13 +287,14 @@ namespace Core.Entities.Vehicle.Modules.Engine
                 _oilTempLossTimer = 0;
             }
 
-            const float coolantHeatLossFactor = 15f / 1000f;
+            const float coolantHeatLossFactor = 35f / 1000f;
             
             // coolant temp loss
-            var coolantLossArea = (_data.cylinderBore * _data.cylinderStroke / 1000000f) * 4f;
+            var coolantLossArea = ((_data.cylinderBore * 4f / 1000f) * (_data.cylinderStroke / 1000f)) * 4f;
             var coolantLossQ = coolantHeatLossFactor * coolantLossArea * (CoolantTemperature - outsideTemp) * Time.fixedDeltaTime;
             CoolantTemperature -= coolantLossQ / coolantSpecificHeat / coolantMass;
             
+            // Debug.Log($"Δ oil loss: {oilLossQ / oilSpecificHeat / oilMass}, oil area: {oilLossArea}, coolant area: {coolantLossArea}, block area: {blockLossArea}");
             Debug.Log($"Loss Q: {blockLossQ}, oil loss Q: {oilLossQ}, Δ oil loss: {oilLossQ / oilSpecificHeat / oilMass}, Δ oil: {deltaOil}, coolant loss Q: {coolantLossQ}, oil T: {TempUnitUtils.KelvinToCelsius(OilTemperature)}, coolant T: {TempUnitUtils.KelvinToCelsius(CoolantTemperature)}, block T: {TempUnitUtils.KelvinToCelsius(BlockTemperature)}");
             // Debug.Log($"Δ Oil T: {deltaOil}, Oil X: {x}, Oil Q: {oilQ}, Oil Density: {dynamicOilDensity}, Oil T {TempUnitUtils.KelvinToCelsius(OilTemperature)}, Coolant T: {TempUnitUtils.KelvinToCelsius(CoolantTemperature)}, Block T: {TempUnitUtils.KelvinToCelsius(BlockTemperature)}");
             // Debug.Log($"W: {totalE} kW, Q: {totalQ} kW, {CurrentFuelConsumption} l/h, Block T: {TempUnitUtils.KelvinToCelsius(BlockTemperature)}, Air T: {TempUnitUtils.KelvinToCelsius(AirTemperature)}, ø Air T: {TempUnitUtils.KelvinToCelsius(avgAirTemperature)}, Air Peak T: {TempUnitUtils.KelvinToCelsius(workAirTempPeak)}, cycles per frame {cycles * Time.fixedDeltaTime}");
