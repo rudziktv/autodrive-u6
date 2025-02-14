@@ -36,7 +36,7 @@ namespace Systems.Devices.TripComputers.MFA_Plus
         {
             Computer = new();
             _controller = new(this, document.rootVisualElement);
-            // _controller.NavigateTo(new MFAPlusSettingsPageModel(_controller, assets.MainScreen.Instantiate()));
+            // _controller.NavigateTo(new MFAPlusSettingsPageModel(_controller, assets.MainScreen.Instantiate()))
             _controller.NavigateTo(new MFAPlusModel(_controller, assets.MainScreen.Instantiate(), "SplashScreen"));
         }
 

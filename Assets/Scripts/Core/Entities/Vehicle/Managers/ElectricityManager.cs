@@ -10,18 +10,21 @@ namespace Core.Entities.Vehicle.Managers
         public event ElectricityStateChangedArgs ElectricityStateChanged;
         public delegate void ElectricityStateChangedArgs(ElectricityState newState);
         
-        public Battery Battery { get; }
-        public Alternator Alternator { get; }
+        public Battery Battery { get; private set; }
+        public Alternator Alternator { get; private set; }
         public float CurrentLoad { get; private set; } = 0f;
 
         public ElectricityManager(VehicleController controller) : base(controller)
         {
+            Interactions.KeyIgnition.OnStateChanged += OnKeyPositionChanged;
+            ChangeElectricityState(ElectricityState.Off);
+        }
+
+        public override void Initialize()
+        {
+            base.Initialize();
             Battery = new(Controller);
             Alternator = new(Controller);
-            
-            Interactions.KeyIgnition.OnStateChanged += OnKeyPositionChanged;
-            
-            ChangeElectricityState(ElectricityState.Off);
         }
 
         private void OnKeyPositionChanged(KeyPositionState keyState, KeyPositionState oldState)

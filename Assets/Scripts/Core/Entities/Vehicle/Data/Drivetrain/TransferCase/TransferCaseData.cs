@@ -1,11 +1,9 @@
-using System;
+using UnityEngine;
 
 namespace Core.Entities.Vehicle.Data.Drivetrain.TransferCase
 {
-    [Serializable]
-    public struct TransferCaseData
+    public class TransferCaseData : ScriptableObject
     {
-        public TransferCaseType type;
         public AxleData[] axles;
     }
 }

@@ -10,14 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 36b0b8e77e0d44408f3a00d682ba5362, type: 3}
-  m_Name: EA111 CAXA + MCB
+  m_Name: EA111 CAXA + MCB + FWD
   m_EditorClassIdentifier: 
   engine: {fileID: 11400000, guid: 0bfdc937d41e8684b9202392aa4f4a30, type: 2}
   gearbox: {fileID: 11400000, guid: c611aed60239772339d9c963b3f63ce0, type: 2}
-  transferCase:
-    type: 0
-    axles:
-    - powered: 1
-      differential: {fileID: 11400000, guid: 4ad43cd626285dbaa88f9d301f65c5d0, type: 2}
-    - powered: 0
-      differential: {fileID: 0}
+  transferCase: {fileID: 11400000, guid: 6f16427104b9afd1dbe79bc962c04031, type: 2}

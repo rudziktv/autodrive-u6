@@ -9,7 +9,8 @@ namespace Core.Entities.Vehicle.Builders
         {
             var engine = drivetrainData.engine.BuildEngine(ctr);
             var gearbox = drivetrainData.gearbox.BuildGearbox(ctr);
-            return new DrivetrainModule(engine, gearbox, ctr);
+            var transferCase = drivetrainData.transferCase.BuildTransferCase(ctr);
+            return new DrivetrainModule(engine, gearbox, transferCase, ctr);
         }
     }
 }

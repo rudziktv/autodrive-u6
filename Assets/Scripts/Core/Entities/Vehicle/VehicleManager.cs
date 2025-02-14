@@ -13,5 +13,7 @@ namespace Core.Entities.Vehicle
         {
             Controller = controller;
         }
+
+        public virtual void Initialize() { }
     }
 }

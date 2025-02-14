@@ -62,5 +62,12 @@ namespace Core.Entities.Vehicle.Data.Drivetrain.Engine
 
         public float oilPressure = 5f;
         public float oilPressureRpmFactor = 1f;
+
+        public float cylinderCoolingFactor = 1f;
+        public float oilCylinderCoolingFactor = 1f;
+
+        public float radiatorArea = 1f;
+        public float radiatorCoolingFactor = 1f;
+        public float thermostatTemperature = 90f;
     }
 }

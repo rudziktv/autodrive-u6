@@ -63140,6 +63140,14 @@ MonoBehaviour:
     <SoundsConfig>k__BackingField:
       <BlinkerOnEmitter>k__BackingField: {fileID: 1414671047}
       <BlinkerOffEmitter>k__BackingField: {fileID: 513741394}
+    <DrivetrainConfig>k__BackingField:
+      <Axles>k__BackingField:
+      - <Tires>k__BackingField:
+        - {fileID: 183090237}
+        - {fileID: 151451129}
+      - <Tires>k__BackingField:
+        - {fileID: 1917530369}
+        - {fileID: 347763372}
     <VehicleData>k__BackingField: {fileID: 11400000, guid: 369670cf6356d3681aaf1ebf0c65f3ed, type: 2}
 --- !u!114 &7086796229583813643
 MonoBehaviour:
@@ -63165,7 +63173,7 @@ Rigidbody:
   m_GameObject: {fileID: 3518312096763214159}
   serializedVersion: 4
   m_Mass: 1215
-  m_Drag: 1
+  m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
@@ -63179,7 +63187,7 @@ Rigidbody:
   m_ImplicitCom: 0
   m_ImplicitTensor: 1
   m_UseGravity: 1
-  m_IsKinematic: 1
+  m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0

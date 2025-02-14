@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Text;
 using Core.Entities.Vehicle.Data.Drivetrain.Engine;
 using Core.Entities.Vehicle.Modules.EngineControl;
 using Core.Models.Thermal;
@@ -46,7 +47,8 @@ namespace Core.Entities.Vehicle.Modules.Engine
         public FlywheelModule Flywheel { get; }
         public GasolineECUModule ECU { get; set; }
         public float FlywheelRPM => Flywheel.RPM;
-        public float CurrentTorque { get; private set; }
+        public override float CurrentRPM => Flywheel.RPM;
+        public override float CurrentTorque { get; protected set; }
 
         private float _lastDeltaTorque;
 
@@ -69,6 +71,7 @@ namespace Core.Entities.Vehicle.Modules.Engine
         public ThermalModel BlockThermal { get; set; }
         public ThermalModel OilThermal { get; set; }
         public ThermalModel CoolantThermal { get; set; }
+        public ThermalModel CoolantRadiatorThermal { get; private set; }
         
         public GasolineEngineModule(CombustionEngineData data, GasolineECUModule ecu, VehicleController ctr) : base(ctr)
         {
@@ -86,11 +89,11 @@ namespace Core.Entities.Vehicle.Modules.Engine
             
             AirTemperature = SimpleEnvironment.instance.AmbientTemperatureKelvin;
             BlockTemperature = SimpleEnvironment.instance.AmbientTemperatureKelvin;
-            // OilTemperature = SimpleEnvironment.instance.AmbientTemperatureKelvin;
-            // CoolantTemperature = SimpleEnvironment.instance.AmbientTemperatureKelvin;
+            OilTemperature = SimpleEnvironment.instance.AmbientTemperatureKelvin;
+            CoolantTemperature = SimpleEnvironment.instance.AmbientTemperatureKelvin;
 
-            OilTemperature = TempUnitUtils.CelsiusToKelvin(90);
-            CoolantTemperature = TempUnitUtils.CelsiusToKelvin(90);
+            // OilTemperature = TempUnitUtils.CelsiusToKelvin(90);
+            // CoolantTemperature = TempUnitUtils.CelsiusToKelvin(90);
         }
 
         public override void UpdateModule()
@@ -107,8 +110,9 @@ namespace Core.Entities.Vehicle.Modules.Engine
 
             FuelConsumption();
             Cycle();
-            TemperatureCycle();
-            NewTemperatureCycle();
+            // TemperatureCycle();
+            // NewTemperatureCycle();
+            TempCyclePerCylinder();
 
             // Debug.Log($"RPM: {FlywheelRPM}, Thr: {Throttle}, Torque: {CurrentTorque}, Idle: {MyThrottleIdleControl()}");
             ComfortConfig.DashboardConfig.Tachometer.Value = Mathf.Clamp(FlywheelRPM, 0f, 10000f);
@@ -215,7 +219,7 @@ namespace Core.Entities.Vehicle.Modules.Engine
                 AirTemperature -= blockQ / airSpecificHeat / airMass;
                 AirTemperature = workAirTemp;
                 
-                Debug.Log($"Intake: {intakeAirTemp}, compress: {compressAirTemp} Peak: {workAirTempPeak}, Decomp: {workAirTemp}");
+                Debug.Log($"Intake: {TempUnitUtils.KelvinToCelsius(intakeAirTemp)}, Compressed: {TempUnitUtils.KelvinToCelsius(compressAirTemp)} Extreme: {TempUnitUtils.KelvinToCelsius(workAirTempPeak)}, Work: {TempUnitUtils.KelvinToCelsius(workAirTemp)} Exhaust: {TempUnitUtils.KelvinToCelsius(AirTemperature)}");
             }
             else
             {
@@ -334,6 +338,8 @@ namespace Core.Entities.Vehicle.Modules.Engine
             const float blockMass = 35f;
             var outsideTemp = SimpleEnvironment.instance.AmbientTemperatureKelvin;
 
+            const float radiatorMass = 3.5f;
+
             var oilMass = DensityUtils.GetMass(VolumeUtils.ConvertDm3ToM3(oilVolume), DensityUtils.OIL_DENSITY);
             var coolantMass = DensityUtils.GetMass(VolumeUtils.ConvertDm3ToM3(coolantVolume), DensityUtils.COOLANT_DENSITY);
             
@@ -341,22 +347,70 @@ namespace Core.Entities.Vehicle.Modules.Engine
                 DensityUtils.AIR_DENSITY, ThermalUtils.AIR_DIABETIC_INDEX, outsideTemp,
                 1, ThermalUtils.AIR_THERMAL_CAPACITY, ThermalTickUpdate.FixedUpdate);
             BlockThermal = new ThermalModel(outsideTemp, blockMass, ThermalUtils.ALUMINIUM_THERMAL_CAPACITY);
-            OilThermal = new ThermalModel(outsideTemp + 90f, oilMass, ThermalUtils.OIL_THERMAL_CAPACITY);
-            CoolantThermal = new ThermalModel(outsideTemp + 90f, coolantMass, ThermalUtils.COOLANT_THERMAL_CAPACITY);
+            OilThermal = new ThermalModel(outsideTemp, oilMass, ThermalUtils.OIL_THERMAL_CAPACITY);
+            CoolantThermal = new ThermalModel(outsideTemp, coolantMass, ThermalUtils.COOLANT_THERMAL_CAPACITY);
+            CoolantRadiatorThermal = new ThermalModel(outsideTemp, radiatorMass, ThermalUtils.ALUMINIUM_THERMAL_CAPACITY);
 
             _engineCapacity = VolumeUtils.ConvertCm3ToM3(_data.capacity);
+            // _cylindersArea = AreaUtils.ConvertMm2ToM2(2 * Mathf.PI * (_data.cylinderBore / 2f) + 
+            //     _data.cylinderStroke * 2 * Mathf.PI * (_data.cylinderBore / 2f)) * _data.cylinders;
+            
             _cylindersArea = AreaUtils.ConvertMm2ToM2(2 * Mathf.PI * (_data.cylinderBore / 2f) +
-                                                           _data.cylinderStroke * 2 * Mathf.PI * (_data.cylinderBore / 2f)) * _data.cylinders;
+                _data.cylinderStroke * 2 * Mathf.PI * (_data.cylinderBore / 2f));
+            _cylinderArea = AreaUtils.ConvertMm2ToM2(2 * Mathf.PI * (_data.cylinderBore / 2f) +
+                _data.cylinderStroke * 2 * Mathf.PI * (_data.cylinderBore / 2f));
 
-// _cylindersArea must be multiplied by number of cylinders, because it's critical within convection
+            // _cylindersArea must be multiplied by number of cylinders, because it's critical within convection
+            // edit: maybe not XD?
             
             // Debug.Log($"Cylinders Area: {_cylindersArea} m³, Engine Capacity: {_engineCapacity} m³");
             // Debug.Log($"V: {VolumeUtils.ConvertDm3ToM3(oilVolume)} m³, Oil Mass: {oilMass} kg, Coolant Mass: {coolantMass} kg, V: {VolumeUtils.ConvertDm3ToM3(coolantVolume)} m³");
+
+            var cylinderWallThickness = 5f; // mm
+            _cylinderVolume = VolumeUtils.ConvertMm3ToM3(Mathf.PI * Mathf.Pow(_data.cylinderBore / 2f, 2) * _data.cylinderStroke);
+            var cylinderVolumeThick = VolumeUtils.ConvertMm3ToM3(Mathf.PI *
+                Mathf.Pow(_data.cylinderBore / 2f + cylinderWallThickness, 2) * _data.cylinderStroke);
+            var cylinderWallVolume = cylinderVolumeThick - _cylinderVolume;
+            
+            
+            var cylinderWallMass = DensityUtils.GetMass(cylinderWallVolume, DensityUtils.ALUMINIUM_DENSITY);
+
+            _cylinderWalls = new ThermalModel[_data.cylinders];
+            for (int i = 0; i < _data.cylinders; i++)
+            {
+                _cylinderWalls[i] = new ThermalModel(outsideTemp, cylinderWallMass, ThermalUtils.ALUMINIUM_THERMAL_CONDUCTIVITY);
+            }
+            
+            Debug.Log($"CYLINDER INFO! wall m: {cylinderWallMass}, wall V: {cylinderWallVolume}, V: {_cylinderVolume}");
+
+            var cylinderInfo = new CylinderThermalInfo
+            {
+                Bore = _data.cylinderBore,
+                Stroke = _data.cylinderStroke,
+                Thickness = 5,
+                CompressionRatio = _data.compressionRatio,
+                Efficiency = 0.35f,
+                Density = DensityUtils.ALUMINIUM_DENSITY,
+                ThermalCapacity = ThermalUtils.ALUMINIUM_THERMAL_CAPACITY,
+                ThermalConductivity = ThermalUtils.ALUMINIUM_THERMAL_CONDUCTIVITY,
+            };
+            
+            _cylinders = new CylinderThermalModel[_data.cylinders];
+            for (int i = 0; i < _data.cylinders; i++)
+            {
+                _cylinders[i] = new CylinderThermalModel(outsideTemp, cylinderInfo);
+            }
         }
 
         private float _engineCapacity;
         private float _cylindersArea;
+        private float _cylinderArea;
+        private float _cylinderVolume;
+        
         private float _newOilTimer;
+
+        private ThermalModel[] _cylinderWalls;
+        private CylinderThermalModel[] _cylinders;
 
         private void NewTemperatureCycle()
         {
@@ -501,6 +555,160 @@ namespace Core.Entities.Vehicle.Modules.Engine
             Debug.Log($"NEW! Intake: {intake}, Compressed: {compressed}, Peak T: {peakTemp}, Decomp: {decompressed}");
         }
 
+        private void TempCyclePerCylinder()
+        {
+            const float efficiency = 0.35f;
+            const float exhaustRestFactor = 0.07f;
+            
+            var outsideTemp = SimpleEnvironment.instance.AmbientTemperatureKelvin;
+            
+            float fuelEnergy = EnergyUtils.PETROL_E5_ENERGY;
+            
+            var cycles = (FlywheelRPM / 60f) * (_data.cylinders / 2f);
+            var cylinderCycles = (FlywheelRPM / 60f) / 2f;
+            var cyclesPerFrame = cycles * Time.fixedDeltaTime;
+            var cylinderCyclesPerFrame = cylinderCycles * Time.fixedDeltaTime;
+            
+            var totalE = CurrentFuelConsumption * 0.75f / 3600f * fuelEnergy * 1000f * Time.fixedDeltaTime; // MJ to kJ
+            var work = totalE * efficiency;
+            var totalQ = totalE - work;
+            
+            var airVolume = cycles == 0 ? _engineCapacity :
+                    cyclesPerFrame * _engineCapacity / _data.cylinders;
+            var airMass = DensityUtils.GetMass(airVolume, DensityUtils.AIR_DENSITY);
+            
+            var cylinderCycleQ = totalE / _data.cylinders / Time.fixedDeltaTime / cylinderCycles;
+            
+            AirThermal.Mass = airMass;
+            
+            var intakeTemp = outsideTemp + 20;
+
+            CylinderThermalOttoCycleDebug debug = new CylinderThermalOttoCycleDebug();
+            
+            // cylinders thermal
+            foreach (var cylinder in _cylinders)
+            {
+                cylinder.OttoCycle(cylinderCycleQ, intakeTemp, cylinderCyclesPerFrame, out debug);
+            }
+            
+            // small circuit
+            
+            // COOLANT
+            const float coolantCableDiameter = 0.02f;
+            var coolantThermalFlow = CoolantTemperature / TempUnitUtils.CelsiusToKelvin(90);
+            var coolantHeatGainFactorWithFlow = ThermalUtils.COOLANT_THERMAL_CONDUCTIVITY / coolantCableDiameter * 3.66f
+                * (FlywheelRPM / _data.redLineRev * _data.coolantFlowRpmFactor)
+                * _data.coolantFlow;
+
+            foreach (var cylinder in _cylinders)
+            {
+                if (cycles != 0f)
+                    CoolantThermal.ConvectTransferHeat(cylinder.Walls, coolantHeatGainFactorWithFlow,
+                        cylinder.OutsideCylinderArea, coolantThermalFlow * _data.cylinderCoolingFactor);
+                else
+                    CoolantThermal.ConvectTransferHeat(cylinder.Walls,
+                        ThermalUtils.COOLANT_THERMAL_CONDUCTIVITY, cylinder.OutsideCylinderArea);
+            }
+            
+            var coolantThermalArea = _cylindersArea * 16f;
+            
+            if (cycles != 0f)
+                CoolantThermal.ConvectTransferHeat(BlockThermal, coolantHeatGainFactorWithFlow,
+                    coolantThermalArea, coolantThermalFlow * _data.cylinderCoolingFactor);
+            else
+                CoolantThermal.ConvectTransferHeat(BlockThermal,
+                    ThermalUtils.COOLANT_THERMAL_CONDUCTIVITY, coolantThermalArea);
+            
+            if (ComfortConfig.DashboardConfig.CoolantGauge)
+                ComfortConfig.DashboardConfig.CoolantGauge.Value = TempUnitUtils.KelvinToCelsius(CoolantThermal.Temperature);
+            
+            
+            // OIL
+            const float oilThermalExpansion = 0.0007f;
+            var oilArea = _cylindersArea * _data.cylinders * 2f;
+            var dynamicOilDensity = DensityUtils.OIL_DENSITY * (1 - oilThermalExpansion * (OilThermal.Temperature - TempUnitUtils.CelsiusToKelvin(15)));
+            var oilVolumetricFlow = _data.oilPressureRpmFactor * FlywheelRPM;
+            var dynamicOilMass = dynamicOilDensity * oilVolumetricFlow;
+            var x = 1f;
+
+            if (cycles != 0f)
+                x = dynamicOilMass / OilThermal.Mass * Time.fixedDeltaTime;
+            
+            foreach (var cylinder in _cylinders)
+            {
+                OilThermal.ConvectTransferHeat(cylinder.Walls, ThermalUtils.OIL_THERMAL_CONDUCTIVITY,
+                    cylinder.InsideCylinderArea, x * _data.oilCylinderCoolingFactor);
+            }
+            
+            OilThermal.ConvectTransferHeat(BlockThermal, ThermalUtils.OIL_THERMAL_CONDUCTIVITY,
+                oilArea, x * _data.oilCylinderCoolingFactor);
+
+            foreach (var cylinder in _cylinders)
+            {
+                BlockThermal.ConvectTransferHeat(cylinder.Walls, ThermalUtils.ALUMINIUM_THERMAL_CONDUCTIVITY,
+                    cylinder.InnerSideWallsCylinderArea);
+            }
+            
+            
+            // big circuit - cooling
+
+            if (CoolantThermal.Temperature >= TempUnitUtils.CelsiusToKelvin(_data.thermostatTemperature))
+            {
+                CoolantThermal.ConvectTransferHeat(CoolantRadiatorThermal,
+                    coolantHeatGainFactorWithFlow, _data.radiatorArea, coolantThermalFlow * _data.radiatorCoolingFactor);
+            }
+            
+            // velocity of the car not included yet
+            var radiatorConductivity = ThermalUtils.ALUMINIUM_THERMAL_CONDUCTIVITY;
+            
+            CoolantRadiatorThermal.
+                ConvectHeatToAmbient(radiatorConductivity, _data.radiatorArea);
+            
+
+            #region Ambient
+
+            // AMBIENT HEAT CONVECTION
+            // create private class variable instead of calculating same thing over again
+            // use AreaUtils
+            var blockLossArea = (((_data.cylinderBore * 4f / 1000f) * (_data.cylinderStroke / 1000f)) * 4f
+                                 + (_data.cylinderBore * _data.cylinderStroke / 1000000f) * 2f);
+            BlockThermal.ConvectHeatToAmbient(ThermalUtils.ALUMINIUM_THERMAL_CONDUCTIVITY,
+                blockLossArea);
+            
+            const float oilHeatLossFactor = 5f / 1000f;
+            var oilLossArea = (_data.cylinderBore * 4f / 1000f) * (_data.cylinderBore / 1000f) * 2f;
+            _newOilTimer += Time.fixedDeltaTime;
+            if (_newOilTimer > 2f)
+            {
+                OilThermal.InstantConvectHeatToAmbient(oilHeatLossFactor,
+                    oilLossArea, _newOilTimer);
+                _newOilTimer = 0;
+            }
+
+            const float coolantHeatLossFactor = 35f / 1000f;
+            var coolantLossArea = ((_data.cylinderBore * 4f / 1000f) * (_data.cylinderStroke / 1000f)) * 4f;
+            CoolantThermal.ConvectHeatToAmbient(coolantHeatLossFactor, coolantLossArea);
+
+            #endregion
+            
+            
+            // Debug.Log($"NEW! Block T {TempUnitUtils.KelvinToCelsius(BlockThermal.Temperature)}, Oil T {TempUnitUtils.KelvinToCelsius(OilThermal.Temperature)}, Coolant T: {TempUnitUtils.KelvinToCelsius(CoolantThermal.Temperature)}, Radiator T: {TempUnitUtils.KelvinToCelsius(CoolantRadiatorThermal.Temperature)}");
+            // Debug.Log($"NEW! Intake: {TempUnitUtils.KelvinToCelsius(debug.IntakeTemp)}, Compressed: {TempUnitUtils.KelvinToCelsius(debug.CompressTemp)}, Extreme: {TempUnitUtils.KelvinToCelsius(debug.ExtremeTemp)}, Work: {TempUnitUtils.KelvinToCelsius(debug.WorkTemp)}, Exhaust: {TempUnitUtils.KelvinToCelsius(debug.ExhaustTemp)}");
+            // Debug.Log($"NEW! {CylindersDebugString()}");
+        }
+
+        private string CylindersDebugString()
+        {
+            StringBuilder sb = new();
+
+            for (int i = 1; i <= _data.cylinders; i++)
+            {
+                sb.Append($"Cylinder {i}: {TempUnitUtils.KelvinToCelsius(_cylinders[i - 1].Walls.Temperature)}. ");
+            }
+
+            return sb.ToString();
+        }
+
         private void FuelConsumption()
         {
             var fuelDensity = 0.75f;
@@ -526,6 +734,8 @@ namespace Core.Entities.Vehicle.Modules.Engine
             Flywheel.TransferEngineTorque(CurrentTorque);
             
             // Debug.Log($"min torque: {minTorque}, new torque: {newTorque}, rpm: {FlywheelRPM}");
+            
+            Debug.Log($"Torque: {CurrentTorque}");
         }
 
         public float GetIntakeResponse(float rpm) =>

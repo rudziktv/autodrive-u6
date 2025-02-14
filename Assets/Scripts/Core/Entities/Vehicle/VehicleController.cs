@@ -54,6 +54,8 @@ namespace Core.Entities.Vehicle
 
         private void Start()
         {
+            ElectricityManager.Initialize();
+            
             ModuleManager.InitializeModules();
             
             VehicleInput.Disable();

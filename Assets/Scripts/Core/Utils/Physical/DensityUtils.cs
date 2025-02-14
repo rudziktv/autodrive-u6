@@ -36,6 +36,11 @@ namespace Core.Utils.Physical
         /// </summary>
         public const float DIESEL_DENSITY = 830;
 
+        /// <summary>
+        /// Density of aluminium, kg/m³
+        /// </summary>
+        public const float ALUMINIUM_DENSITY = 2700;
+
         
         /// <summary>
         /// Get mass of the material, based on volume and density.

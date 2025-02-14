@@ -22,7 +22,9 @@ namespace Core.Models.Thermal
             }
         }
 
-        public CompressThermalModel(float density, float diabeticIndex, float initialTemp, float mass, float thermalCapacity, ThermalTickUpdate tick) : base(initialTemp, mass, thermalCapacity, tick)
+        public CompressThermalModel(float density, float diabeticIndex, float initialTemp,
+            float mass, float thermalCapacity, ThermalTickUpdate tick = ThermalTickUpdate.FixedUpdate)
+            : base(initialTemp, mass, thermalCapacity, tick)
         {
             Density = density;
             DiabeticIndex = diabeticIndex;

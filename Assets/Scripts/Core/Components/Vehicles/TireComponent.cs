@@ -31,6 +31,10 @@ namespace Core.Components.Vehicles
         public float MotorTorque { get; set; }
         public float BrakeTorque { get; set; }
         public float SteeringAngle { get; set; }
+        public float RadS { get; private set; }
+        public float RPM { get; private set; }
+        
+        public float Circumference => Mathf.PI * 2f * radius;
 
         private void Start()
         {
@@ -109,9 +113,15 @@ namespace Core.Components.Vehicles
             float desiredVelChange = -tractionVel;
             float desiredAccel = desiredVelChange / Time.fixedDeltaTime;
 
-            var kineticEnergy = _rb.mass * Mathf.Pow(tractionVel, 2) / 2f;
-            
-            _rb.AddForceAtPosition(tractionDir * (mass * desiredAccel), transform.position);
+            // var kineticEnergy = _rb.mass * Mathf.Pow(tractionVel, 2) / 2f;
+
+            RadS = tractionVel / radius;
+            RPM = tractionVel / Circumference * 60f;
+
+            // if (tractionVel < 0.05f && MotorTorque == 0f)
+            //     _rb.AddForceAtPosition(tractionDir * (mass * desiredAccel), transform.position);
+            // else
+            _rb.AddForceAtPosition(tractionDir * MotorTorque / radius, transform.position);
         }
             //
             // Debug.Log($"Dot Velocity: {tractionVel}, Transform vel: {transform.InverseTransformDirection(tireWorldVel).z}, vehicle vel: {_rb.linearVelocity.z}");

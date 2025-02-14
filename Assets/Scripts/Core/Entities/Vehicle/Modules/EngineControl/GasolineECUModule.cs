@@ -4,6 +4,7 @@ using Core.Entities.Vehicle.Data.Drivetrain.Engine;
 using Core.Entities.Vehicle.Data.Drivetrain.EngineControl;
 using Core.Entities.Vehicle.Enums;
 using Core.Entities.Vehicle.Modules.Engine;
+using Core.Utils;
 using UnityEngine;
 
 namespace Core.Entities.Vehicle.Modules.EngineControl
@@ -35,19 +36,44 @@ namespace Core.Entities.Vehicle.Modules.EngineControl
             // var targetRpm = 800f;
             // var neededInput = TotalInnerDrag / CurrentMaxTorque * (targetRpm - FlywheelRPM);
             // var intelligentInput = () / CurrentMaxTorque;
-
+            
+            
             if (CurrentElectricityState != ElectricityState.Ignition)
             {
                 Engine.Throttle = 0;
                 return;
             }
+            else
+            {
+                UpdateIdleTargetRPM();
+                UpdateECUThrottle();
+            }
             
+            // Debug.Log($"ECU. ECU Thr: {Engine.Throttle} Input throttle: {VehicleInput.Drive.GasPedal.ReadValue<float>()} Brake: {VehicleInput.Drive.BrakePedal.ReadValue<float>()}");
+        }
+
+        private void UpdateECUThrottle()
+        {
             var input = VehicleInput.Drive.GasPedal.ReadValue<float>();
-            Engine.Throttle = input == 0 ? ThrottleIdleControl() : input;
-            if (Data.neutralRevLimiterEnabled)
+            
+            var idleThr = ThrottleIdleControl();
+            // var range = 1f - idleThr;
+            var ecuThr = Mathf.Lerp(idleThr, 1f, input);
+            
+            Engine.Throttle = ecuThr;
+            
+            if (Data.neutralRevLimiterEnabled && Drivetrain.Gearbox.IsNeutral())
                 Engine.Throttle = RevLimiter(Data.neutralRevLimiter, Engine.Throttle, 3000f);
             Engine.Throttle = EngineData.redLineCutOff ? CutOff(EngineData.redLineRev, Engine.Throttle):
                 RevLimiter(EngineData.redLineRev, Engine.Throttle);
+            
+            Debug.Log($"idle thr: {idleThr}, input thr: {input}, ecu thr: {ecuThr}, final thr: {Engine.Throttle}");
+        }
+
+        private void UpdateIdleTargetRPM()
+        {
+            var tempScale = Mathf.InverseLerp(Data.warmUpRevMaxTemp, Data.warmUpRevMinTemp, TempUnitUtils.KelvinToCelsius(Engine.OilThermal.Temperature));
+            idleTargetRPM = Mathf.Lerp(Data.idleRev, Data.idleWarmUpRev, tempScale);
         }
         
         private float ThrottleIdleControl()
@@ -68,7 +94,7 @@ namespace Core.Entities.Vehicle.Modules.EngineControl
             
             
             // Debug.Log($"Δ RPM: {deltaRpm}, torque: {torque}, Δ torque: {deltaTorque}, thr: {throttle}, corr: {correctionFactor}");
-            return throttle + correctionFactor;
+            return Mathf.Clamp01(throttle + correctionFactor);
         }
 
         private float RevLimiter(float targetRpm, float inputThrottle, float lowPassRpmSmooth = 500f)

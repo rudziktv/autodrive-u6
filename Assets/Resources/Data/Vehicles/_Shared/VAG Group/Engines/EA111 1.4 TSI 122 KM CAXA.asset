@@ -181,10 +181,15 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   fuelConsumptionBase: 1
-  fuelConsumptionRpmFactor: 1
+  fuelConsumptionRpmFactor: 1.8
   fuelConsumptionFactor: 1
   fuelConsumptionCapacityFactor: 1
-  coolantFlow: 15
+  coolantFlow: 32
   coolantFlowRpmFactor: 1
   oilPressure: 5000
   oilPressureRpmFactor: 0.01
+  cylinderCoolingFactor: 4.8
+  oilCylinderCoolingFactor: 2.4
+  radiatorArea: 0.26
+  radiatorCoolingFactor: 1
+  thermostatTemperature: 90

@@ -1,7 +1,7 @@
+using UnityEngine;
 using Core.Entities.Vehicle.Data.Drivetrain.Engine;
 using Core.Entities.Vehicle.Data.Drivetrain.Gearbox;
 using Core.Entities.Vehicle.Data.Drivetrain.TransferCase;
-using UnityEngine;
 
 namespace Core.Entities.Vehicle.Data.Drivetrain
 {
