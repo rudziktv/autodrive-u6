@@ -215,6 +215,15 @@
                     "initialStateCheck": false
                 },
                 {
+                    "name": "Interaction Cursor",
+                    "type": "Value",
+                    "id": "b7f702d3-16a0-4807-a0d2-c22496d5db6c",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
                     "name": "Pause",
                     "type": "Button",
                     "id": "6889a52b-8b1b-4c09-91ce-976ccb9a145d",
@@ -264,6 +273,17 @@
                     "processors": "",
                     "groups": ";Keyboard",
                     "action": "Radial HUD",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "189564a5-2a13-4af0-a2fd-6dcb3b45f877",
+                    "path": "<Mouse>/delta",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard",
+                    "action": "Interaction Cursor",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

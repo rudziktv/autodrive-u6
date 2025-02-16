@@ -21,7 +21,7 @@ namespace Core.Entities.Vehicle.Interactions
         #endregion
         
         public BlinkerStickState CurrentBlinkerState { get; private set; }
-        public event Action<BlinkerStickState> BlinkerStickStateChanged; 
+        public event Action<BlinkerStickState> BlinkerStickStateChanged;
         
         private void Start()
         {

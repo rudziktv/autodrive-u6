@@ -13,14 +13,18 @@ namespace Systems.Interactions
         [SerializeField] private LayerMask raycastLayer;
         [SerializeField] private LayerMask interactionLayer;
         [SerializeField] private Camera interactionCamera;
+        
+        private Interactable _currentInteractable;
 
         private void Start()
         {
             if (interactionCamera == null)
                 interactionCamera = Camera.main;
             
-            var interactAction = InputSystem.actions.FindAction(GlobalInputs.INTERACT); 
+            var interactAction = InputSystem.actions.FindAction(GlobalInputs.INTERACT);
             interactAction.performed += Interact;
+            interactAction.started += Interact;
+            // interactAction.canceled += Interact;
         }
 
         [CanBeNull]
@@ -45,17 +49,19 @@ namespace Systems.Interactions
 
         public void Interact(InputAction.CallbackContext ctx)
         {
-            if (!ctx.performed) return;
-            Debug.Log("Interact Invoked");
+            // if (!ctx.performed) return;
+            // Debug.Log("Interact Invoked");
+            // var pos = interactionCamera.ScreenToWorldPoint(Mouse.current.position.ReadValue());
 
-            var pos = interactionCamera.ScreenToWorldPoint(Mouse.current.position.ReadValue());
             var ray = interactionCamera.ScreenPointToRay(Mouse.current.position.ReadValue());
-            
             var interactable = TryGetInteractable(ray);
-            
             if (!interactable) return;
-            Debug.Log(interactable.name + " is interacted with");
-            interactable.SimpleInteract();
+            
+            // Debug.Log(interactable.name + " is interacted with");
+            if (ctx.performed)
+                interactable.SimpleInteract();
+            else if (ctx.started)
+                interactable.InteractionStarted();
         }
 
         private void FixedUpdate()

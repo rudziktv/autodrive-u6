@@ -18,16 +18,16 @@ namespace Core.Components.Sounds
 
         private void Start()
         {
+            if (string.IsNullOrEmpty(bankName))
+            {
+                var bankContext = GetComponentInParent<FMODBankContext>();
+                if (bankContext != null)
+                    bankName = bankContext.BankName;
+                else
+                    throw new ArgumentException("FMODBankContext not found - bankName cannot be null!");
+            }
+                
             CreateInstance();
-        }
-        
-        private void Update()
-        {
-            // if (!_instance.isValid())
-            //     CreateInstance();
-        
-            // var attributes = gameObject.To3DAttributes();
-            // _instance.set3DAttributes(attributes);
         }
         
         public void Play()

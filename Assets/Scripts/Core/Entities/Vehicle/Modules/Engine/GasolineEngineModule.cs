@@ -735,7 +735,7 @@ namespace Core.Entities.Vehicle.Modules.Engine
             
             // Debug.Log($"min torque: {minTorque}, new torque: {newTorque}, rpm: {FlywheelRPM}");
             
-            Debug.Log($"Torque: {CurrentTorque}");
+            // Debug.Log($"Torque: {CurrentTorque}");
         }
 
         public float GetIntakeResponse(float rpm) =>

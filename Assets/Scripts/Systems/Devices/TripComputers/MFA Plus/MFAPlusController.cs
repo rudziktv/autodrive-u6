@@ -32,7 +32,7 @@ namespace Systems.Devices.TripComputers.MFA_Plus
         public override void Initialize(MFAPlus context, VisualElement root, UIModel<MFAPlus> model)
         {
             base.Initialize(context, root, model);
-            Context.Vehicle.CodingVariables.StateChanged += CodingVariableChanged;
+            Context.Vehicle.Status.StateChanged += CodingVariableChanged;
         }
 
         private void CodingVariableChanged(string key, string value)

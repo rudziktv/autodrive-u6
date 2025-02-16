@@ -95,7 +95,7 @@ namespace Core.Entities.Vehicle.Modules.Gearbox
                 OutputTorque = (Engine.Flywheel.DrivetrainConnected ? Engine.CurrentTorque : torque) * CurrentGearRatio * Data.finalRatio;
             }
             
-            Debug.Log($"FlywheelRPM: {Engine.FlywheelRPM} Current Gear: {SelectedGear}, Clutch: {ClutchInput}, Max Clutch Torque: {maxClutchTorque}, Clutch RPM: {ClutchRPM}, Output RPM: {OutputRPM}, Output Torque: {OutputTorque}, Connected: {Engine.Flywheel.DrivetrainConnected}");
+            // Debug.Log($"FlywheelRPM: {Engine.FlywheelRPM} Current Gear: {SelectedGear}, Clutch: {ClutchInput}, Max Clutch Torque: {maxClutchTorque}, Clutch RPM: {ClutchRPM}, Output RPM: {OutputRPM}, Output Torque: {OutputTorque}, Connected: {Engine.Flywheel.DrivetrainConnected}");
         }
 
         private void UpdateGearbox()

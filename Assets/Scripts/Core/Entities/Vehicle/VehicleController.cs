@@ -24,6 +24,8 @@ namespace Core.Entities.Vehicle
         public InputActions InputActions { get; private set; }
         public StateController CodingVariables { get; private set; } = new();
 
+        public StateController Status { get; private set; } = new();
+
         public VehicleInputActions VehicleInput { get; private set; }
 
 

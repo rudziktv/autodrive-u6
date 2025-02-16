@@ -15,5 +15,6 @@ namespace Core.Utils
         
         // FUNCTIONS
         public const string INTERACT = "Interact";
+        public const string INTERACTION_CURSOR = "Interaction Cursor";
     }
 }

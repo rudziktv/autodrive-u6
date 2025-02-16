@@ -1,4 +1,5 @@
 using Core.Entities.Vehicle.Data.Drivetrain;
+using Core.Entities.Vehicle.Data.Status;
 using UnityEngine;
 
 namespace Core.Entities.Vehicle.Data
@@ -7,5 +8,7 @@ namespace Core.Entities.Vehicle.Data
     public class VehicleInstanceData : ScriptableObject
     {
         public VehicleDrivetrainData drivetrain;
+        
+        public VehicleStatusData status;
     }
 }

@@ -1,10 +1,20 @@
 using System.Collections.Generic;
+using Core.Entities.Vehicle.Data.Status;
 
 namespace Core.Helpers
 {
     public class StateController
     {
         private Dictionary<string, string> _states = new();
+
+        public StateController(VehicleStatusPair[] pairs = null)
+        {
+            if (pairs == null) return;
+            foreach (var status in pairs)
+            {
+                _states.TryAdd(status.key, status.defaultValue);
+            }
+        }
         
         public delegate void StateChangedArgs(string key, string value);
         public event StateChangedArgs StateChanged;
