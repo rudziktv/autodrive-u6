@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using Core.Components.Vehicles.Mirror;
+using Core.Entities.Person;
 using Core.Entities.Vehicle.Animations;
 using Core.Utils;
 using Systems.Interactions;
@@ -25,6 +26,7 @@ namespace Core.Entities.Vehicle.Interactions.Mirror
         
         [Header("Mirrors Test")]
         [SerializeField] private VehicleElectricMirror leftMirror;
+        [SerializeField] private VehicleElectricMirror rightMirror;
         
         private int _currentSwitchPosition;
         private Coroutine _animationRoutine;
@@ -39,11 +41,26 @@ namespace Core.Entities.Vehicle.Interactions.Mirror
             rightInteractable.interact.AddListener(NextPosition);
             controlInteractable.onInteractionStarted.AddListener(StartMirrorControl);
         }
+        
+        private CursorLockMode _previousLockMode;
 
         private void StartMirrorControl()
         {
             if (_controlRoutine != null)
                 StopCoroutine(_controlRoutine);
+
+            if (CurrentSwitchPosition is not (MirrorSwitchPositions.Left or MirrorSwitchPositions.Right)) return;
+            _previousLockMode = Cursor.lockState;
+            Cursor.lockState = CursorLockMode.Locked;
+            CameraController.Instance.PanningLocked = true;
+            if (CurrentSwitchPosition == MirrorSwitchPositions.Right)
+            {
+                Debug.Log("Starting right mirror control.");
+                _controlRoutine = StartCoroutine(MirrorControlRoutine(rightMirror));
+                InputSystem.actions.FindAction(GlobalInputs.INTERACT).canceled += StopMirrorControl;
+                CameraController.Instance.FocusOnWithVelocity(rightMirror.MirrorAnchor);
+                return;
+            }
             if (CurrentSwitchPosition != MirrorSwitchPositions.Left) return;
             
             Debug.Log("Starting mirror control");
@@ -54,11 +71,14 @@ namespace Core.Entities.Vehicle.Interactions.Mirror
 
         private void StopMirrorControl(InputAction.CallbackContext ctx)
         {
+            CameraController.Instance.Unfocus();
             Debug.Log("Stop mirror control");
             InputSystem.actions.FindAction(GlobalInputs.INTERACT).canceled -= StopMirrorControl;
             leftMirror.SetMotorVelocity(Vector2.zero);
             if (_controlRoutine != null)
                 StopCoroutine(_controlRoutine);
+            Cursor.lockState = _previousLockMode;
+            CameraController.Instance.PanningLocked = false;
         }
 
         private IEnumerator MirrorControlRoutine(VehicleElectricMirror mirror)

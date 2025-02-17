@@ -1,4 +1,7 @@
 using System;
+using System.Collections;
+using Core.Engine.Math;
+using Core.Engine.Routine;
 using Core.Utils;
 using Core.Utils.Extensions;
 using UnityEngine;
@@ -32,16 +35,20 @@ namespace Core.Entities.Person
 
         private int _zoomInOut;
 
-        public bool PanningLocked { get; private set; }
+        public bool PanningLocked { get; set; }
 
         private Transform _focusTarget;
         private Quaternion _beforeFocusRotation;
+        
+        private RoutineModule RoutineSystem { get; set; }
 
         private void Awake()
         {
             if (Instance != null)
                 Destroy(Instance);
             Instance = this;
+            
+            RoutineSystem = new RoutineModule(this);
         }
 
         private void Start()
@@ -74,13 +81,68 @@ namespace Core.Entities.Person
 
         public void FocusOn(Transform target)
         {
+            PanningLocked = true;
             _focusTarget = target;
+            RoutineSystem.StartRoutine("focus", FocusRoutine());
+        }
+
+        public void FocusOnWithVelocity(Transform target)
+        {
+            PanningLocked = true;
+            _focusTarget = target;
+            
+            const float velocity = 360f;
+            var initRotation = Main.transform.rotation;
+            var targetRotation = Quaternion.LookRotation(_focusTarget.position - Main.transform.position);
+            var duration = Quaternion.Angle(initRotation, targetRotation) / velocity;
+            
+            RoutineSystem.StartRoutine("focus", FocusRoutine(initRotation, targetRotation, duration));
+        }
+
+        private IEnumerator FocusRoutine(float duration = 0.5f)
+        {
+            // const float duration = 0.5f; //constant for now
+            const float velocity = 360f;
+            var timer = 0f;
+            var initRotation = Main.transform.rotation;
+            var targetRotation = Quaternion.LookRotation(_focusTarget.position - Main.transform.position);
+            
+            var automaticDuration = Quaternion.Angle(initRotation, targetRotation) / velocity;
+
+            while (timer < automaticDuration)
+            {
+                var progress = timer / automaticDuration;
+                progress = Easing.EaseInOut(progress);
+                Main.transform.rotation = Quaternion.Slerp(initRotation, targetRotation, progress);
+                yield return null;
+                timer += Time.deltaTime;
+            }
+            
+            Main.transform.LookAt(_focusTarget);
+        }
+
+        private IEnumerator FocusRoutine(Quaternion initRot, Quaternion targetRot, float duration = 0.5f, Func<float, float> easingFunction = null)
+        {
+            easingFunction ??= Easing.EaseInOut;
+            var timer = 0f;
+            while (timer < duration)
+            {
+                var progress = easingFunction.Invoke(timer / duration);
+                Main.transform.rotation = Quaternion.Slerp(initRot, targetRot, progress);
+                yield return null;
+                timer += Time.deltaTime;
+            }
+            Main.transform.LookAt(_focusTarget);
         }
 
         public void Unfocus()
         {
+            if (!_focusTarget) return;
+            RoutineSystem.StopRoutine("focus");
             _focusTarget = null;
             Main.transform.localRotation = Quaternion.identity;
+            
+            PanningLocked = false;
         }
 
         public void ResetAndLockView()
@@ -142,7 +204,7 @@ namespace Core.Entities.Person
         private void Update()
         {
             UpdateRotation();
-            UpdateFocus();
+            // UpdateFocus();
             UpdateZoom();
         }
 
@@ -174,17 +236,17 @@ namespace Core.Entities.Person
             _mouseDelta = Vector2.zero;
         }
 
-        private void UpdateFocus()
-        {
-            if (!_focusTarget) return;
-
-            // var currentRot = Main.transform.localRotation;
-            var dir = _focusTarget.position - Main.transform.position;
-            var rot = Quaternion.LookRotation(dir);
-            Main.transform.rotation = Quaternion.Lerp(Main.transform.rotation, rot, 0.2f);
-            // Main.transform.LookAt(_focusTarget);
-
-        }
+        // private void UpdateFocus()
+        // {
+        //     if (!_focusTarget) return;
+        //
+        //     // var currentRot = Main.transform.localRotation;
+        //     var dir = _focusTarget.position - Main.transform.position;
+        //     var rot = Quaternion.LookRotation(dir);
+        //     Main.transform.rotation = Quaternion.Lerp(Main.transform.rotation, rot, 0.2f);
+        //     // Main.transform.LookAt(_focusTarget);
+        //
+        // }
 
         private void UpdateZoom()
         {

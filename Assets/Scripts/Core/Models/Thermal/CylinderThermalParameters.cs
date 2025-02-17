@@ -1,6 +1,6 @@
 namespace Core.Models.Thermal
 {
-    public class CylinderThermalInfo
+    public class CylinderThermalParameters
     {
         public float Density;
         

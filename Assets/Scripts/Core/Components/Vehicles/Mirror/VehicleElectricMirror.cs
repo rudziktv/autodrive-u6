@@ -12,6 +12,8 @@ namespace Core.Components.Vehicles.Mirror
         private Vector3 _currentRotation;
 
         private Vector3 _currentMotorVelocity;
+        
+        public Transform MirrorAnchor => mirrorAnchor;
 
         private void Start()
         {

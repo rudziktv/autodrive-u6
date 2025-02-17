@@ -40,8 +40,7 @@ namespace Core.Models.Thermal
             Mass = mass;
             _tick = tick;
         }
-        
-        // public ThermalModel(float specificHeat) : this(SimpleEnvironment.instance.AmbientTemperatureKelvin, specificHeat) { }
+
         public void TransferHeat(float q)
             => Temperature += q / ThermalCapacity / Mass;
         

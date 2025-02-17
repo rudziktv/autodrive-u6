@@ -383,7 +383,7 @@ namespace Core.Entities.Vehicle.Modules.Engine
             
             Debug.Log($"CYLINDER INFO! wall m: {cylinderWallMass}, wall V: {cylinderWallVolume}, V: {_cylinderVolume}");
 
-            var cylinderInfo = new CylinderThermalInfo
+            var cylinderInfo = new CylinderThermalParameters
             {
                 Bore = _data.cylinderBore,
                 Stroke = _data.cylinderStroke,

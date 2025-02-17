@@ -4,9 +4,11 @@ namespace Core.Models.Thermal
 {
     public class CompressThermalModel : ThermalModel
     {
-        private float _compressionRatio = 1;
-        public float DiabeticIndex { get; }
+        /// <summary>
+        /// Density of compressible object, kg/m³
+        /// </summary>
         public float Density { get; }
+        public float DiabeticIndex { get; }
 
         private float UncompressedVolume => Density * Mass;
         private float Volume => Density * Mass / CompressionRatio;
@@ -21,6 +23,8 @@ namespace Core.Models.Thermal
                 _compressionRatio = value;
             }
         }
+        
+        private float _compressionRatio = 1;
 
         public CompressThermalModel(float density, float diabeticIndex, float initialTemp,
             float mass, float thermalCapacity, ThermalTickUpdate tick = ThermalTickUpdate.FixedUpdate)
