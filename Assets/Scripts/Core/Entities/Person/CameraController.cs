@@ -8,6 +8,7 @@ namespace Core.Entities.Person
 {
     public class CameraController : MonoBehaviour
     {
+        public static Camera Main { get; private set; }
         public static CameraController Instance { get; private set; }
         
         [SerializeField] private float mouseSensitivity = 0.015f;
@@ -33,8 +34,13 @@ namespace Core.Entities.Person
 
         public bool PanningLocked { get; private set; }
 
+        private Transform _focusTarget;
+        private Quaternion _beforeFocusRotation;
+
         private void Awake()
         {
+            if (Instance != null)
+                Destroy(Instance);
             Instance = this;
         }
 
@@ -47,6 +53,7 @@ namespace Core.Entities.Person
             if (cameraPitch == null)
                 cameraPitch = GlobalUtils.GetCameraPitch().transform;
             
+            Main = playerCamera;
             _rotX = transform.localEulerAngles.x;
             _targetFov = fov;
 
@@ -63,6 +70,17 @@ namespace Core.Entities.Person
             this.GetInputAction(GlobalInputs.ZOOM_OUT).performed += ZoomOut;
             this.GetInputAction(GlobalInputs.TOGGLE_ZOOM).performed += ToggleZoom;
             this.GetInputAction(GlobalInputs.RESET_ZOOM).performed += ResetZoom;
+        }
+
+        public void FocusOn(Transform target)
+        {
+            _focusTarget = target;
+        }
+
+        public void Unfocus()
+        {
+            _focusTarget = null;
+            Main.transform.localRotation = Quaternion.identity;
         }
 
         public void ResetAndLockView()
@@ -124,6 +142,7 @@ namespace Core.Entities.Person
         private void Update()
         {
             UpdateRotation();
+            UpdateFocus();
             UpdateZoom();
         }
 
@@ -153,6 +172,18 @@ namespace Core.Entities.Person
 
             // Reset delta (opcjonalnie)
             _mouseDelta = Vector2.zero;
+        }
+
+        private void UpdateFocus()
+        {
+            if (!_focusTarget) return;
+
+            // var currentRot = Main.transform.localRotation;
+            var dir = _focusTarget.position - Main.transform.position;
+            var rot = Quaternion.LookRotation(dir);
+            Main.transform.rotation = Quaternion.Lerp(Main.transform.rotation, rot, 0.2f);
+            // Main.transform.LookAt(_focusTarget);
+
         }
 
         private void UpdateZoom()

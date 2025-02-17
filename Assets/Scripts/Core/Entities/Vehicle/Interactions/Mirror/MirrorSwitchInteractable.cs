@@ -55,6 +55,7 @@ namespace Core.Entities.Vehicle.Interactions.Mirror
         private void StopMirrorControl(InputAction.CallbackContext ctx)
         {
             Debug.Log("Stop mirror control");
+            InputSystem.actions.FindAction(GlobalInputs.INTERACT).canceled -= StopMirrorControl;
             leftMirror.SetMotorVelocity(Vector2.zero);
             if (_controlRoutine != null)
                 StopCoroutine(_controlRoutine);
