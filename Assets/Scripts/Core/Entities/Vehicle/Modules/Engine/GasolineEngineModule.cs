@@ -692,9 +692,9 @@ namespace Core.Entities.Vehicle.Modules.Engine
             #endregion
             
             
-            // Debug.Log($"NEW! Block T {TempUnitUtils.KelvinToCelsius(BlockThermal.Temperature)}, Oil T {TempUnitUtils.KelvinToCelsius(OilThermal.Temperature)}, Coolant T: {TempUnitUtils.KelvinToCelsius(CoolantThermal.Temperature)}, Radiator T: {TempUnitUtils.KelvinToCelsius(CoolantRadiatorThermal.Temperature)}");
-            // Debug.Log($"NEW! Intake: {TempUnitUtils.KelvinToCelsius(debug.IntakeTemp)}, Compressed: {TempUnitUtils.KelvinToCelsius(debug.CompressTemp)}, Extreme: {TempUnitUtils.KelvinToCelsius(debug.ExtremeTemp)}, Work: {TempUnitUtils.KelvinToCelsius(debug.WorkTemp)}, Exhaust: {TempUnitUtils.KelvinToCelsius(debug.ExhaustTemp)}");
-            // Debug.Log($"NEW! {CylindersDebugString()}");
+            Debug.Log($"NEW! Block T {TempUnitUtils.KelvinToCelsius(BlockThermal.Temperature)}, Oil T {TempUnitUtils.KelvinToCelsius(OilThermal.Temperature)}, Coolant T: {TempUnitUtils.KelvinToCelsius(CoolantThermal.Temperature)}, Radiator T: {TempUnitUtils.KelvinToCelsius(CoolantRadiatorThermal.Temperature)}");
+            Debug.Log($"NEW! Intake: {TempUnitUtils.KelvinToCelsius(debug.IntakeTemp)}, Compressed: {TempUnitUtils.KelvinToCelsius(debug.CompressTemp)}, Extreme: {TempUnitUtils.KelvinToCelsius(debug.ExtremeTemp)}, Work: {TempUnitUtils.KelvinToCelsius(debug.WorkTemp)}, Exhaust: {TempUnitUtils.KelvinToCelsius(debug.ExhaustTemp)}");
+            Debug.Log($"NEW! {CylindersDebugString()}");
         }
 
         private string CylindersDebugString()

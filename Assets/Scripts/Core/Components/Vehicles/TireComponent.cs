@@ -52,8 +52,8 @@ namespace Core.Components.Vehicles
             // _rb.solverVelocityIterations = 30;
             
             UpdateSuspension();
-            UpdateSteering();
-            UpdateTraction();
+            // UpdateSteering();
+            // UpdateTraction();
         }
 
         private void OnDrawGizmosSelected()
