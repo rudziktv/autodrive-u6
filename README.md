@@ -1,5 +1,14 @@
 # auto.drive (Unity 6)
 
+## Dependencies
+### My own
+- [Unity FFB SDL](https://github.com/rudziktv/unity-ffb-sdl) **Currently PRIVATE**
+### Others
+- [SDL3](https://github.com/libsdl-org/SDL)
+- [NuGet for Unity](https://github.com/GlitchEnzo/NuGetForUnity)
+- [FMOD for Unity](https://www.fmod.com/unity)
+
+
 ## Trademark Disclaimer
 All trademarks, logos, brand names, and designs appearing in this game are the property of their respective owners. This game is not affiliated with, endorsed by, or sponsored by any vehicle manufacturers, tire brands, or other trademark holders referenced within.
 
